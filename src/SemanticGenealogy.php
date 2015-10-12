@@ -14,7 +14,8 @@ use SMWDIProperty;
  * @licence GNU GPL v2+
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  */
-class SemanticGenealogy {
+class SemanticGenealogy
+{
 
 	/**
 	 * Get an array key => value of genealogical properties as SMWDIProperty
@@ -24,6 +25,7 @@ class SemanticGenealogy {
 	 * @return array the properties array
 	 */
 	public static function getProperties() {
+
 		static $properties;
 
 		if ( $properties !== null ) {
