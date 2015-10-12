@@ -5,3 +5,6 @@ vendor/
 *~
 *.kate-swp
 .*.swp
+vendor
+node_modules
+styles/.sass-cache/

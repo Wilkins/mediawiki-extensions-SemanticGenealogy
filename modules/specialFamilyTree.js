@@ -1,6 +1,6 @@
 jQuery( function( $ ) {
 	function initAutocomplete() {
-		$( 'input.smg-input-page' ).autocomplete( {
+		$(  'input.smg-input-page' ).autocomplete( {
 			source: function( request, response ) {
 				$.getJSON(
 					mw.util.wikiScript( 'api' ), {
