@@ -1,5 +1,18 @@
 <?php
 
+namespace SemanticGenealogy;
+
+use SpecialPage;
+use SemanticGenealogy\Tree\AncestorsFamilyTree;
+use SemanticGenealogy\Tree\LinkFamilyTree;
+use SemanticGenealogy\Tree\FamilyTreeFactory;
+use SemanticGenealogy\Decorator\SimpleDecorator;
+use SemanticGenealogy\Decorator\TreeDecoratorFactory;
+use XmlSelect;
+use Xml;
+use Html;
+use Status;
+
 /**
  * Special page that show a family tree
  *
@@ -111,7 +124,7 @@ class SpecialFamilyTree extends SpecialPage {
 			$familytree->setNumberOfGenerations( $this->gen );
 
 			$familytree->render();
-		} catch ( SemanticGenealogyException $e ) {
+		} catch ( SemanticGenealogy\Exception $e ) {
 			$wgOut->addWikiText( '<span class="error">' .  $e->getMessage() . '</span>' );
 			return Status::newFatal( $e->getMessage() );
 		} catch ( Exception $e ) {

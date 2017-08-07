@@ -1,8 +1,6 @@
 <?php
 
-
-
-
+namespace SemanticGenealogy\Decorator;
 
 class SimpleDecorator extends TreeDecorator {
 

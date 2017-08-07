@@ -1,9 +1,14 @@
 <?php
 
+namespace SemanticGenealogy;
+
+use MWException;
+use SMWDIProperty;
+
 /**
  * Static class for hooks handled by the Semantic Genealogy extension.
  *
- * @file    SemanticGenealogy.body.php
+ * @file    SemanticGenealogy.php
  * @ingroup SemanticGenealogy
  *
  * @licence GNU GPL v2+

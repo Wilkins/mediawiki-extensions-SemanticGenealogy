@@ -1,5 +1,10 @@
 <?php
 
+namespace SemanticGenealogy\Tree;
+
+use SemanticGenealogy\Exception;
+use SemanticGenealogy\Tools;
+
 /**
  * FamilyTreeFactory object
  *
@@ -28,7 +33,7 @@ class FamilyTreeFactory {
 				return new $tree( $decorator );
 			}
 		}
-		throw new SemanticGenealogyException(
+		throw new Exception(
 			wfMessage( 'semanticgenealogy-specialfamilytree-error-unknowntype', $name )->text() );
 	}
 
@@ -38,6 +43,6 @@ class FamilyTreeFactory {
 	 * @return array the list of FamilyTree classes availables
 	 */
 	public static function listTrees() {
-		return Tools::getSubclassesOf( __DIR__, 'FamilyTree' );
+		return Tools::getSubclassesOf( __DIR__, 'SemanticGenealogy\Tree\FamilyTree' );
 	}
 }

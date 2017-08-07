@@ -1,5 +1,12 @@
 <?php
 
+namespace SemanticGenealogy\Gedcom;
+
+use SemanticGenealogy\PersonPageValues;
+use SMWDIWikiPage;
+use SMWDIBlob;
+use SMWDITime;
+
 /**
  * Gedcom5FilePrinter object
  *

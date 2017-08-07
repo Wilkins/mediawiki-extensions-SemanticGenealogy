@@ -1,5 +1,7 @@
 <?php
 
+namespace SemanticGenealogy\Gedcom;
+
 /**
  * Special page that output genealogical content in some file formats
  *

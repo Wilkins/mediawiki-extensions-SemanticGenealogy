@@ -1,6 +1,9 @@
 <?php
 
+namespace SemanticGenealogy;
 
+use DirectoryIterator;
+use ReflectionClass;
 
 class Tools {
 
@@ -13,6 +16,7 @@ class Tools {
 	 * @return array an array of $classes subclass of the superClass
 	 */
 	public static function getSubclassesOf( $dir, $superClass ) {
+
 		$classes = [];
 		foreach ( new DirectoryIterator( $dir ) as $file ) {
 			if ( $file->isDot() ) {
@@ -24,8 +28,9 @@ class Tools {
 			if ( !preg_match( "#.php$#", $file->getFilename() ) ) {
 				continue;
 			}
-			require_once $file->getPathname();
-			$className = $file->getBasename( '.php' );
+			$className = preg_replace( "#\.php$#", "", $file->getPathname() );
+			$className = preg_replace( "#.*SemanticGenealogy/src#", "SemanticGenealogy", $className );
+			$className = preg_replace( "#/#", "\\\\", $className );
 			try {
 				$classRef = new ReflectionClass( $className );
 			} catch ( ReflectionException $e ) {

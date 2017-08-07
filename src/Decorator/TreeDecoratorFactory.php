@@ -1,5 +1,9 @@
 <?php
 
+namespace SemanticGenealogy\Decorator;
+
+use SemanticGenealogy\Exception;
+use SemanticGenealogy\Tools;
 
 class TreeDecoratorFactory {
 
@@ -17,7 +21,7 @@ class TreeDecoratorFactory {
 				return new $decorator();
 			}
 		}
-		throw new SemanticGenealogyException(
+		throw new Exception(
 			wfMessage( 'semanticgenealogy-specialfamilytree-error-unknowndecorator', $name )->text() );
 	}
 
@@ -27,7 +31,7 @@ class TreeDecoratorFactory {
 	 * @return array the list of FamilyTree classes availables
 	 */
 	public static function listDecorators() {
-		return Tools::getSubclassesOf( __DIR__, 'TreeDecorator' );
+		return Tools::getSubclassesOf( __DIR__, 'SemanticGenealogy\Decorator\TreeDecorator' );
 	}
 
 }

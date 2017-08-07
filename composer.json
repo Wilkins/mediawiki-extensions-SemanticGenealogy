@@ -8,13 +8,17 @@
 		"Genealogy",
 		"GEDCOM"
 	],
+	"config": {
+		"optimize-autoloader": true,
+		"prepend-autoloader": false
+	},
 	"homepage": "https://www.mediawiki.org/wiki/Extension:Semantic_Genealogy",
 	"license": "GPL-2.0+",
 	"authors": [
 		{
 			"name": "Thomas Pellissier Tanon",
 			"email": "thomaspt@hotmail.fr",
-			"role": "Developer"
+			"role": "Author, Maintainer"
 		},
 		{
 			"name": "Thibault Taillandier",
@@ -35,10 +39,8 @@
 		]
 	},
 	"autoload": {
-		"files": [
-		],
-		"classmap": [
-			"src/"
-		]
+		"psr-4": {
+			"SemanticGenealogy\\" : "src/"
+		}
 	}
 }

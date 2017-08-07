@@ -1,5 +1,6 @@
 <?php
 
+namespace SemanticGenealogy\Decorator;
 
 abstract class TreeDecorator {
 
