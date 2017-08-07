@@ -1,0 +1,4 @@
+<noinclude>
+[[Catégorie:Modèle de généalogie]]
+</noinclude><includeonly>|-
+| colspan="2" style="text-align: center" | [[Image:{{{photo}}}|200px|{{PAGENAME}}]]</includeonly>

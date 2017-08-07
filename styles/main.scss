@@ -1,0 +1,29 @@
+
+@import 'decorators';
+
+#semanticgenealogy-import-form {
+
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	td,
+	th {
+	  border: 1px solid #ccc;
+	  padding: 3px;
+	  line-height: 1;
+	}
+
+	tr {
+		&.status-new td:nth-of-type(3) {
+			background-color: #aaaaff;
+		}
+		&.status-unknown td:nth-of-type(3) {
+			background-color: #ffaaaa;
+		}
+		&.status-uptodate td:nth-of-type(3) {
+			background-color: #aaffaa;
+		}
+		&.status-update td:nth-of-type(3) {
+			background-color: #ffffaa;
+		}
+	}
+}

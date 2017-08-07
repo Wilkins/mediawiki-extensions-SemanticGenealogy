@@ -1,0 +1,117 @@
+<noinclude>
+Voici un exemple d'utilisation de Modèle de Fiche Personnelle :
+
+== Usage ==
+<pre>
+{{Modèle de généalogie:Fiche Personne
+ | photo=Andrée Drouin jeune.jpg
+ | nom=Taillandier
+ | jeunefille=Drouin
+ | prenoms=Andrée
+ | datenaissance=12 septembre 1920
+ | lieunaissance=Boissy-le-Cutté
+ | datebapteme=12 septembre 1921
+ | lieubapteme=Boissy-le-Cutté
+ | datecommunion=12 septembre 1932
+ | lieucommunion=Boissy-le-Cutté
+ | datedeces=1 avril 2006
+ | lieudeces=Fontenay-les-Briis
+ | sepulture=Bouray-sur-Juine
+ | surnom=mémé
+ | pere=Charles Drouin
+ | mere=Régine Arnoult
+ | conjoint=Edouard Taillandier
+}}
+</pre>
+
+== Rendu ==
+{{Modèle de généalogie:Fiche Personne
+ | photo=Andrée Drouin jeune.jpg
+ | nom=Taillandier
+ | jeunefille=Drouin
+ | prenoms=Andrée
+ | datenaissance=12 septembre 1920
+ | lieunaissance=Boissy-le-Cutté
+ | datebapteme=12 septembre 1921
+ | lieubapteme=Boissy-le-Cutté
+ | datecommunion=12 septembre 1932
+ | lieucommunion=Boissy-le-Cutté
+ | datedeces=1 avril 2006
+ | lieudeces=Hôpital de Bligny
+ | sepulture=Bouray-sur-Juine
+ | surnom=mémé
+ | pere=Charles Drouin
+ | mere=Régine Arnoult
+ | conjoint=Edouard Taillandier
+}}
+Vous pouvez copier-coller le contenu du cadre ci-dessus dans la page d'une personne, puis remplacer les valeurs, afin d'afficher un cadre comme celui-ci contre, sur une page.
+
+Si la date de décès n'est pas renseignée, les entrées "datedeces", "lieudeces", "sepulture" ne seront pas affichées.
+
+Pour plus d'aide, consultez [[Aide:Aide|la page d'Aide]].
+[[Catégorie:Modèle de généalogie]]
+</noinclude>
+<includeonly>
+__NOTOC__
+<div>
+{| align="right" border="0" rules="all" width="300" cellpadding="4" cellspacing="0"  style="clear: right; margin: 0 0 1em 1em; border: 1px solid #999; border-right-width: 2px; border-bottom-width: 2px; background-color: #f3fff3"
+! colspan="2" style="background-color: #ddffdd; color:black;" |{{#if:{{{sosa|}}}|<span class="sosa">[[sosa::{{{sosa|}}}]]</span>}}<font size="4"> '''{{PAGENAME}}''' </font>{{#if: {{{surnom|}}} | <br/>«&nbsp;{{{surnom}}}&nbsp;» }}
+{{qif 
+  | test={{{photo|}}}
+  | then={{Modèle de généalogie:Fiche Personne photo |photo={{{photo}}} }}
+  | else={{#ifexist:Image:{{PAGENAME}}.jpg | {{Modèle de généalogie:Fiche Personne photo |photo={{PAGENAME}}.jpg }} | [http://wiki.familletaillandier.com/wiki?title=Sp%C3%A9cial:T%C3%A9l%C3%A9verser&wpDestFile={{PAGENAMEE}}.jpg&wpUploadDescription=Photo%20de%20%5B%5Bmontre::{{PAGENAMEE}}%5D%5D%0A%0A%0A%5B%5BCat%C3%A9gorie%3AFamille%20{{#urlencode:{{{nom}}}}}%5D%5D Ajouter une photo] }}
+}}
+|-
+| Nom complet || {{#if:{{{nom|}}}| [[:Catégorie:Famille {{{nom}}}|{{{nom}}}]] [[nom::{{{nom|}}}|]] }} [[sexe::{{{sexe|}}}|]]
+|- {{#if: {{{jeunefille|}}} | | style="display: none;" }}
+| Née || [[jeunefille::{{{jeunefille|}}}]]
+|-
+| Prénom(s) || [[prenom::{{#if:{{{prenoms|}}}|{{{prenoms}}}|{{{prenom}}}}}]]
+|-
+| Date de naissance || [[datenaissance::{{{datenaissance|}}}]] [[anneenaissance::{{#rmatch:{{{datenaissance|}}}|.*(\d\d\d\d).*|$1|inconnue}}|]]
+|-
+| Lieu de naissance || {{#if:{{{lieunaissance|}}}|{{Modèle de généalogie:Endroit|{{#rreplace:{{{lieunaissance}}}| \(.*\)|}} }} }} [[lieunaissance::{{{lieunaissance|}}}| ]]
+|- {{#if: {{{datebapteme|}}} | | style="display: none;" }}
+| Date de baptême || {{#if:{{{datebapteme|}}} | {{{datebapteme}}} }}
+|- {{#if: {{{lieubapteme|}}} | | style="display: none;" }}
+| Lieu de baptême || {{#if:{{{lieubapteme|}}} | {{{lieubapteme}}} }}
+|- {{#if: {{{datecommunion|}}} | | style="display: none;" }}
+| Date de Communion || {{{datecommunion|}}}
+|- {{#if: {{{lieucommunion|}}} | | style="display: none;" }}
+| Lieu de Communion || {{{lieucommunion|}}}
+|- {{#if: {{{datedeces|}}} | | style="display: none;" }}
+| Date de décès || [[datedeces::{{{datedeces|}}}]]
+|- {{#if: {{{lieudeces|}}} | | style="display: none;" }}
+| Lieu de décès || {{#if:{{{lieudeces|}}}|{{Modèle de généalogie:Endroit|{{#rreplace:{{{lieudeces}}}| \(.*\)|}} }} }} [[lieudeces::{{{lieudeces|}}}| ]]
+|- {{#if: {{{sepulture|}}} | | style="display: none;" }}
+| Sépulture || [[sepulture::{{{sepulture|}}}]]
+|-
+| Père || {{#if:{{{pere|}}}| [[pere::{{{pere}}}]] }}
+|-
+| Mère || {{#if:{{{mere|}}}| [[mere::{{{mere}}}]] }}
+|-
+| Conjoint(e) || {{#if:{{{conjoint|}}} | [[conjoint::{{{conjoint}}}]] }}
+|-
+| Acte de naissance || {{#ifexist:{{PAGENAME}}/Acte|<span style="color:red">Récupérer [[{{PAGENAME}}/Acte]] /!\</span> }}<!--
+-->{{#ifexist:Image:Acte de naissance de {{PAGENAME}}.jpg|<!--
+-->[[actenaissance::1| ]]<!--
+-->[[Image:Acte de naissance de {{PAGENAME}}.jpg|20px]]<!--
+-->|&nbsp;[[Image:Ico_add.jpg|20px|link={{SERVER}}/index.php?title=Spécial:Téléverser&wpDestFile=Acte%20de%20naissance%20de%20{{PAGENAMEE}}.jpg&wpUploadDescription=%7B%7BActeNaissance%7C{{PAGENAMEE}}%7D%7D%0A%3D%3D%20Contenu%20%3D%3D%0A%3Cpre%3E%0A%3C%2Fpre%3E%0A%0A%3D%3D%20Source%20%3D%3D%0A%0A]]<!--
+-->[[actenaissance::0| ]]<!--
+-->}}
+|-
+| Acte de décès || {{#if:{{{datedeces|}}}|<!--
+-->{{#ifexist:Image:Acte de décès de {{PAGENAME}}.jpg|<!--
+-->[[actedeces::1| ]]<!--
+-->[[Image:Acte de décès de {{PAGENAME}}.jpg|20px]]<!--
+-->|&nbsp;[[Image:Ico_add.jpg|20px|link={{SERVER}}/index.php?title=Spécial:Téléverser&wpDestFile=Acte%20de%20décès%20de%20{{PAGENAMEE}}.jpg&wpUploadDescription=%7B%7BActeD%C3%A9c%C3%A8s%7C{{PAGENAMEE}}%7D%7D%0A%0A%3D%3D%20Contenu%20%3D%3D%0A%3Cpre%3E%0A%3C%2Fpre%3E%0A%0A%3D%3D%20Source%20%3D%3D%0A%0A%0A]]<!--
+-->[[actedeces::0| ]]<!--
+-->}}
+}}
+|}
+</div>
+[[Catégorie:Personne]]
+{{#if:{{{nom|}}}| [[Catégorie:Famille {{{nom}}}]] }}
+{{#if:{{{jeunefille|}}}| [[Catégorie:Famille {{{jeunefille}}}]] }}
+{{#if:{{{pere|}}}|{{#if:{{{mere|}}}|[[mariageparent::Mariage de {{{pere|}}} et {{{mere|}}}|]]}}}}
+</includeonly>

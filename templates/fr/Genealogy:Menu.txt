@@ -1,0 +1,17 @@
+[
+	{
+		"text" : "semanticgenealogy-sidebar-item-newperson",
+		"href" : "Formulaire:Personne",
+		"title" : "semanticgenealogy-sidebar-item-newperson"
+	},
+	{
+		"text" : "semanticgenealogy-sidebar-item-newwedding",
+		"href" : "Formulaire:Mariage",
+		"title" : "semanticgenealogy-sidebar-item-newwedding"
+	},
+	{
+		"text" : "semanticgenealogy-sidebar-item-help",
+		"href" : "Généalogie:Aide",
+		"title" : "semanticgenealogy-sidebar-item-help"
+	}
+]

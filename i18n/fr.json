@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Grondin",
+			"Thibault Taillandier",
 			"Thomas Pellissier Tanon",
 			"Tititou36"
 		]
@@ -9,6 +10,18 @@
 	"semanticgenealogy-desc": "Offre la possibilité de voir des arbres généalogiques et d'importer/exporter des fichiers GEDCOM",
 	"semanticgenealogy-gedcomexport-desc": "Export GEDCOM",
 	"semanticgenealogy-gedcomexport-link": "GEDCOM",
+	"semanticgenealogy-sidebar-title": "Généalogie",
+	"semanticgenealogy-sidebar-item-newperson": "Nouvelle Personne",
+	"semanticgenealogy-sidebar-item-newwedding": "Nouveau Mariage",
+	"semanticgenealogy-sidebar-item-help": "Aide généalogique",
+	"semanticgenealogy-specialimportpages-button-submit": "Importer",
+	"semanticgenealogy-specialimportpages-status-new": "Nouvelle page",
+	"semanticgenealogy-specialimportpages-status-ok": "Sera mise à jour",
+	"semanticgenealogy-specialimportpages-status-uptodate": "Page à jour",
+	"semanticgenealogy-specialimportpages-status-unknown": "Version inconnue",
+	"semanticgenealogy-specialimportpages-column-pagename": "Page",
+	"semanticgenealogy-specialimportpages-column-version": "Version",
+	"semanticgenealogy-specialimportpages-column-status": "Statut",
 	"semanticgenealogy-specialfamilytree-title": "Créer un arbre généalogique",
 	"semanticgenealogy-specialfamilytree-button-submit": "Créer",
 	"semanticgenealogy-specialfamilytree-type-ancestors": "Ascendance",

@@ -14,9 +14,11 @@ $specialPageAliases = array();
 /* English (English) */
 $specialPageAliases['en'] = array(
 	'FamilyTree' => array( 'FamilyTree' ),
+	'ImportGenealogyPages' => array( 'ImportGenealogyPages' ),
 );
 
 /* French (Français) */
 $specialPageAliases['fr'] = array(
 	'FamilyTree' => array( 'ArbreGénéalogique' ),
+	'ImportGenealogyPages' => array( 'ImportePagesGénélogiques' ),
 );

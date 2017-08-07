@@ -78,6 +78,7 @@ $dirDecorator = $dir.'src/Decorator/';
 $wgMessagesDirs['SemanticGenealogy'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['SemanticGenealogy'] =  $dir . 'SemanticGenealogy.i18n.php';
 $wgExtensionMessagesFiles['SemanticGenealogyAlias'] = $dir . 'SemanticGenealogy.alias.php';
+$wgExtensionMessagesFiles['SemanticGenealogyNamespaces'] = __DIR__ . '/SemanticGenealogy.namespaces.php';
 
 $wgAutoloadClasses['SemanticGenealogy'] = $dir . 'SemanticGenealogy.body.php';
 $wgAutoloadClasses['PersonPageValues'] = $dir . 'PersonPageValues.php';
@@ -100,8 +101,17 @@ $wgAutoloadClasses['Gedcom5ResultPrinter'] = $dir . 'Gedcom5ResultPrinter.php';
 $smwgResultFormats['gedcom'] = 'Gedcom5ResultPrinter';
 $smwgResultFormats['gedcom5'] = 'Gedcom5ResultPrinter';
 
+$wgAutoloadClasses['Importer'] = $dir . '/src/Importer.php';
+$wgAutoloadClasses['Sidebar'] = $dir . '/src/Sidebar.php';
 $wgAutoloadClasses['SpecialFamilyTree'] = $dir . 'SpecialFamilyTree.php';
+$wgAutoloadClasses['SpecialImportPages'] = $dir . '/src/SpecialImportPages.php';
 $wgSpecialPages['FamilyTree'] = 'SpecialFamilyTree';
+$wgSpecialPages['ImportGenealogyPages'] = 'SpecialImportPages';
+
+$wgHooks['SkinBuildSidebar'][] = 'Sidebar::addGenealogySideBar';
+
+$wgSGeneaSidebarAdd = true;
+$wgSGeneaSidebarPosition = 2;
 
 $moduleTemplate = array(
 	'localBasePath' => $dir,

@@ -1,0 +1,133 @@
+<noinclude>
+
+== Exemple ==
+<pre>
+{{Modèle de généalogie:Arbre|Edouard Taillandier (1885)}}
+</pre>
+
+
+== Rendu ==
+{{Modèle de généalogie:Arbre|Edouard Taillandier (1885)}}
+
+[[Catégorie:Modèle de généalogie]]
+
+</noinclude>
+<includeonly>
+{{#vardefine:depth|6}}
+{{#if:{{{1}}}|
+<table style="width: 100%">
+ <tr>
+  <td style="text-align:center; vertical-align:bottom; width: 50%">
+{{#if:{{#show:{{{1}}} | ?pere | link=none}} |
+<!--
+-->{{#ifexpr:{{{2|{{#var:depth}}}}} <= 0|...|
+    {{Modèle de généalogie:Arbre|{{#show:{{{1}}} | ?pere | link=none}}|{{#expr:{{{2|{{#var:depth}}}}}-1}} }}
+   }}
+  <table style="width: 100%" cellspacing="0">
+    <tr>
+     <td style="width: 48%; border-right: 1px solid black; height: 10px"></td>
+     <td style="width: 48%; border-bottom: 1px solid black"></td>
+     <td style="width: 30px"></td>
+    </tr>
+    <tr>
+     <td style="width: 50%; height: 10px"></td>
+     <td style="width: 50%"></td>
+     <td style="width: 30px; border-left: 1px solid black"></td>
+    </tr>
+   </table>
+  | }}
+  </td>
+  <td style="text-align:center; vertical-align:bottom; width: 50%">
+{{#if:{{#show:{{{1}}} | ?mere | link=none}} |
+<!--
+-->{{#ifexpr:{{{2|{{#var:depth}}}}} <= 0|...|
+     {{Modèle de généalogie:Arbre|{{#show:{{{1}}} | ?mere | link=none}}|{{#expr:{{{2|{{#var:depth}}}}}-1}} }}
+    }}
+  <table style="width: 100%" cellspacing="0">
+    <tr>
+     <td style="width: 30px"></td>
+     <td style="width: 48%; border-bottom: 1px solid black"></td>
+     <td style="width: 48%; border-left: 1px solid black; height: 10px"></td>
+    </tr>
+    <tr>
+     <td style="width: 30px; border-right: 1px solid black"></td>
+     <td style="width: 50%"></td>
+     <td style="width: 50%; height: 10px"></td>
+    </tr>
+   </table>
+  | }}
+  </td>
+ </tr>
+{{#if:{{#show:{{{1}}} | ?pere | link=none}} |
+ {{#if:{{#show:{{{1}}} | ?mere | link=none}} |
+ <tr>
+  <td colspan="2" style="text-align:center">
+<div style="width: 60px; height:25px; vertical-align: middle; border: 1px solid #666666; margin:auto; text-align: center">
+{{#ifexist:{{#show:{{{1}}} | ?mariageparent | link=none}}|
+ {{#ifeq:{{#show:{{#show:{{{1}}} | ?mariageparent | link=none}} | ?actemariage | link=none}}|vrai|
+ '''[[{{#show:{{{1}}} | ?mariageparent | link=none}}|Mariage]]'''
+ |
+ [[{{#show:{{{1}}} | ?mariageparent | link=none}}|Mariage]]
+ }}
+|
+{{#formlink:form=Mariage|link text=Mariage|target={{#show:{{{1}}} | ?mariageparent | link=none}} }}
+}}
+</div>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="2" style="text-align:center">
+  <table style="width: 100%" cellspacing="0">
+    <tr>
+     <td style="width: 49%"></td>
+     <td style="width: 50%; border-left: 1px solid black; height: 10px"></td>
+    </tr>
+  </table>
+  </td>
+ </tr>
+ }}
+}}
+<!-- pere+mere est non vide, alors ça veut dire au moins 1 parent. -->
+{{#if:{{#show:{{{1}}} | ?pere | link=none}}{{#show:{{{1}}} | ?mere | link=none}}|
+<!-- Si pere+mere égal mere alors pere=vide donc 1 seul parent, donc pas de mariage -->
+{{#ifeq:{{#show:{{{1}}} | ?pere | link=none}}{{#show:{{{1}}} | ?mere | link=none}}|{{#show:{{{1}}} | ?mere | link=none}}|
+ <tr>
+  <td colspan="2" style="text-align:center">
+  <table style="width: 100%" cellspacing="0">
+    <tr>
+     <td style="width: 49%"></td>
+     <td style="width: 50%; border-left: 1px solid black; height: 40px"></td>
+    </tr>
+  </table>
+  </td>
+ </tr>
+}}
+
+<!-- Si pere+mere égal pere alors mere=vide donc 1 seul parent, donc pas de mariage -->
+{{#ifeq:{{#show:{{{1}}} | ?pere | link=none}}{{#show:{{{1}}} | ?mere | link=none}}|{{#show:{{{1}}} | ?pere | link=none}}|
+ <tr>
+  <td colspan="2" style="text-align:center">
+  <table style="width: 100%" cellspacing="0">
+    <tr>
+     <td style="width: 49%"></td>
+     <td style="width: 50%; border-left: 1px solid black; height: 40px"></td>
+    </tr>
+  </table>
+  </td>
+ </tr>
+}}
+}}
+ <tr>
+  <td colspan="2" style="text-align:center">
+<div style="width: 80px; height:70px; vertical-align: middle; border: 1px solid black; margin:auto; text-align: center">
+{{#ifeq:{{#show:{{{1}}} | ?actenaissance | link=none}}|vrai|
+'''[[{{{1}}}]]'''
+|
+[[{{{1}}}]]
+}}{{#if:{{#show:{{{1}}} | ?sosa | link=none}}|<br/><span class="sosa">{{#show:{{{1}}} | ?sosa | link=none}}</span>}}
+
+</div>
+  </td>
+ </tr>
+</table>
+}}</includeonly>

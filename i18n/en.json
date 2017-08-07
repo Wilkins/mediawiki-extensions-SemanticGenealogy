@@ -1,12 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
+			"Thibault Taillandier",
 			"Thomas Pellissier Tanon"
 		]
 	},
 	"semanticgenealogy-desc": "Provides the ability to view genealogy trees and import/export GEDCOM files",
 	"semanticgenealogy-gedcomexport-desc": "GEDCOM export",
 	"semanticgenealogy-gedcomexport-link": "GEDCOM",
+	"semanticgenealogy-sidebar-title": "Genealogy",
+	"semanticgenealogy-sidebar-item-newperson": "New Person",
+	"semanticgenealogy-sidebar-item-newwedding": "New Wedding",
+	"semanticgenealogy-sidebar-item-help": "Genealogy help",
+	"semanticgenealogy-specialimportpages-title": "Import genealogical pages",
+	"semanticgenealogy-specialimportpages-button-submit": "Import",
+	"semanticgenealogy-specialimportpages-status-new": "New page",
+	"semanticgenealogy-specialimportpages-status-ok": "Will update",
+	"semanticgenealogy-specialimportpages-status-uptodate": "Page up to date",
+	"semanticgenealogy-specialimportpages-status-unknown": "Unknown version",
+	"semanticgenealogy-specialimportpages-column-pagename": "Page",
+	"semanticgenealogy-specialimportpages-column-version": "Version",
+	"semanticgenealogy-specialimportpages-column-status": "Status",
 	"semanticgenealogy-specialfamilytree-title": "Create a Family Tree",
 	"semanticgenealogy-specialfamilytree-button-submit": "Create",
 	"semanticgenealogy-specialfamilytree-type-ancestors": "Ancestors",

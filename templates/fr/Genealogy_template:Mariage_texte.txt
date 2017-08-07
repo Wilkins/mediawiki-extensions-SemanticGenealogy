@@ -1,0 +1,9 @@
+<includeonly>
+
+
+{{Modèle de généalogie:MariageContenu|{{PAGENAME}}}}
+</includeonly><noinclude>
+
+
+[[Catégorie:Modèle de généalogie]]
+</noinclude>

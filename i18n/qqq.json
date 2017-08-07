@@ -2,14 +2,27 @@
 	"@metadata": {
 		"authors": [
 			"Shirayuki",
+			"Thibault Taillandier",
 			"Thomas Pellissier Tanon",
-			"Umherirrender",
-			"Thibault Taillandier"
+			"Umherirrender"
 		]
 	},
 	"semanticgenealogy-desc": "{{desc|name=Semantic Genealogy|url=https://www.mediawiki.org/wiki/Extension:Semantic_Genealogy}}",
 	"semanticgenealogy-gedcomexport-desc": "Description of the GEDCOM result printer.",
 	"semanticgenealogy-gedcomexport-link": "{{Optional}}\nDefault link label to a GEDCOM file.",
+	"semanticgenealogy-sidebar-title": "Label for the genealogy sidebar menu",
+	"semanticgenealogy-sidebar-item-newperson": "Label for the new person link",
+	"semanticgenealogy-sidebar-item-newwedding": "Label for the new wedding link",
+	"semanticgenealogy-sidebar-item-help": "Label for the help link",
+	"semanticgenealogy-specialimportpages-title": "Title of the [[Special:ImportGenealogyPages]] page",
+	"semanticgenealogy-specialimportpages-status-new": "Label for new page",
+	"semanticgenealogy-specialimportpages-status-ok": "Label for page that will update",
+	"semanticgenealogy-specialimportpages-status-uptodate": "Label for up to date page",
+	"semanticgenealogy-specialimportpages-status-unknown": "Label for unknown version page",
+	"semanticgenealogy-specialimportpages-button-submit": "Label of the import button",
+	"semanticgenealogy-specialimportpages-column-pagename": "Label for Page column",
+	"semanticgenealogy-specialimportpages-column-version": "Label for Version column",
+	"semanticgenealogy-specialimportpages-column-status": "Label for Status column",
 	"semanticgenealogy-specialfamilytree-title": "Title of the [[Special:FamilyTree]] page.",
 	"semanticgenealogy-specialfamilytree-button-submit": "Submit button of the [[Special:FamilyTree]] form.\n{{Identical|Create}}",
 	"semanticgenealogy-specialfamilytree-type-ancestors": "Label of an ancestors tree.",
