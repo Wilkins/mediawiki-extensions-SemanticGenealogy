@@ -18,6 +18,10 @@ class DescendantListFamilyTree extends FamilyTree {
 	/**
 	 * List the descendants for all needed generations
 	 *
+	 * @param PersonPageValues $person     the person object
+	 * @param string           $pellissier I don't know
+	 * @param integer          $end        counter to know wether we should stop
+	 *
 	 * @return void
 	 */
 	private function outputDescendantLine( $person, $pellissier, $end ) {

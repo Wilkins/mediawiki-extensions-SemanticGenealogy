@@ -2,7 +2,7 @@
 /**
  * Initialization file for the Semantic Genealogy extension.
  *
- * On MediaWiki.org: http://www.mediawiki.org/wiki/Extension:Semantic_Genealogy
+ * On MediaWiki.org: https://www.mediawiki.org/wiki/Extension:Semantic_Genealogy
  *
  * @file    SemanticGenealogy.php
  * @ingroup SemanticGenealogy
@@ -24,16 +24,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-if ( version_compare( $wgVersion, '1.19', '<' ) ) {
-	die( '<b>Error:</b> This version of Semantic Genealogy requires MediaWiki 1.19 or above.' );
+if ( version_compare( $wgVersion, '1.23', '<' ) ) {
+	die( '<b>Error:</b> This version of Semantic Genealogy requires MediaWiki 1.23 or above.' );
 }
 
 // Show a warning if Semantic MediaWiki is not loaded.
 if ( ! defined( 'SMW_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have '
-		.'<a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> '
+		.'<a href="https://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> '
 		.'installed in order to use '
-		.'<a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />'
+		.'<a href="https://www.mediawiki.org/wiki/Extension:Semantic_Genealogy">Semantic Genealogy</a>.<br />'
 	);
 }
 
@@ -52,10 +52,13 @@ $wgExtensionCredits['semantic'][] = [
 	'name' => 'Semantic Genealogy',
 	'version' => SGENEA_VERSION,
 	'author' => [
-		'[http://www.mediawiki.org/wiki/User:Tpt Tpt]'
+		'[https://www.mediawiki.org/wiki/User:Tpt Tpt]',
+		'[https://www.mediawiki.org/wiki/User:Thibault_Taillandier Thibault Taillandier]',
+		'...'
 	],
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Semantic_Genealogy',
-	'descriptionmsg' => 'semanticgenealogy-desc'
+	'descriptionmsg' => 'semanticgenealogy-desc',
+	'license-name' => 'GPL-2.0+'
 ];
 
 $wgGenealogicalProperties = [
@@ -68,20 +71,19 @@ $wgGenealogicalProperties = [
 	'deathdate' => 'Date de décès',
 	'deathplace' => 'Lieu de décès',
 	'father' => 'Père',
-	'mother' => 'Mère'
+	'mother' => 'Mère',
+	'partner' => 'Conjoint'
 ];
 
-$dir = __DIR__ . '/';
-$dirTree = $dir.'src/Tree/';
-$dirDecorator = $dir.'src/Decorator/';
+$dirTree = __DIR__ . '/src/Tree/';
+$dirDecorator = __DIR__ . '/src/Decorator/';
 
 $wgMessagesDirs['SemanticGenealogy'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['SemanticGenealogy'] =  $dir . 'SemanticGenealogy.i18n.php';
-$wgExtensionMessagesFiles['SemanticGenealogyAlias'] = $dir . 'SemanticGenealogy.alias.php';
+$wgExtensionMessagesFiles['SemanticGenealogyAlias'] = __DIR__ . '/SemanticGenealogy.alias.php';
 $wgExtensionMessagesFiles['SemanticGenealogyNamespaces'] = __DIR__ . '/SemanticGenealogy.namespaces.php';
 
-$wgAutoloadClasses['SemanticGenealogy'] = $dir . 'SemanticGenealogy.body.php';
-$wgAutoloadClasses['PersonPageValues'] = $dir . 'PersonPageValues.php';
+$wgAutoloadClasses['SemanticGenealogy'] = __DIR__ . '/SemanticGenealogy.body.php';
+$wgAutoloadClasses['PersonPageValues'] = __DIR__ . '/PersonPageValues.php';
 $wgAutoloadClasses['FamilyTree'] = $dirTree . 'FamilyTree.php';
 $wgAutoloadClasses['AncestorsFamilyTree'] = $dirTree . 'AncestorsFamilyTree.php';
 $wgAutoloadClasses['DescendantFamilyTree'] = $dirTree . 'DescendantFamilyTree.php';
@@ -91,20 +93,20 @@ $wgAutoloadClasses['TreeDecoratorFactory'] = $dirDecorator . 'TreeDecoratorFacto
 $wgAutoloadClasses['TreeDecorator'] = $dirDecorator . 'TreeDecorator.php';
 $wgAutoloadClasses['SimpleDecorator'] = $dirDecorator . 'SimpleDecorator.php';
 $wgAutoloadClasses['BoxDecorator'] = $dirDecorator . 'BoxDecorator.php';
-$wgAutoloadClasses['Tools'] = $dir . 'Tools.php';
+$wgAutoloadClasses['Tools'] = __DIR__ . '/Tools.php';
 
-$wgAutoloadClasses['SemanticGenealogyException'] = $dir . 'SemanticGenealogyException.php';
+$wgAutoloadClasses['SemanticGenealogyException'] = __DIR__ . '/SemanticGenealogyException.php';
 
-$wgAutoloadClasses['GenealogicalFilePrinter'] = $dir . 'GenealogicalFilePrinter.php';
-$wgAutoloadClasses['Gedcom5FilePrinter'] = $dir . 'Gedcom5FilePrinter.php';
-$wgAutoloadClasses['Gedcom5ResultPrinter'] = $dir . 'Gedcom5ResultPrinter.php';
+$wgAutoloadClasses['GenealogicalFilePrinter'] = __DIR__ . '/GenealogicalFilePrinter.php';
+$wgAutoloadClasses['Gedcom5FilePrinter'] = __DIR__ . '/Gedcom5FilePrinter.php';
+$wgAutoloadClasses['Gedcom5ResultPrinter'] = __DIR__ . '/Gedcom5ResultPrinter.php';
 $smwgResultFormats['gedcom'] = 'Gedcom5ResultPrinter';
 $smwgResultFormats['gedcom5'] = 'Gedcom5ResultPrinter';
 
-$wgAutoloadClasses['Importer'] = $dir . '/src/Importer.php';
-$wgAutoloadClasses['Sidebar'] = $dir . '/src/Sidebar.php';
-$wgAutoloadClasses['SpecialFamilyTree'] = $dir . 'SpecialFamilyTree.php';
-$wgAutoloadClasses['SpecialImportPages'] = $dir . '/src/SpecialImportPages.php';
+$wgAutoloadClasses['Importer'] = __DIR__ . '/src/Importer.php';
+$wgAutoloadClasses['Sidebar'] = __DIR__ . '/src/Sidebar.php';
+$wgAutoloadClasses['SpecialFamilyTree'] = __DIR__ . '/SpecialFamilyTree.php';
+$wgAutoloadClasses['SpecialImportPages'] = __DIR__ . '/src/SpecialImportPages.php';
 $wgSpecialPages['FamilyTree'] = 'SpecialFamilyTree';
 $wgSpecialPages['ImportGenealogyPages'] = 'SpecialImportPages';
 
@@ -114,7 +116,7 @@ $wgSGeneaSidebarAdd = true;
 $wgSGeneaSidebarPosition = 2;
 
 $moduleTemplate = [
-	'localBasePath' => $dir,
+	'localBasePath' => __DIR__,
 	'remoteBasePath' => ( $wgExtensionAssetsPath === false ? $wgScriptPath
 		. '/extensions' : $wgExtensionAssetsPath ) . '/SemanticGenealogy',
 	'group' => 'ext.smg'
@@ -123,7 +125,9 @@ $moduleTemplate = [
 $wgResourceModules['ext.smg.specialfamilytree'] = $moduleTemplate + [
 	'scripts' => 'modules/specialFamilyTree.js',
 	'styles' => 'modules/styles.css',
-	'dependencies' => [ 'jquery.ui.autocomplete' ],
+	'dependencies' => [
+		'jquery.ui.autocomplete'
+	],
 	'messages' => [
 	]
 ];

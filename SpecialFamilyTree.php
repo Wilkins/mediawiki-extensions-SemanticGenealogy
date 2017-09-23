@@ -124,8 +124,6 @@ class SpecialFamilyTree extends SpecialPage {
 	/**
 	 * Display the search form for a genealogy tree
 	 *
-	 * @param array $params the array of search parameters
-	 *
 	 * @return void
 	 */
 	protected function showForm() {

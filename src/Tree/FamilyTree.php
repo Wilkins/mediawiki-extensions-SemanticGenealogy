@@ -25,6 +25,11 @@ abstract class FamilyTree {
 	protected $decorator;
 	protected $displayName;
 
+	/**
+	 * @constructor
+	 *
+	 * @param string $decorator the decorator name
+	 */
 	public function __construct( $decorator=null ) {
 		$this->decorator = $decorator;
 	}

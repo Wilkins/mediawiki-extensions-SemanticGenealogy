@@ -16,7 +16,7 @@ abstract class GenealogicalFilePrinter {
 	/**
 	 * Add people to the GEDCOM file
 	 *
-	 * @param $people array|PersonPageValues
+	 * @param object $people array|PersonPageValues
 	 *
 	 * @return void
 	 */

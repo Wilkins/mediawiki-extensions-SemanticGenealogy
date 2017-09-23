@@ -9,6 +9,7 @@ class SimpleDecorator extends TreeDecorator {
 	const NAME = 'simple';
 	const LABEL = 'Simple';
 
+	/*
 	public function getTreeHeader() {
 		return '<table style="text-align:center;">';
 	}
@@ -40,5 +41,5 @@ class SimpleDecorator extends TreeDecorator {
 	public function getPersonFooter() {
 		return '</td>';
 	}
-
+    */
 }

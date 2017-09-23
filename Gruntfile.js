@@ -2,6 +2,8 @@
 /*jshint node:true */
 module.exports = function ( grunt ) {
 
+	require( 'load-grunt-tasks' )( grunt );
+
 	grunt.initConfig({
 		banana: {
 			all: 'i18n/'
@@ -33,7 +35,7 @@ module.exports = function ( grunt ) {
 					cacheLocation: 'styles/.sass-cache'
 				},
 				files: {
-					'modules/styles.css': 'styles/main.scss'
+					'modules/styles.css': 'styles/decorators.scss'
 				}
 			}
 		},
@@ -49,5 +51,4 @@ module.exports = function ( grunt ) {
 	grunt.registerTask( 'test', [ 'jsonlint', 'banana', 'jshint' ] );
 	grunt.registerTask( 'default', [ 'clean', 'sass', 'test' ] );
 
-	require('load-grunt-tasks')(grunt);
 };

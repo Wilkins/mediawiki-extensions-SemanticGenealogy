@@ -1,10 +1,5 @@
 node_modules/
 vendor/
-
-.svn
-*~
-*.kate-swp
-.*.swp
-vendor
-node_modules
+composer.lock
 styles/.sass-cache/
+/extensions

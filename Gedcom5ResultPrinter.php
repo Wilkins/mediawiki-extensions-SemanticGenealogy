@@ -12,10 +12,24 @@
 class Gedcom5ResultPrinter extends SMWResultPrinter {
 	public $ids = [];
 
+	/**
+	 * Get the mimetype of the result printer
+	 *
+	 * @param string|object $res the result printer
+	 *
+	 * @return string the mimetype
+	 */
 	public function getMimeType( $res ) {
 		return 'application/x-gedcom';
 	}
 
+	/**
+	 * Get the filename of the result printer
+	 *
+	 * @param string|object $res the result printer
+	 *
+	 * @return string the filename
+	 */
 	public function getFileName( $res ) {
 		if ( $this->getSearchLabel( SMW_OUTPUT_WIKI ) != '' ) {
 			return str_replace( ' ', '_', $this->getSearchLabel( SMW_OUTPUT_WIKI ) ) . '.ged';
@@ -24,15 +38,35 @@ class Gedcom5ResultPrinter extends SMWResultPrinter {
 		}
 	}
 
+	/**
+	 * Get the query mode
+	 *
+	 * @param string $context the context
+	 *
+	 * @return string the query mode
+	 */
 	public function getQueryMode( $context ) {
 		return ( $context == SMWQueryProcessor::SPECIAL_PAGE )
 			? SMWQuery::MODE_INSTANCES : SMWQuery::MODE_NONE;
 	}
 
+	/**
+	 * Get the Result printer name
+	 *
+	 * @return the name of the result printer
+	 */
 	public function getName() {
 		return wfMessage( 'semanticgenealogy-gedcomexport-desc' )->text();
 	}
 
+	/**
+	 * Get the result test of the result printer
+	 *
+	 * @param SMWQueryResult $res the result
+	 * @param integer $outputmode the output mode chosen
+	 *
+	 * @return string the result text
+	 */
 	protected function getResultText( SMWQueryResult $res, $outputmode ) {
 		$result = '';
 
@@ -46,7 +80,8 @@ class Gedcom5ResultPrinter extends SMWResultPrinter {
 			$printer = new Gedcom5FilePrinter();
 			$printer->addPeople( $people );
 			$result = $printer->getFile();
-		} else { // just make link
+		} else {
+			   // just make link
 			if ( $this->getSearchLabel( $outputmode ) ) {
 				$label = $this->getSearchLabel( $outputmode );
 			} else {
@@ -59,7 +94,8 @@ class Gedcom5ResultPrinter extends SMWResultPrinter {
 			}
 			if ( array_key_exists( 'limit', $this->m_params ) ) {
 				$link->setParameter( $this->m_params['limit'], 'limit' );
-			} else { // use a reasonable default limit
+			} else {
+				   // use a reasonable default limit
 				$link->setParameter( 20, 'limit' );
 			}
 			$result .= $link->getText( $outputmode, $this->mLinker );
@@ -69,6 +105,11 @@ class Gedcom5ResultPrinter extends SMWResultPrinter {
 		return $result;
 	}
 
+	/**
+	 * Get all the parameters
+	 *
+	 * @return array the base parameters and the export format parameters
+	 */
 	public function getParameters() {
 		return array_merge( parent::getParameters(), $this->exportFormatParameters() );
 	}

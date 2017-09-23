@@ -30,6 +30,8 @@ class PersonPageValues {
 
 	/**
 	 * Constructor for a single indi in the file.
+	 *
+	 * @param SMWDIWikiPage $page the page
 	 */
 	public function __construct( SMWDIWikiPage $page ) {
 		$values = [];
@@ -57,6 +59,15 @@ class PersonPageValues {
 		}
 	}
 
+	public function getPage() {
+		return $this->page;
+	}
+
+	/**
+	 * Get the page of the person
+	 *
+	 * @return SMWDIWikiPage the current page
+	 */
 	public function getPage() {
 		return $this->page;
 	}
@@ -112,6 +123,11 @@ class PersonPageValues {
 		return $this->partner;
 	}
 
+	/**
+	 * Sorter to compare 2 persons based on their date of birth
+	 *
+	 * @return integer a comparaison integer
+	 */
 	private static function comparePeopleByBirthDate( PersonPageValues $personA,
 		PersonPageValues $personB ) {
 		if ( $personA->birthdate instanceof SMWDITime ) {
@@ -151,6 +167,14 @@ class PersonPageValues {
 		return $this->title->getFullText();
 	}
 
+	/**
+	 * Generate the Person description wiki text based on the special pages options
+	 *
+	 * @param boolean $withBr adding <br> tags or not
+	 * @param string $displayName the display type tag
+	 *
+	 * @return string the text to display
+	 */
 	public function getDescriptionWikiText( $withBr = false, $displayName = 'fullname' ) {
 		$yearRegexp = "/.*\b(\d\d\d\d)\b.*/";
 		$text = '<div class="person-block">';
@@ -180,12 +204,26 @@ class PersonPageValues {
 		return $text;
 	}
 
+	/**
+	 * Get a string base on the SMWDITime object
+	 *
+	 * @param SMWDITime $dataItem the time item
+	 *
+	 * @return string the wiki text for a given date
+	 */
 	protected static function getWikiTextDateFromSMWDITime( SMWDITime $dataItem ) {
 		$val = new SMWTimeValue( SMWDataItem::TYPE_TIME );
 		$val->setDataItem( $dataItem );
 		return $val->getShortWikiText();
 	}
 
+	/**
+	 * Get the page from the pageName
+	 *
+	 * @param string $pageName the page name
+	 *
+	 * @return SMWDIWikiPage the page object
+	 */
 	public static function getPageFromName( $pageName ) {
 		$pageTitle = Title::newFromText( $pageName );
 		return SMWDIWikiPage::newFromTitle( $pageTitle );

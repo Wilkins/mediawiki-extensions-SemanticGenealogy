@@ -17,6 +17,7 @@ class FamilyTreeFactory {
 	 * Create a new FamilyTree object
 	 *
 	 * @param string $name the name of the wanted FamilyTree
+	 * @param string $decorator the decorator name
 	 *
 	 * @return object a new FamilyTree Object
 	 */

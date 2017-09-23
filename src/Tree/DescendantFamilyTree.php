@@ -16,29 +16,12 @@ class DescendantFamilyTree extends FamilyTree {
 	const NAME = 'descendant';
 
 	/**
-	 * List the descendants for all needed generations
+	 * Show the descendants tree
 	 *
-	 * @return void
+	 * @param object  $person              the target person to create the descendant tree
+	 * @param integer $numberOfGenerations number of generation to display
 	 */
-	private function outputDescendantLine( $person, $pellissier, $end ) {
-		$output = $this->getOutput();
-		$output->addHTML( '<div class="descendant-line">' );
-		$children = $person->getChildren();
-		$count = 1;
-		$depth = substr_count( $pellissier, '.' )+1;
-		foreach ( $children as $child ) {
-			$pel = $pellissier . $count . '.';
-			$output->addHtml( '<span class="number depth-'.$depth.'">'.$pel.'</span> ' );
-			$output->addWikiText( $child->getDescriptionWikiText( false ) );
-			if ( $end > 0 ) {
-				$this->outputDescendantLine( $child, $pel, $end - 1 );
-			}
-			$count++;
-		}
-		$output->addHTML( '</div>' );
-	}
-
-	private function showDescendants( $person, $numOfGenerations, $top = false ) {
+	private function showDescendants( $person, $numOfGenerations ) {
 		$output = $this->getOutput();
 		if ( $numOfGenerations == 0 ) {
 			return true;
@@ -107,7 +90,15 @@ class DescendantFamilyTree extends FamilyTree {
 		return $person;
 	}
 
-	public function getClass( $itemNumber, $nbChildren ) {
+	/**
+	 * Determine the class to display
+	 *
+	 * @param integer $itemNumber the number of the current item
+	 * @param integer $nbChildren the number of total children
+	 *
+	 * @return string the class name
+	 */
+	private function getClass( $itemNumber, $nbChildren ) {
 		if ( $nbChildren == 1 ) {
 			return "child-one";
 		}
@@ -128,6 +119,6 @@ class DescendantFamilyTree extends FamilyTree {
 	public function render() {
 		$output = $this->getOutput();
 		$person = new PersonPageValues( $this->person );
-		$this->showDescendants( $person, 4, true );
+		$this->showDescendants( $person, 4 );
 	}
 }

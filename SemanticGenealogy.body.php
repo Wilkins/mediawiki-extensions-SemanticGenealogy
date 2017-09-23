@@ -13,7 +13,10 @@ class SemanticGenealogy {
 
 	/**
 	 * Get an array key => value of genealogical properties as SMWDIProperty
+	 *
 	 * @throws MWException
+	 *
+	 * @return array the properties array
 	 */
 	public static function getProperties() {
 		static $properties;
