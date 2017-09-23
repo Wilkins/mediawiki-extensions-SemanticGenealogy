@@ -12,8 +12,7 @@
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  * @author  Thibault Taillandier <thibault@taillandier.name>
  */
-class DescendantListFamilyTree extends FamilyTree
-{
+class DescendantListFamilyTree extends FamilyTree {
 	const NAME = 'descendantlist';
 
 	/**
@@ -22,7 +21,6 @@ class DescendantListFamilyTree extends FamilyTree
 	 * @return void
 	 */
 	private function outputDescendantLine( $person, $pellissier, $end ) {
-
 		$output = $this->getOutput();
 		$output->addHTML( '<div class="descendant-line">' );
 		$children = $person->getChildren();
@@ -46,7 +44,6 @@ class DescendantListFamilyTree extends FamilyTree
 	 * @return void
 	 */
 	public function render() {
-
 		$output = $this->getOutput();
 		$output->addHTML( '<div class="decorator-'.$this->decorator. ' smg-tree-root-descendant">' );
 		$main = new PersonPageValues( $this->person );

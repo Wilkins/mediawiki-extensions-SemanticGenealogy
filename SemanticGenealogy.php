@@ -47,18 +47,18 @@ if ( !defined( 'SGENEA_VERSION' ) ) {
 	define( 'SGENEA_VERSION', '0.3.0' );
 }
 
-$wgExtensionCredits['semantic'][] = array(
+$wgExtensionCredits['semantic'][] = [
 	'path' => __FILE__,
 	'name' => 'Semantic Genealogy',
 	'version' => SGENEA_VERSION,
-	'author' => array(
+	'author' => [
 		'[http://www.mediawiki.org/wiki/User:Tpt Tpt]'
-	),
+	],
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Semantic_Genealogy',
 	'descriptionmsg' => 'semanticgenealogy-desc'
-);
+];
 
-$wgGenealogicalProperties = array(
+$wgGenealogicalProperties = [
 	'givenname' => 'Prénom',
 	'surname' => 'Nom',
 	'nickname' => '',
@@ -69,9 +69,9 @@ $wgGenealogicalProperties = array(
 	'deathplace' => 'Lieu de décès',
 	'father' => 'Père',
 	'mother' => 'Mère'
-);
+];
 
-$dir = dirname( __FILE__ ) . '/';
+$dir = __DIR__ . '/';
 $dirTree = $dir.'src/Tree/';
 $dirDecorator = $dir.'src/Decorator/';
 
@@ -113,18 +113,17 @@ $wgHooks['SkinBuildSidebar'][] = 'Sidebar::addGenealogySideBar';
 $wgSGeneaSidebarAdd = true;
 $wgSGeneaSidebarPosition = 2;
 
-$moduleTemplate = array(
+$moduleTemplate = [
 	'localBasePath' => $dir,
 	'remoteBasePath' => ( $wgExtensionAssetsPath === false ? $wgScriptPath
 		. '/extensions' : $wgExtensionAssetsPath ) . '/SemanticGenealogy',
 	'group' => 'ext.smg'
-);
+];
 
-$wgResourceModules['ext.smg.specialfamilytree'] = $moduleTemplate + array(
+$wgResourceModules['ext.smg.specialfamilytree'] = $moduleTemplate + [
 	'scripts' => 'modules/specialFamilyTree.js',
 	'styles' => 'modules/styles.css',
-	'dependencies' => array( 'jquery.ui.autocomplete' ),
-	'messages' => array(
-	)
-);
-
+	'dependencies' => [ 'jquery.ui.autocomplete' ],
+	'messages' => [
+	]
+];

@@ -11,8 +11,7 @@
  * @licence GNU GPL v2+
  * @author  Thibault Taillandier <thibault@taillandier.name>
  */
-class FamilyTreeFactory
-{
+class FamilyTreeFactory {
 
 	/**
 	 * Create a new FamilyTree object
@@ -38,8 +37,6 @@ class FamilyTreeFactory
 	 * @return array the list of FamilyTree classes availables
 	 */
 	public static function listTrees() {
-
 		return Tools::getSubclassesOf( __DIR__, 'FamilyTree' );
-
 	}
 }

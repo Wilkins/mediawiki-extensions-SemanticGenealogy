@@ -9,16 +9,16 @@
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  */
 
-$specialPageAliases = array();
+$specialPageAliases = [];
 
 /* English (English) */
-$specialPageAliases['en'] = array(
-	'FamilyTree' => array( 'FamilyTree' ),
-	'ImportGenealogyPages' => array( 'ImportGenealogyPages' ),
-);
+$specialPageAliases['en'] = [
+	'FamilyTree' => [ 'FamilyTree' ],
+	'ImportGenealogyPages' => [ 'ImportGenealogyPages' ],
+];
 
 /* French (Français) */
-$specialPageAliases['fr'] = array(
-	'FamilyTree' => array( 'ArbreGénéalogique' ),
-	'ImportGenealogyPages' => array( 'ImportePagesGénélogiques' ),
-);
+$specialPageAliases['fr'] = [
+	'FamilyTree' => [ 'ArbreGénéalogique' ],
+	'ImportGenealogyPages' => [ 'ImportePagesGénélogiques' ],
+];

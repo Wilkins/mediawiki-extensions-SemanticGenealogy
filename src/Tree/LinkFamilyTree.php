@@ -13,8 +13,7 @@
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  * @author  Thibault Taillandier <thibault@taillandier.name>
  */
-class LinkFamilyTree extends FamilyTree
-{
+class LinkFamilyTree extends FamilyTree {
 
 	const NAME = 'link';
 
@@ -31,11 +30,9 @@ class LinkFamilyTree extends FamilyTree
 	 * @return void
 	 */
 	public function setPerson2( $personName2 ) {
-
 		$this->personName2 = $personName2;
 		$this->person2 = PersonPageValues::getPageFromName( $personName2 );
 	}
-
 
 	/**
 	 * Get the relation between the 2 persons (this->person and $this->person2)
@@ -43,9 +40,8 @@ class LinkFamilyTree extends FamilyTree
 	 * @return array an array of 2 trees
 	 */
 	private function getLink() {
-
-		$tree1 = array();
-		$tree2 = array();
+		$tree1 = [];
+		$tree2 = [];
 		$tree1[0][1] = new PersonPageValues( $this->person );
 		$tree2[0][1] = new PersonPageValues( $this->person2 );
 
@@ -70,8 +66,8 @@ class LinkFamilyTree extends FamilyTree
 		}
 
 		if ( $result !== null ) {
-			return array( $this->getListOfAncestors( $sosa1, $tree1 ),
-				$this->getListOfAncestors( $sosa2, $tree2 ) );
+			return [ $this->getListOfAncestors( $sosa1, $tree1 ),
+				$this->getListOfAncestors( $sosa2, $tree2 ) ];
 		}
 	}
 
@@ -85,7 +81,6 @@ class LinkFamilyTree extends FamilyTree
 	 * @return array an array of 2 SOSA
 	 */
 	private function compareGenWith( array $gen, array $tree, $max ) {
-
 		for ( $i = $max; $i >= 0; $i-- ) {
 			if ( isset( $tree[$i] ) ) {
 				foreach ( $tree[$i] as $sosa2 => $person2 ) {
@@ -93,7 +88,7 @@ class LinkFamilyTree extends FamilyTree
 						foreach ( $gen as $sosa1 => $person1 ) {
 							if ( $person1 !== null ) {
 								if ( $person1->title->equals( $person2->title ) ) {
-									return array( $sosa1, $sosa2 );
+									return [ $sosa1, $sosa2 ];
 								}
 							}
 						}
@@ -102,7 +97,6 @@ class LinkFamilyTree extends FamilyTree
 			}
 		}
 	}
-
 
 	/**
 	 * Get the list of ancestors for a sosa number
@@ -113,7 +107,6 @@ class LinkFamilyTree extends FamilyTree
 	 * @return array the list of ancestors
 	 */
 	private function getListOfAncestors( $sosa, array $tree ) {
-
 		$num = 1;
 		$temp = 1;
 		for ( $i = 0; $num < $sosa; $i++ ) {
@@ -121,7 +114,7 @@ class LinkFamilyTree extends FamilyTree
 			$num += $temp;
 		}
 
-		$list = array();
+		$list = [];
 		for ( $j = $i; $j >= 0; $j-- ) {
 			$list[] = $tree[$j][$sosa];
 			$sosa /= 2;
@@ -135,7 +128,6 @@ class LinkFamilyTree extends FamilyTree
 	 * @return void
 	 */
 	public function render() {
-
 		$output = $this->getOutput();
 		$tree = $this->getLink();
 

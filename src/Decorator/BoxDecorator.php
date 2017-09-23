@@ -2,14 +2,9 @@
 
 
 
-class BoxDecorator extends TreeDecorator
-{
+class BoxDecorator extends TreeDecorator {
 
 	const NAME = 'box';
 	const LABEL = 'Boîtes';
-
-
-
-
 
 }

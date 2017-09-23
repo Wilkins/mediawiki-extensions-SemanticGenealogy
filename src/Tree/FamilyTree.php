@@ -14,8 +14,7 @@
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  * @author  Thibault Taillandier <thibault@taillandier.name>
  */
-abstract class FamilyTree
-{
+abstract class FamilyTree {
 
 	const NAME = 'root';
 
@@ -25,7 +24,6 @@ abstract class FamilyTree
 	protected $numOfGenerations;
 	protected $decorator;
 	protected $displayName;
-
 
 	public function __construct( $decorator=null ) {
 		$this->decorator = $decorator;
@@ -39,7 +37,6 @@ abstract class FamilyTree
 	 * @return void
 	 */
 	public function setPerson( $personName ) {
-
 		$this->personName = $personName;
 		$this->person = PersonPageValues::getPageFromName( $personName );
 	}
@@ -52,7 +49,6 @@ abstract class FamilyTree
 	 * @return void
 	 */
 	public function setNumberOfGenerations( $numOfGenerations ) {
-
 		$this->numOfGenerations = $numOfGenerations;
 	}
 
@@ -64,7 +60,6 @@ abstract class FamilyTree
 	 * @return void
 	 */
 	public function setDisplayName( $displayName ) {
-
 		$this->displayName = $displayName;
 	}
 
@@ -76,7 +71,6 @@ abstract class FamilyTree
 	 * @return void
 	 */
 	public function setOutput( $output ) {
-
 		$this->output = $output;
 	}
 
@@ -86,7 +80,6 @@ abstract class FamilyTree
 	 * @return OutputPage the output object
 	 */
 	public function getOutput() {
-
 		return $this->output;
 	}
 
@@ -97,7 +90,6 @@ abstract class FamilyTree
 	 * @return int
 	 */
 	public function getNumOfPeopleInGen( $gen ) {
-
 		$result = 1;
 		for ( $i = 0; $i < $gen; $i++ ) {
 			$result *= 2;
@@ -105,17 +97,15 @@ abstract class FamilyTree
 		return $result;
 	}
 
-
 	/**
 	 * Add a generation in a tree
 	 *
 	 * @param integer $gen the generation number
-	 * @param array   $tree the tree to add in
+	 * @param array $tree the tree to add in
 	 *
 	 * @return array the resulting tree
 	 */
 	protected function addGenInTree( $gen, array $tree ) {
-
 		$empty = true;
 		$son = $this->getNumOfPeopleInGen( $gen - 1 );
 		$end = $son * 4;
@@ -150,7 +140,6 @@ abstract class FamilyTree
 		return $tree;
 	}
 
-
 	/**
 	 * Render the tree
 	 *
@@ -160,7 +149,6 @@ abstract class FamilyTree
 	 * @return void
 	 */
 	public function render() {
-
 		$this->output->addHtml( "" );
 	}
 }

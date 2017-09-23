@@ -1,8 +1,7 @@
 <?php
 
 
-class TreeDecoratorFactory
-{
+class TreeDecoratorFactory {
 
 	/**
 	 * Create a new FamilyTree object
@@ -30,6 +29,5 @@ class TreeDecoratorFactory
 	public static function listDecorators() {
 		return Tools::getSubclassesOf( __DIR__, 'TreeDecorator' );
 	}
-
 
 }

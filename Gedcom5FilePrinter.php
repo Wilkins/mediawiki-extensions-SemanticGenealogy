@@ -11,11 +11,10 @@
  * @licence GNU GPL v2+
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  */
-class Gedcom5FilePrinter extends GenealogicalFilePrinter
-{
+class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 
-	protected $families = array();
-	protected $familiesByPerson = array();
+	protected $families = [];
+	protected $familiesByPerson = [];
 
 	/**
 	 * Set file in $this->file property
@@ -23,7 +22,6 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	 * @return void
 	 */
 	protected function setFile() {
-
 		$this->setFamiliesList();
 
 		$this->addHead();
@@ -42,7 +40,6 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	 * @return void
 	 */
 	protected function setFamiliesList() {
-
 		foreach ( $this->people as $child ) {
 			$id = $this->getFamilyIdForChild( $child );
 			if ( $id != '0S0' ) {
@@ -55,7 +52,6 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	}
 
 	protected function getFamilyIdForChild( PersonPageValues $child ) {
-
 		$key = '';
 		if ( $child->father instanceof SMWDIWikiPage
 			&& isset( $this->people[$child->father->getTitle()->getArticleID()] ) ) {
@@ -79,26 +75,24 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	}
 
 	protected function addChildToFamily( $familyKey, PersonPageValues $child ) {
-
 		$childId = $child->title->getArticleID();
 		if ( isset( $this->families[$familyKey] ) ) {
 			if ( !in_array( $childId, $this->families[$familyKey] ) ) {
 				$this->families[$familyKey][] = $childId;
 			}
 		} else {
-			$this->families[$familyKey] = array( $childId );
+			$this->families[$familyKey] = [ $childId ];
 		}
 	}
 
 	protected function addFamilyToPerson( $familyId, $personId ) {
-
 		if ( $personId != 0 ) {
 			if ( isset( $this->familiesByPerson[$personId] ) ) {
 				if ( !in_array( $familyId, $this->familiesByPerson[$personId] ) ) {
 					$this->familiesByPerson[$personId][] = $familyId;
 				}
 			} else {
-				$this->familiesByPerson[$personId] = array( $familyId );
+				$this->familiesByPerson[$personId] = [ $familyId ];
 			}
 		}
 	}
@@ -107,7 +101,6 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	 * Add GEDCOM header
 	 */
 	protected function addHead() {
-
 		global $wgSitename, $wgRightsText;
 
 		$this->addRow( 0, 'HEAD' );
@@ -136,7 +129,6 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	 * @return void
 	 */
 	protected function addPerson( $id, PersonPageValues $person ) {
-
 		$this->addRow( 0, '@I'. $id . '@', 'INDI' );
 		$this->addRow( 1, 'NAME', $this->getGedcomName( $person ) );
 		$this->addStringValueAsRow( 2, 'GIVN', $person->givenname );
@@ -159,7 +151,6 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	}
 
 	protected function addFamily( $id, $children ) {
-
 		list( $fatherId, $motherId ) = explode( 'S', $id );
 		$this->addRow( 0, '@F'. $id . '@', 'FAM' );
 		if ( $fatherId != 0 ) {
@@ -174,7 +165,6 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	}
 
 	protected function getGedcomName( PersonPageValues $person ) {
-
 		$name = '';
 		if ( $person->givenname instanceof SMWDIBlob && $person->givenname->getString() != '' ) {
 			$name .= $person->givenname->getString();
@@ -189,7 +179,6 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	}
 
 	protected function addRow( $level, $key, $value = null ) {
-
 		$this->file .= $level . ' ' . $key;
 		if ( $value !== null ) {
 			$this->file .= ' ' . str_replace( '\n', ' ', $value );
@@ -201,7 +190,6 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	* TODO add places metadata support.
 	*/
 	protected function addEvent( $type, $date, $place ) {
-
 		if ( $date === null && $place === null ) {
 			return;
 		}
@@ -215,14 +203,12 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	}
 
 	protected function addStringValueAsRow( $level, $key, $value ) {
-
 		if ( $value instanceof SMWDIBlob ) {
 			$this->addRow( $level, $key, $value->getString() );
 		}
 	}
 
 	protected function addTimeValueAsRow( $level, $key, $value ) {
-
 		if ( $value instanceof SMWDITime ) {
 			$lang = new Language();
 			$this->addRow( $level, $key,
@@ -231,7 +217,6 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter
 	}
 
 	protected function addWikiPageValueAsRow( $level, $key, $value ) {
-
 		if ( $value instanceof SMWDIWikiPage ) {
 			$this->addRow( $level, $key, $value->getTitle()->getText() );
 		}

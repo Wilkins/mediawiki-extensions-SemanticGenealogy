@@ -9,15 +9,13 @@
  * @licence GNU GPL v2+
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  */
-class SemanticGenealogy
-{
+class SemanticGenealogy {
 
 	/**
 	 * Get an array key => value of genealogical properties as SMWDIProperty
 	 * @throws MWException
 	 */
 	public static function getProperties() {
-
 		static $properties;
 
 		if ( $properties !== null ) {
@@ -25,7 +23,7 @@ class SemanticGenealogy
 		}
 
 		global $wgGenealogicalProperties;
-		$properties = array();
+		$properties = [];
 
 		if ( !is_array( $wgGenealogicalProperties ) ) {
 			throw new MWException( 'Configuration variable $wgGenealogicalProperties must be an array !' );
@@ -87,13 +85,11 @@ class SemanticGenealogy
 		throw new SemanticGenealogyException( "Namespace name « ${searchName} » was not found in SemanticGenealogy. This should not happen, please contact developpers extension with tag: Error101" );
 	}
 
-
 	public static function setNamespaceAliases( $namespaces ) {
 		global $wgNamespaceAliases;
 
 		foreach ( $namespaces as $nsId => $namespace ) {
 			$wgNamespaceAliases[$namespace] = $nsId;
 		}
-
 	}
 }

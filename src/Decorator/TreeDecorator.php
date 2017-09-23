@@ -1,11 +1,9 @@
 <?php
 
 
-abstract class TreeDecorator
-{
+abstract class TreeDecorator {
 
 	const NAME = 'root';
 	const LABEL = 'Root';
-
 
 }

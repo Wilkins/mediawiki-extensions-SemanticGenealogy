@@ -9,10 +9,9 @@
  * @licence GNU GPL v2+
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  */
-abstract class GenealogicalFilePrinter
-{
+abstract class GenealogicalFilePrinter {
 	protected $file = '';
-	protected $people = array();
+	protected $people = [];
 
 	/**
 	 * Add people to the GEDCOM file
@@ -22,7 +21,6 @@ abstract class GenealogicalFilePrinter
 	 * @return void
 	 */
 	public function addPeople( $people ) {
-
 		foreach ( $people as $person ) {
 			$this->people[$person->title->getArticleID()] = $person;
 		}
@@ -37,7 +35,6 @@ abstract class GenealogicalFilePrinter
 	 * @return string
 	 */
 	public function getFile() {
-
 		if ( $this->file === '' ) {
 			$this->setFile();
 		}

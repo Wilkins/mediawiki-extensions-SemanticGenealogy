@@ -9,8 +9,7 @@
  * @licence GNU GPL v2+
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  */
-class PersonPageValues
-{
+class PersonPageValues {
 	protected $page;
 	public $title;
 	public $fullname;
@@ -33,8 +32,7 @@ class PersonPageValues
 	 * Constructor for a single indi in the file.
 	 */
 	public function __construct( SMWDIWikiPage $page ) {
-
-		$values = array();
+		$values = [];
 		$storage = smwfGetStore();
 		$this->page = $page;
 		$this->title = $page->getTitle();
@@ -69,12 +67,11 @@ class PersonPageValues
 	 * @return array
 	 */
 	public function getChildren() {
-
 		if ( $this->children !== null ) {
 			return $this->children;
 		}
 
-		$this->children = array();
+		$this->children = [];
 		$storage = smwfGetStore();
 		$properties = SemanticGenealogy::getProperties();
 		if ( $properties['father'] instanceof SMWDIProperty ) {
@@ -90,7 +87,7 @@ class PersonPageValues
 			}
 		}
 
-		usort( $this->children, array( "PersonPageValues", "comparePeopleByBirthDate" ) );
+		usort( $this->children, [ "PersonPageValues", "comparePeopleByBirthDate" ] );
 		return $this->children;
 	}
 
@@ -117,7 +114,6 @@ class PersonPageValues
 
 	private static function comparePeopleByBirthDate( PersonPageValues $personA,
 		PersonPageValues $personB ) {
-
 		if ( $personA->birthdate instanceof SMWDITime ) {
 			$aKey = $personA->birthdate->getSortKey();
 		} else {
@@ -156,7 +152,6 @@ class PersonPageValues
 	}
 
 	public function getDescriptionWikiText( $withBr = false, $displayName = 'fullname' ) {
-
 		$yearRegexp = "/.*\b(\d\d\d\d)\b.*/";
 		$text = '<div class="person-block">';
 		$text .= '<div class="person-name">';
@@ -186,14 +181,12 @@ class PersonPageValues
 	}
 
 	protected static function getWikiTextDateFromSMWDITime( SMWDITime $dataItem ) {
-
 		$val = new SMWTimeValue( SMWDataItem::TYPE_TIME );
 		$val->setDataItem( $dataItem );
 		return $val->getShortWikiText();
 	}
 
 	public static function getPageFromName( $pageName ) {
-
 		$pageTitle = Title::newFromText( $pageName );
 		return SMWDIWikiPage::newFromTitle( $pageTitle );
 	}

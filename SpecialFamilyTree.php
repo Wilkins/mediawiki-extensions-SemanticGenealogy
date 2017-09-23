@@ -9,8 +9,7 @@
  * @licence GNU GPL v2+
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  */
-class SpecialFamilyTree extends SpecialPage
-{
+class SpecialFamilyTree extends SpecialPage {
 
 	private $type;
 	private $gen;
@@ -18,7 +17,7 @@ class SpecialFamilyTree extends SpecialPage
 	private $page2;
 	private $decorator;
 
-	private $params = array( 'type', 'gen', 'page', 'page2', 'decorator', 'displayname' );
+	private $params = [ 'type', 'gen', 'page', 'page2', 'decorator', 'displayname' ];
 
 	/**
 	 * @constructor
@@ -43,7 +42,7 @@ class SpecialFamilyTree extends SpecialPage
 		if ( $par != '' ) {
 			$parts = explode( '/', urldecode( $par ) );
 		} else {
-			$parts = array();
+			$parts = [];
 		}
 
 		$this->type = isset( $parts[0] ) ? $parts[0] : $wgRequest->getText( 'type' );
@@ -130,7 +129,6 @@ class SpecialFamilyTree extends SpecialPage
 	 * @return void
 	 */
 	protected function showForm() {
-
 		global $wgScript;
 
 		if ( !$this->mIncluding ) {
@@ -150,7 +148,7 @@ class SpecialFamilyTree extends SpecialPage
 					$this->msg(
 						'semanticgenealogy-specialfamilytree-decorator-'.$decorator::NAME )->text(),
 						$decorator::NAME
-				   	);
+					   );
 			}
 
 			$displaynameSelect = new XmlSelect( 'displayname', 'displayname', $this->displayname );
@@ -160,60 +158,60 @@ class SpecialFamilyTree extends SpecialPage
 				$this->msg( 'semanticgenealogy-specialfamilytree-displayname-pagename' )->text(), 'pagename' );
 
 			$output->addHTML(
-				Xml::openElement( 'form', array( 'action' => $wgScript ) ) .
+				Xml::openElement( 'form', [ 'action' => $wgScript ] ) .
 				Html::hidden( 'title', $this->getPageTitle()->getPrefixedText() ) .
 				Xml::openElement( 'fieldset' ) .
-				Xml::openElement( 'table', array( 'id' => 'smg-familyTree-form' ) ) .
-				Xml::openElement( 'tr', array( 'id' => 'smg-form-entry-page' ) ) .
-				Xml::openElement( 'th', array( 'class' => 'mw-label' ) ) .
+				Xml::openElement( 'table', [ 'id' => 'smg-familyTree-form' ] ) .
+				Xml::openElement( 'tr', [ 'id' => 'smg-form-entry-page' ] ) .
+				Xml::openElement( 'th', [ 'class' => 'mw-label' ] ) .
 				Xml::label( $this->msg( 'semanticgenealogy-specialfamilytree-label-page' )->text(), 'page' ) .
 				Xml::closeElement( 'th' ) .
-				Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) .
-				Xml::input( 'page', 30, $this->page, array( 'class' => 'smg-input-page' ) ) .
+				Xml::openElement( 'td', [ 'class' => 'mw-input' ] ) .
+				Xml::input( 'page', 30, $this->page, [ 'class' => 'smg-input-page' ] ) .
 				Xml::closeElement( 'td' ) .
 				Xml::closeElement( 'tr' ) .
-				Xml::openElement( 'tr', array( 'id' => 'smg-form-entry-type' ) ) .
-				Xml::openElement( 'th', array( 'class' => 'mw-label' ) ) .
+				Xml::openElement( 'tr', [ 'id' => 'smg-form-entry-type' ] ) .
+				Xml::openElement( 'th', [ 'class' => 'mw-label' ] ) .
 				Xml::label( $this->msg( 'semanticgenealogy-specialfamilytree-label-type' )->text(), 'type' ) .
 				Xml::closeElement( 'th' ) .
-				Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) .
+				Xml::openElement( 'td', [ 'class' => 'mw-input' ] ) .
 				$typeSelect->getHtml() .
 				Xml::closeElement( 'td' ) .
 				Xml::closeElement( 'tr' ) .
-				Xml::openElement( 'tr', array( 'id' => 'smg-form-entry-decorator' ) ) .
-				Xml::openElement( 'th', array( 'class' => 'mw-label' ) ) .
+				Xml::openElement( 'tr', [ 'id' => 'smg-form-entry-decorator' ] ) .
+				Xml::openElement( 'th', [ 'class' => 'mw-label' ] ) .
 				Xml::label(
 					$this->msg( 'semanticgenealogy-specialfamilytree-label-decorator' )->text(), 'decorator'
-			   	) .
+				   ) .
 				Xml::closeElement( 'th' ) .
-				Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) .
+				Xml::openElement( 'td', [ 'class' => 'mw-input' ] ) .
 				$decoratorSelect->getHtml() .
 				Xml::closeElement( 'td' ) .
 				Xml::closeElement( 'tr' ) .
-				Xml::openElement( 'tr', array( 'id' => 'smg-form-entry-displayname' ) ) .
-				Xml::openElement( 'th', array( 'class' => 'mw-label' ) ) .
+				Xml::openElement( 'tr', [ 'id' => 'smg-form-entry-displayname' ] ) .
+				Xml::openElement( 'th', [ 'class' => 'mw-label' ] ) .
 				Xml::label(
 					$this->msg( 'semanticgenealogy-specialfamilytree-label-displayname' )->text(), 'displayname'
-			   	) .
+				   ) .
 				Xml::closeElement( 'th' ) .
-				Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) .
+				Xml::openElement( 'td', [ 'class' => 'mw-input' ] ) .
 				$displaynameSelect->getHtml() .
 				Xml::closeElement( 'td' ) .
 				Xml::closeElement( 'tr' ) .
-				Xml::openElement( 'tr', array( 'id' => 'smg-form-entry-gen' ) ) .
-				Xml::openElement( 'th', array( 'class' => 'mw-label' ) ) .
+				Xml::openElement( 'tr', [ 'id' => 'smg-form-entry-gen' ] ) .
+				Xml::openElement( 'th', [ 'class' => 'mw-label' ] ) .
 				Xml::label( $this->msg( 'semanticgenealogy-specialfamilytree-label-gen' )->text(), 'gen' ) .
 				Xml::closeElement( 'th' ) .
-				Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) .
+				Xml::openElement( 'td', [ 'class' => 'mw-input' ] ) .
 				Xml::input( 'gen', 2, $this->gen ) .
 				Xml::closeElement( 'td' ) .
 				Xml::closeElement( 'tr' ) .
-				Xml::openElement( 'tr', array( 'id' => 'smg-form-entry-page2' ) ) .
-				Xml::openElement( 'th', array( 'class' => 'mw-label' ) ) .
+				Xml::openElement( 'tr', [ 'id' => 'smg-form-entry-page2' ] ) .
+				Xml::openElement( 'th', [ 'class' => 'mw-label' ] ) .
 				Xml::label( $this->msg( 'semanticgenealogy-specialfamilytree-label-page2' )->text(), 'page2' ) .
 				Xml::closeElement( 'th' ) .
-				Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) .
-				Xml::input( 'page2', 30, $this->page2, array( 'class' => 'smg-input-page' ) ) .
+				Xml::openElement( 'td', [ 'class' => 'mw-input' ] ) .
+				Xml::input( 'page2', 30, $this->page2, [ 'class' => 'smg-input-page' ] ) .
 				Xml::closeElement( 'td' ) .
 				Xml::closeElement( 'tr' ) .
 				Xml::closeElement( 'table' ) .

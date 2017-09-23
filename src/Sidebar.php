@@ -9,8 +9,7 @@
  * @licence GNU GPL v2+
  * @author  Thibault Taillandier <thibault@taillandier.name>
  */
-class Sidebar
-{
+class Sidebar {
 
 	/**
 	 * Adds a Genealogy SideBar
@@ -80,7 +79,6 @@ class Sidebar
 	 * @return string the Menu Content
 	 */
 	public static function getTemplateMenuContent() {
-
 		require __DIR__ . "/../SemanticGenealogy.namespaces.php";
 		$dbr = wfGetDb( DB_MASTER );
 		$res = $dbr->select(
@@ -92,17 +90,17 @@ class Sidebar
 				[
 					'page' => [
 						'INNER JOIN',
-					   	[ 'rev_id=page_latest' ]
-				   	],
+						   [ 'rev_id=page_latest' ]
+					   ],
 					'text' => [
 						'INNER JOIN',
-					   	[ 'rev_text_id=old_id' ]
-				   	]
+						   [ 'rev_text_id=old_id' ]
+					   ]
 				]
 			);
 
 		if ( $res->result->num_rows >= 0 ) {
-			foreach( $res->result as $row ) {
+			foreach ( $res->result as $row ) {
 				return $row['old_text'];
 			}
 		}

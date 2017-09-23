@@ -12,8 +12,7 @@
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  * @author  Thibault Taillandier <thibault@taillandier.name>
  */
-class AncestorsFamilyTree extends FamilyTree
-{
+class AncestorsFamilyTree extends FamilyTree {
 
 	const NAME = 'ancestors';
 
@@ -23,8 +22,7 @@ class AncestorsFamilyTree extends FamilyTree
 	 * @return array the generations tree
 	 */
 	private function getAncestors() {
-
-		$tree = array();
+		$tree = [];
 		$tree[0][1] = new PersonPageValues( $this->person );
 
 		for ( $i = 0; $i < $this->numOfGenerations && $tree[$i] !== null; $i++ ) {
@@ -33,14 +31,12 @@ class AncestorsFamilyTree extends FamilyTree
 		return $tree;
 	}
 
-
 	/**
 	 * Render the tree of ancestors
 	 *
 	 * @return void
 	 */
 	public function render() {
-
 		$tree = $this->getAncestors();
 		$output = $this->getOutput();
 		$output->addHTML( '<table class="decorator-'.$this->decorator. ' smg-tree-root-ancestors">' );

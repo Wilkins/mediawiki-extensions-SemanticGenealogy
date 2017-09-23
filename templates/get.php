@@ -1,6 +1,6 @@
 <?php
 
-$pages = array(
+$pages = [
 /*
 'template:Fiche_Personne',
 'template:Personne_texte',
@@ -46,13 +46,12 @@ $pages = array(
 'Property:Name',
 'Property:Nom',
  */
-);
+];
 
 $baseurl = "http://famille:edouard@wiki.familletaillandier.com/index.php?title=%s&action=raw";
 $prefix = "";
 
-
-foreach ($pages as $page) {
-	$url = sprintf($baseurl, $page);
-	shell_exec("wget \"$url\" -O $prefix$page.txt");
+foreach ( $pages as $page ) {
+	$url = sprintf( $baseurl, $page );
+	shell_exec( "wget \"$url\" -O $prefix$page.txt" );
 }

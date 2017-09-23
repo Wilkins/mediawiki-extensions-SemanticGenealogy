@@ -9,17 +9,14 @@
  * @licence GNU GPL v2+
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  */
-class Gedcom5ResultPrinter extends SMWResultPrinter
-{
-	public $ids = array();
+class Gedcom5ResultPrinter extends SMWResultPrinter {
+	public $ids = [];
 
 	public function getMimeType( $res ) {
-
 		return 'application/x-gedcom';
 	}
 
 	public function getFileName( $res ) {
-
 		if ( $this->getSearchLabel( SMW_OUTPUT_WIKI ) != '' ) {
 			return str_replace( ' ', '_', $this->getSearchLabel( SMW_OUTPUT_WIKI ) ) . '.ged';
 		} else {
@@ -28,7 +25,6 @@ class Gedcom5ResultPrinter extends SMWResultPrinter
 	}
 
 	public function getQueryMode( $context ) {
-
 		return ( $context == SMWQueryProcessor::SPECIAL_PAGE )
 			? SMWQuery::MODE_INSTANCES : SMWQuery::MODE_NONE;
 	}
@@ -38,11 +34,10 @@ class Gedcom5ResultPrinter extends SMWResultPrinter
 	}
 
 	protected function getResultText( SMWQueryResult $res, $outputmode ) {
-
 		$result = '';
 
 		if ( $outputmode == SMW_OUTPUT_FILE ) {
-			$people = array();
+			$people = [];
 			$row = $res->getNext();
 			while ( $row !== false ) {
 				$people[] = new PersonPageValues( $row[0]->getResultSubject() );
@@ -75,7 +70,6 @@ class Gedcom5ResultPrinter extends SMWResultPrinter
 	}
 
 	public function getParameters() {
-
 		return array_merge( parent::getParameters(), $this->exportFormatParameters() );
 	}
 }

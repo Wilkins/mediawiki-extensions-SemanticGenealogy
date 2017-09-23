@@ -36,8 +36,8 @@ foreach ( $namespaceNames['en'] as $nsId => $nsName ) {
 	$wgExtraNamespaces[$nsId] = $nsName;
 }
 
-#print_r( $wgNamespaceAliases );
+# print_r( $wgNamespaceAliases );
 
 SemanticGenealogy::setNamespaceAliases( $namespaceNames['fr'] );
 
-#print_r( $wgNamespaceAliases );
+# print_r( $wgNamespaceAliases );

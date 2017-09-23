@@ -1,6 +1,6 @@
 <?php
 
-#use DirectoryIterator;
+# use DirectoryIterator;
 
 class Importer {
 
@@ -12,11 +12,10 @@ class Importer {
 	 * @param string $lang the 2 chars lang
 	 */
 	public function __construct( $lang ) {
-
 		if ( ! $lang ) {
 			throw new SemanticGenealogyException(
 				"Lang parameter not defined, could not construct the Importer object"
-		   	);
+			   );
 		}
 		$this->lang = $lang;
 	}
@@ -29,7 +28,6 @@ class Importer {
 	 * @return void
 	 */
 	public function importFile( $file ) {
-
 		global $IP;
 		// Use where if windows platform ?
 		$php = trim( shell_exec( "which php" ) );
@@ -39,8 +37,8 @@ class Importer {
 
 		$command = "$php $maintenanceScript --conf=$config "
 			." -s '$text' --overwrite --rc --use-timestamp $file";
-		//echo "$command\n";
-		//shell_exec( $command );
+		// echo "$command\n";
+		// shell_exec( $command );
 	}
 
 	/**
@@ -49,7 +47,6 @@ class Importer {
 	 * @return array the list of importable files
 	 */
 	public function listFiles() {
-
 		$filesDir = __DIR__ . "/../templates/".$this->lang."/";
 		$files = [];
 		foreach ( new DirectoryIterator( $filesDir ) as $file ) {
