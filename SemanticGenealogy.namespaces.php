@@ -38,6 +38,6 @@ foreach ( $namespaceNames['en'] as $nsId => $nsName ) {
 
 # print_r( $wgNamespaceAliases );
 
-SemanticGenealogy::setNamespaceAliases( $namespaceNames['fr'] );
+SemanticGenealogy\SemanticGenealogy::setNamespaceAliases( $namespaceNames['fr'] );
 
 # print_r( $wgNamespaceAliases );

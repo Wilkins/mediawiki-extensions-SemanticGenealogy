@@ -1,5 +1,15 @@
 <?php
 
+namespace SemanticGenealogy;
+
+use SMWDataItem;
+use SMWDIBlob;
+use SMWDIProperty;
+use SMWDITime;
+use SMWDIWikiPage;
+use SMWTimeValue;
+use Title;
+
 /**
  * Model object that store genealogical data of a person
  *
@@ -41,7 +51,7 @@ class PersonPageValues {
 		$properties = SemanticGenealogy::getProperties();
 		foreach ( $properties as $key => $prop ) {
 			$values = $storage->getPropertyValues( $page, $prop );
-			if ( count( $values ) != 0 && property_exists( 'PersonPageValues', $key ) ) {
+			if ( count( $values ) != 0 && property_exists( 'SemanticGenealogy\PersonPageValues', $key ) ) {
 				$this->$key = $values[0];
 			}
 		}
@@ -98,7 +108,7 @@ class PersonPageValues {
 			}
 		}
 
-		usort( $this->children, [ "PersonPageValues", "comparePeopleByBirthDate" ] );
+		usort( $this->children, [ "SemanticGenealogy\PersonPageValues", "comparePeopleByBirthDate" ] );
 		return $this->children;
 	}
 

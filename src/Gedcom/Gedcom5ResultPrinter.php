@@ -1,5 +1,13 @@
 <?php
 
+namespace SemanticGenealogy\Gedcom;
+
+use SemanticGenealogy\PersonPageValues;
+use SMWQuery;
+use SMWQueryProcessor;
+use SMWQueryResult;
+use SMWResultPrinter;
+
 /**
  * Printer class for creating GEDCOM exports
  *
@@ -9,7 +17,8 @@
  * @licence GNU GPL v2+
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  */
-class Gedcom5ResultPrinter extends SMWResultPrinter {
+class Gedcom5ResultPrinter extends SMWResultPrinter
+{
 	public $ids = [];
 
 	/**

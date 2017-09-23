@@ -35,7 +35,7 @@ module.exports = function ( grunt ) {
 					cacheLocation: 'styles/.sass-cache'
 				},
 				files: {
-					'modules/styles.css': 'styles/decorators.scss'
+					'modules/styles.css': 'styles/main.scss'
 				}
 			}
 		},

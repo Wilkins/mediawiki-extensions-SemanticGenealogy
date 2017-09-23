@@ -1,8 +1,10 @@
 <?php
 
-# namespace SemanticGenealogy;
+namespace SemanticGenealogy;
 
-# use Importer;
+use Xml;
+use Html;
+use Status;
 
 /**
  * Special page that show a family tree
@@ -13,7 +15,7 @@
  * @licence GNU GPL v2+
  * @author  Thibault Taillandier <thibault@taillandier.name>
  */
-class SpecialImportPages extends SpecialPage {
+class SpecialImportPages extends \SpecialPage {
 
 	const PAGE_NEW = "NEW";
 	const PAGE_UNKNOWN = "UNKNOWN";
@@ -33,6 +35,17 @@ class SpecialImportPages extends SpecialPage {
 	}
 
 	/**
+	 * Get the lang of templates
+	 *
+	 * @return the lang code
+	 */
+	public function getLang() {
+		global $wgLang;
+		return 'fr';
+		return $wgLang->getCode();
+	}
+
+	/**
 	 * Execute the Special Page
 	 *
 	 * @param string $par the url part
@@ -40,7 +53,7 @@ class SpecialImportPages extends SpecialPage {
 	 * @return boolean the status of the rendered page
 	 */
 	public function execute( $par ) {
-		global $wgOut, $wgLang, $wgRequest;
+		global $wgOut, $wgRequest;
 		$this->setHeaders();
 
 		// print_r( $wgRequest->getText('action')	);
@@ -52,7 +65,7 @@ class SpecialImportPages extends SpecialPage {
 		}
 
 		$output = $this->getOutput();
-		$lang = $wgLang->getCode();
+		$lang = $this->getLang();
 
 		try {
 			$importer = new Importer( $lang );
@@ -61,7 +74,7 @@ class SpecialImportPages extends SpecialPage {
 				$wgOut->addWikiText( "Import de $displayName" );
 				$importer->importFile( $file );
 			}
-		} catch ( SemanticGenealogyException $e ) {
+		} catch ( Exception $e ) {
 			$wgOut->addWikiText( '<span class="error">' .  $e->getMessage() . '</span>' );
 			return Status::newFatal( $e->getMessage() );
 		} catch ( Exception $e ) {
@@ -79,14 +92,14 @@ class SpecialImportPages extends SpecialPage {
 	 * @return void
 	 */
 	protected function showForm() {
-		global $wgScript, $wgLang;
+		global $wgScript;
 
 		if ( $this->mIncluding ) {
 			return false;
 		}
 		$output = $this->getOutput();
 		$output->addModuleStyles( 'ext.smg.specialfamilytree' );
-		$lang = $wgLang->getCode();
+		$lang = $this->getLang();
 
 		$importer = new Importer( $lang );
 		$files = $importer->listFiles();
@@ -197,7 +210,7 @@ class SpecialImportPages extends SpecialPage {
 			}
 		}
 		return -1;
-		// throw new SemanticGenealogyException( "" );
+		// throw new Exception( "" );
 	}
 
 	/**

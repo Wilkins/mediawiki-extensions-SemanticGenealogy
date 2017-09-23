@@ -1,15 +1,21 @@
 <?php
 
+namespace SemanticGenealogy;
+
+use MWException;
+use SMWDIProperty;
+
 /**
  * Static class for hooks handled by the Semantic Genealogy extension.
  *
- * @file    SemanticGenealogy.body.php
+ * @file    SemanticGenealogy.php
  * @ingroup SemanticGenealogy
  *
  * @licence GNU GPL v2+
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  */
-class SemanticGenealogy {
+class SemanticGenealogy
+{
 
 	/**
 	 * Get an array key => value of genealogical properties as SMWDIProperty
@@ -19,6 +25,7 @@ class SemanticGenealogy {
 	 * @return array the properties array
 	 */
 	public static function getProperties() {
+
 		static $properties;
 
 		if ( $properties !== null ) {
@@ -69,7 +76,7 @@ class SemanticGenealogy {
 	/**
 	 * Get the namespace id from the namespace name
 	 *
-	 * @throws SemanticGenealogyException if namespace is not found.
+	 * @throws Exception if namespace is not found.
 	 *
 	 * @param string $searchName the namespace we are looking for
 	 *
@@ -85,7 +92,7 @@ class SemanticGenealogy {
 				}
 			}
 		}
-		throw new SemanticGenealogyException( "Namespace name « ${searchName} » was not found in SemanticGenealogy. This should not happen, please contact developpers extension with tag: Error101" );
+		throw new Exception( "Namespace name « ${searchName} » was not found in SemanticGenealogy. This should not happen, please contact developpers extension with tag: Error101" );
 	}
 
 	public static function setNamespaceAliases( $namespaces ) {

@@ -339,9 +339,11 @@
     line-height: 1; }
   #semanticgenealogy-import-form tr.status-new td:nth-of-type(3) {
     background-color: #aaaaff; }
-  #semanticgenealogy-import-form tr.status-unknown td {
+  #semanticgenealogy-import-form tr.status-unknown td:nth-of-type(3) {
     background-color: #ffaaaa; }
-  #semanticgenealogy-import-form tr.status-uptodate td {
+  #semanticgenealogy-import-form tr.status-uptodate td:nth-of-type(3) {
     background-color: #aaffaa; }
-  #semanticgenealogy-import-form tr.status-update td {
+  #semanticgenealogy-import-form tr.status-update td:nth-of-type(3) {
     background-color: #ffffaa; }
+  #semanticgenealogy-import-form p {
+    margin: 0; }

@@ -1,6 +1,8 @@
 <?php
 
-# use DirectoryIterator;
+namespace SemanticGenealogy;
+
+use DirectoryIterator;
 
 class Importer {
 
@@ -13,7 +15,7 @@ class Importer {
 	 */
 	public function __construct( $lang ) {
 		if ( ! $lang ) {
-			throw new SemanticGenealogyException(
+			throw new Exception(
 				"Lang parameter not defined, could not construct the Importer object"
 			   );
 		}
@@ -48,6 +50,9 @@ class Importer {
 	 */
 	public function listFiles() {
 		$filesDir = __DIR__ . "/../templates/".$this->lang."/";
+		if ( !is_dir( $filesDir ) ) {
+			throw new Exception( "Directory $filesDir does not exist." );
+		}
 		$files = [];
 		foreach ( new DirectoryIterator( $filesDir ) as $file ) {
 			if ( $file->isDot() ) {

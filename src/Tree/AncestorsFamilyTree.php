@@ -1,5 +1,9 @@
 <?php
 
+namespace SemanticGenealogy\Tree;
+
+use SemanticGenealogy\PersonPageValues;
+
 /**
  * AncestorsFamilyTree object
  *

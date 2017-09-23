@@ -75,45 +75,28 @@ $wgGenealogicalProperties = [
 	'partner' => 'Conjoint'
 ];
 
-$dirTree = __DIR__ . '/src/Tree/';
-$dirDecorator = __DIR__ . '/src/Decorator/';
-
 $wgMessagesDirs['SemanticGenealogy'] = __DIR__ . '/i18n';
+$wgExtensionMessagesFiles['SemanticGenealogy'] =  __DIR__ . '/SemanticGenealogy.i18n.php';
 $wgExtensionMessagesFiles['SemanticGenealogyAlias'] = __DIR__ . '/SemanticGenealogy.alias.php';
 $wgExtensionMessagesFiles['SemanticGenealogyNamespaces'] = __DIR__ . '/SemanticGenealogy.namespaces.php';
 
-$wgAutoloadClasses['SemanticGenealogy'] = __DIR__ . '/SemanticGenealogy.body.php';
-$wgAutoloadClasses['PersonPageValues'] = __DIR__ . '/PersonPageValues.php';
-$wgAutoloadClasses['FamilyTree'] = $dirTree . 'FamilyTree.php';
-$wgAutoloadClasses['AncestorsFamilyTree'] = $dirTree . 'AncestorsFamilyTree.php';
-$wgAutoloadClasses['DescendantFamilyTree'] = $dirTree . 'DescendantFamilyTree.php';
-$wgAutoloadClasses['LinkFamilyTree'] = $dirTree . 'LinkFamilyTree.php';
-$wgAutoloadClasses['FamilyTreeFactory'] = $dirTree . 'FamilyTreeFactory.php';
-$wgAutoloadClasses['TreeDecoratorFactory'] = $dirDecorator . 'TreeDecoratorFactory.php';
-$wgAutoloadClasses['TreeDecorator'] = $dirDecorator . 'TreeDecorator.php';
-$wgAutoloadClasses['SimpleDecorator'] = $dirDecorator . 'SimpleDecorator.php';
-$wgAutoloadClasses['BoxDecorator'] = $dirDecorator . 'BoxDecorator.php';
-$wgAutoloadClasses['Tools'] = __DIR__ . '/Tools.php';
+$smwgResultFormats['gedcom'] = 'SemanticGenealogy\Gedcom\Gedcom5ResultPrinter';
+$smwgResultFormats['gedcom5'] = 'SemanticGenealogy\Gedcom\Gedcom5ResultPrinter';
 
-$wgAutoloadClasses['SemanticGenealogyException'] = __DIR__ . '/SemanticGenealogyException.php';
+$wgSpecialPages['FamilyTree'] = 'SemanticGenealogy\SpecialFamilyTree';
+$wgSpecialPages['ImportGenealogyPages'] = 'SemanticGenealogy\SpecialImportPages';
 
-$wgAutoloadClasses['GenealogicalFilePrinter'] = __DIR__ . '/GenealogicalFilePrinter.php';
-$wgAutoloadClasses['Gedcom5FilePrinter'] = __DIR__ . '/Gedcom5FilePrinter.php';
-$wgAutoloadClasses['Gedcom5ResultPrinter'] = __DIR__ . '/Gedcom5ResultPrinter.php';
-$smwgResultFormats['gedcom'] = 'Gedcom5ResultPrinter';
-$smwgResultFormats['gedcom5'] = 'Gedcom5ResultPrinter';
-
-$wgAutoloadClasses['Importer'] = __DIR__ . '/src/Importer.php';
-$wgAutoloadClasses['Sidebar'] = __DIR__ . '/src/Sidebar.php';
-$wgAutoloadClasses['SpecialFamilyTree'] = __DIR__ . '/SpecialFamilyTree.php';
-$wgAutoloadClasses['SpecialImportPages'] = __DIR__ . '/src/SpecialImportPages.php';
-$wgSpecialPages['FamilyTree'] = 'SpecialFamilyTree';
-$wgSpecialPages['ImportGenealogyPages'] = 'SpecialImportPages';
-
-$wgHooks['SkinBuildSidebar'][] = 'Sidebar::addGenealogySideBar';
+$wgHooks['SkinBuildSidebar'][] = 'SemanticGenealogy\Sidebar::addGenealogySideBar';
 
 $wgSGeneaSidebarAdd = true;
 $wgSGeneaSidebarPosition = 2;
+
+$autoloadFile = __DIR__.'/vendor/autoload.php';
+if ( file_exists( $autoloadFile ) ) {
+	require_once $autoloadFile;
+} else {
+	throw new Exception( "File $autoloadFile is missing. It is required to load all the SemanticGenealogy classes." );
+}
 
 $moduleTemplate = [
 	'localBasePath' => __DIR__,

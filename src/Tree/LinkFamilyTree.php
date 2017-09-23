@@ -1,5 +1,11 @@
 <?php
 
+namespace SemanticGenealogy\Tree;
+
+use SemanticGenealogy\Exception;
+use SemanticGenealogy\PersonPageValues;
+use SMWDIBlob;
+
 /**
  * LinkFamilyTree object
  *
@@ -132,7 +138,7 @@ class LinkFamilyTree extends FamilyTree {
 		$tree = $this->getLink();
 
 		if ( !$tree ) {
-			throw new SemanticGenealogyException(
+			throw new Exception(
 				wfMessage( 'semanticgenealogy-specialfamilytree-error-nolinkfound',
 				$this->personName, $this->personName2 )->text()
 			);

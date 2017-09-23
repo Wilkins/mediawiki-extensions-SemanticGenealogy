@@ -1,5 +1,10 @@
 <?php
 
+namespace SemanticGenealogy\Tree;
+
+use SemanticGenealogy\PersonPageValues;
+use SMWDIWikiPage;
+
 /**
  * FamilyTree object
  *

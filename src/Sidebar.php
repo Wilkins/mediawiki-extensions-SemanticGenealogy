@@ -1,5 +1,7 @@
 <?php
 
+namespace SemanticGenealogy;
+
 /**
  * Static methods to add the Genealogy sidebar
  *
@@ -38,7 +40,7 @@ class Sidebar {
 		// Decode and check the JSON content
 		$menuJson = json_decode( $menuText, true );
 		if ( is_null( $menuJson ) ) {
-			throw new SemanticGenealogyException( "The Genealogy:Menu seems to contain invalid JSON." );
+			throw new Exception( "The Genealogy:Menu seems to contain invalid JSON." );
 		}
 
 		$geneaSidebar = [];
