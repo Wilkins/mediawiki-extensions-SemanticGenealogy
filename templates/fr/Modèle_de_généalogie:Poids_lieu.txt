@@ -1,0 +1,22 @@
+<includeonly>{{#expr: 1000*1.6^({{{1}}}) round 0 }}</includeonly><noinclude>
+
+
+== Exemple ==
+<pre>{{Modèle de généalogie:Poids_lieu|6}}</pre>
+<pre>{{Modèle de généalogie:Poids_lieu|5}}</pre>
+<pre>{{Modèle de généalogie:Poids_lieu|4}}</pre>
+<pre>{{Modèle de généalogie:Poids_lieu|3}}</pre>
+<pre>{{Modèle de généalogie:Poids_lieu|2}}</pre>
+<pre>{{Modèle de généalogie:Poids_lieu|1}}</pre>
+
+== Rendu ==
+* {{Modèle de généalogie:Poids_lieu|6}}
+* {{Modèle de généalogie:Poids_lieu|5}}
+* {{Modèle de généalogie:Poids_lieu|4}}
+* {{Modèle de généalogie:Poids_lieu|3}}
+* {{Modèle de généalogie:Poids_lieu|2}}
+* {{Modèle de généalogie:Poids_lieu|1}}
+
+
+[[Catégorie:Semantic Genealogy]]
+</noinclude>

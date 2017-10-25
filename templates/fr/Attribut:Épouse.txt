@@ -1,0 +1,2 @@
+{{#default_form:Personne}}
+[[Catégorie:Semantic Genealogy]]

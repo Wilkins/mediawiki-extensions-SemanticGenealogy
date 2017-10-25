@@ -1,0 +1,29 @@
+<includeonly>
+{{#vardefine:époux|{{#show:{{{1}}} | ?époux | link=none}}}}
+{{#vardefine:épouse|{{#show:{{{1}}} | ?épouse | link=none}}}}
+Acte du [[{{{1}}}]].
+[[montre::{{#var:époux}}|]]
+[[montre::{{#var:épouse}}|]]
+
+[[Catégorie:Acte de mariage|{{#show:{{#var:époux}} |?nom |link=none}}]]
+
+
+[[Catégorie:Famille {{#show:{{#var:époux}} |?nom |link=none}}]]
+{{#if:{{#show:{{#var:épouse}} |?jeunefille |link=none|}}|
+[[Catégorie:Famille {{#show:{{#var:épouse}} |?jeunefille |link=none}}]]
+|
+[[Catégorie:Famille {{#show:{{#var:épouse}} |?nom |link=none}}]]
+}}
+
+
+</includeonly><noinclude>
+== Exemple ==
+<pre>
+{{Acte_mariage|Mariage de Louis Dupont et Caroline Dupont}}
+</pre>
+== Rendu ==
+{{Acte_mariage|Mariage de Louis Dupont et Caroline Dupont}}
+
+
+[[Catégorie:Modèle]]
+</noinclude>

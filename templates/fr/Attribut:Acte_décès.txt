@@ -1,0 +1,2 @@
+[[Has type::Boolean]]
+[[Catégorie:Semantic Genealogy]]

@@ -1,4 +1,5 @@
 
+
 Bugs
 ----
 Gedcom broken ?
@@ -15,9 +16,9 @@ Ideas
 Templates
 ---------
 - delete get.php
-- add genealogy properties infos
-- overwrite y/n
-- require semanticForms
+- lien de la fiche personne doit être vers le fomulaire que si le lien n'existe pas
+- lien "mariée avec" doit être vers le formulaire
+- lien des personnes de l'arbre doit être vers le formulaire si la page n'existe pas
 
 Decorators
 ----------

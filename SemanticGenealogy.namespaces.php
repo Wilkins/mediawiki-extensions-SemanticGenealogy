@@ -1,4 +1,5 @@
 <?php
+/*
 $namespaceNames = [];
 
 // For wikis without Semantic Genealogy installed.
@@ -20,7 +21,8 @@ $namespaceNames['en'] = [
 	NS_SGENEALOGY_FORM => 'Genealogy_form',
 	NS_SGENEALOGY_FORM_TALK => 'Genealogy_form_talk',
 ];
-
+ */
+/*
 $namespaceNames['fr'] = [
 	NS_SGENEALOGY => 'Généalogie',
 	NS_SGENEALOGY_TALK => 'Discussion_généalogie',
@@ -29,15 +31,18 @@ $namespaceNames['fr'] = [
 	NS_SGENEALOGY_FORM => 'Formulaire_de_généalogie',
 	NS_SGENEALOGY_FORM_TALK => 'Discussion_formulaire_de_généalogie',
 ];
+ */
 
+/*
 // Register the namespaces id
 // @see https://www.mediawiki.org/wiki/Manual:Using_custom_namespaces#Creating_a_custom_namespace
 foreach ( $namespaceNames['en'] as $nsId => $nsName ) {
 	$wgExtraNamespaces[$nsId] = $nsName;
 }
+*/
 
 # print_r( $wgNamespaceAliases );
 
-SemanticGenealogy\SemanticGenealogy::setNamespaceAliases( $namespaceNames['fr'] );
+#SemanticGenealogy\SemanticGenealogy::setNamespaceAliases( $namespaceNames['en'] );
 
 # print_r( $wgNamespaceAliases );

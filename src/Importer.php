@@ -31,16 +31,17 @@ class Importer {
 	 */
 	public function importFile( $file ) {
 		global $IP;
-		// Use where if windows platform ?
+		// TODO Use "where" command if windows platform ?
 		$php = trim( shell_exec( "which php" ) );
 		$maintenanceScript = "$IP/maintenance/importTextFiles.php";
 		$config = "$IP/LocalSettings.php";
 		$text = "Update from SemanticGenealogy (v". SGENEA_VERSION.")";
 
 		$command = "$php $maintenanceScript --conf=$config "
-			." -s '$text' --overwrite --rc --use-timestamp $file";
-		// echo "$command\n";
-		// shell_exec( $command );
+			." -s '$text' --overwrite --rc \"$file\"";
+		//echo "$command\n";
+		$res = shell_exec( $command );
+		//echo $res;
 	}
 
 	/**
@@ -66,7 +67,9 @@ class Importer {
 			}
 
 			$displayName = preg_replace( "#.txt$#", "", $file->getBasename() );
-			$files[ $displayName ] = $file->getPathname();
+			$page = new Page( $displayName, $file->getPathname() );
+			$files[ $displayName ] = $page;
+			//file->getPathname();
 		}
 		asort( $files );
 		return $files;

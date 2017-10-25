@@ -1,0 +1,47 @@
+<includeonly>
+{{#if:{{{1|}}}|
+    {{#vardefine:conjoint|{{{1}}}}}
+|
+    {{#vardefine:conjoint|{{#show:{{PAGENAME}} | ?conjoint | link=none}}}}
+}}<!--
+-->{{#if:{{#var:conjoint}} |
+    {{#ifeq:{{#show:{{PAGENAME}} | ?sexe | link=none}}|M|
+        {{#vardefine:époux|{{PAGENAME}}}}
+        {{#vardefine:épouse|{{#var:conjoint}}}}
+        {{#vardefine:mariage_tag|Marié}}
+    |
+        {{#vardefine:époux|{{#var:conjoint}}}}
+        {{#vardefine:épouse|{{PAGENAME}}}}
+        {{#vardefine:mariage_tag|Mariée}}
+    }}<!--
+ -->{{#vardefine:page_mariage|Mariage de {{#var:époux}} et {{#var:épouse}}}}<!--
+ -->{{#ifexist:{{#var:page_mariage}}|<!--
+ -->    [[{{#var:page_mariage}}|{{#var:mariage_tag}}]]<!--
+ -->|<!--
+ -->    {{#formlink:form=Mariage|link text={{#var:mariage_tag}}|target={{#var:page_mariage}} }}<!--
+ -->}} <!--
+ -->{{#if:{{#show:{{#var:page_mariage}} | ?date_mariage | link=none}}|le {{#show:{{#var:page_mariage}} | ?date_mariage | link=none}} }}<!--
+ -->{{#if:{{#show:{{#var:page_mariage}} | ?civil | link=none}}|à {{#show:{{#var:page_mariage}} | ?civil | link=none}} }}<!--
+ -->avec <!--
+ -->{{#ifexist:{{#var:conjoint}}|<!--
+ -->    [[{{#var:conjoint}}]]<!--
+ -->|<!--
+ -->    {{#formlink:form=Personne|link text={{#var:conjoint}}|target={{#var:conjoint}} }}<!--
+ -->}}
+    {{#ask:[[père::{{#var:époux}}]] [[mère::{{#var:épouse}}]]
+     |?date_naissance=né(e) le
+     |format=ul 
+     |sort=année_naissance
+    }}
+}}
+</includeonly><noinclude>
+
+== Usage ==
+<pre>{{Modèle_de_généalogie:Famille_mariage}}</pre>
+
+== Rendu ==
+{{Modèle_de_généalogie:Famille_mariage}}
+
+[[Catégorie:Semantic_Genealogy]]
+</noinclude>
+

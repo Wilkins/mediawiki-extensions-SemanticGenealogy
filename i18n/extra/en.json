@@ -1,0 +1,28 @@
+{
+    "@metadata": {
+        "authors": []
+    },
+    "fallbackLanguage": "en",
+    "namespaces": {
+        "NS_SGENEALOGY": "Genealogy",
+        "NS_SGENEALOGY_TALK": "Genealogy_talk",
+        "NS_SGENEALOGY_TEMPLATE": "Genealogy_template",
+        "NS_SGENEALOGY_TEMPLATE_TALK": "Genealogy_template_talk",
+        "NS_SGENEALOGY_FORM": "Genealogy_form",
+        "NS_SGENEALOGY_FORM_TALK": "Genealogy_form_talk",
+        "NS_CATEGORY": "Category",
+        "NS_FORM": "Form",
+        "SMW_NS_PROPERTY": "Property"
+    },
+    "namespaceAliases": {
+        "Genealogy": "NS_SGENEALOGY",
+        "Genealogy_talk": "NS_SGENEALOGY_TALK",
+        "Genealogy_template": "NS_SGENEALOGY_TEMPLATE",
+        "Genealogy_template_talk": "NS_SGENEALOGY_TEMPLATE_TALK",
+        "Genealogy_form": "NS_SGENEALOGY_FORM",
+        "Genealogy_form_talk": "NS_SGENEALOGY_FORM_TALK",
+        "Category": "NS_CATEGORY",
+        "Form": "NS_FORM",
+        "Property": "SMW_NS_PROPERTY"
+    }
+}

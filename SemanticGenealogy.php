@@ -44,7 +44,7 @@ if ( version_compare( SMW_VERSION, '1.7.0 alpha', '<' ) ) {
 
 // Beware, SG_VERSION conflicts with SemanticGlossary
 if ( !defined( 'SGENEA_VERSION' ) ) {
-	define( 'SGENEA_VERSION', '0.3.0' );
+	define( 'SGENEA_VERSION', '0.3.10' );
 }
 
 $wgExtensionCredits['semantic'][] = [
@@ -76,9 +76,19 @@ $wgGenealogicalProperties = [
 ];
 
 $wgMessagesDirs['SemanticGenealogy'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['SemanticGenealogy'] =  __DIR__ . '/SemanticGenealogy.i18n.php';
+#$wgExtensionMessagesFiles['SemanticGenealogy'] =  __DIR__ . '/SemanticGenealogy.i18n.php';
 $wgExtensionMessagesFiles['SemanticGenealogyAlias'] = __DIR__ . '/SemanticGenealogy.alias.php';
-$wgExtensionMessagesFiles['SemanticGenealogyNamespaces'] = __DIR__ . '/SemanticGenealogy.namespaces.php';
+#$wgExtensionMessagesFiles['SemanticGenealogyNamespaces'] = __DIR__ . '/SemanticGenealogy.namespaces.php';
+#require_once __DIR__ . '/SemanticGenealogy.namespaces.php';
+
+/*
+// Register the namespaces id
+// @see https://www.mediawiki.org/wiki/Manual:Using_custom_namespaces#Creating_a_custom_namespace
+foreach ( $namespaceNames['en'] as $nsId => $nsName ) {
+	$wgExtraNamespaces[$nsId] = $nsName;
+}
+ */
+
 
 $smwgResultFormats['gedcom'] = 'SemanticGenealogy\Gedcom\Gedcom5ResultPrinter';
 $smwgResultFormats['gedcom5'] = 'SemanticGenealogy\Gedcom\Gedcom5ResultPrinter';
@@ -87,9 +97,12 @@ $wgSpecialPages['FamilyTree'] = 'SemanticGenealogy\SpecialFamilyTree';
 $wgSpecialPages['ImportGenealogyPages'] = 'SemanticGenealogy\SpecialImportPages';
 
 $wgHooks['SkinBuildSidebar'][] = 'SemanticGenealogy\Sidebar::addGenealogySideBar';
+#$wgHooks['CanonicalNamespaces'][] = 'SemanticGenealogy\SemanticGenealogy::onCanonicalNamespaces';
 
 $wgSGeneaSidebarAdd = true;
 $wgSGeneaSidebarPosition = 2;
+
+$sgeneawgExtraneousLanguageFileDir = __DIR__.'/i18n/extra';
 
 $autoloadFile = __DIR__.'/vendor/autoload.php';
 if ( file_exists( $autoloadFile ) ) {
@@ -97,6 +110,24 @@ if ( file_exists( $autoloadFile ) ) {
 } else {
 	throw new Exception( "File $autoloadFile is missing. It is required to load all the SemanticGenealogy classes." );
 }
+
+/*
+$semanticAutoloadFile = __DIR__.'/../SemanticMediawiki/vendor/autoload.php';
+if ( file_exists( $semanticAutoloadFile ) ) {
+	require_once $semanticAutoloadFile;
+} else {
+	throw new Exception( "File $semanticAutoloadFile is missing. It is required to load all the SemanticMediawiki classes." );
+}
+ */
+if ( !defined( 'SMW_NS_PROPERTY' ) ) {
+	define( 'SMW_NS_PROPERTY', 102 );
+}
+if ( !defined( 'NS_FORM' ) ) {
+	define( 'NS_FORM', 106 );
+}
+
+$wgLanguageCode = 'fr';
+SemanticGenealogy\NamespaceManager::initCustomNamespace( $GLOBALS, 'fr' );
 
 $moduleTemplate = [
 	'localBasePath' => __DIR__,
@@ -114,3 +145,24 @@ $wgResourceModules['ext.smg.specialfamilytree'] = $moduleTemplate + [
 	'messages' => [
 	]
 ];
+
+$wgHooks['ParserBeforeTidy'][] = 'wgAddSgeneCSS';
+
+function wgAddSgeneCSS( &$parser, &$text ) {
+
+  global $addSgeneCSSScripts;
+  if ( $addSgeneCSSScripts === true ) {
+	return true;
+  }
+
+  /*
+  $parser->mOutput->addHeadItem(
+	'<link rel="stylesheet" href="/load.php?debug=false&amp;lang=en&amp;modules=ext.smg.specialfamilytree&amp;only=styles&amp;skin=vector"/>'
+  );
+  */
+
+  $addSgeneCSSScripts = true;
+
+  return true;
+
+}

@@ -20,5 +20,5 @@ $specialPageAliases['en'] = [
 /* French (Français) */
 $specialPageAliases['fr'] = [
 	'FamilyTree' => [ 'ArbreGénéalogique' ],
-	'ImportGenealogyPages' => [ 'ImportePagesGénélogiques' ],
+	'ImportGenealogyPages' => [ 'ImportePagesGénéalogiques' ],
 ];

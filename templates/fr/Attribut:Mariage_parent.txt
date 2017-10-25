@@ -1,0 +1,2 @@
+{{#default_form:Mariage}}
+[[Catégorie:Semantic Genealogy]]

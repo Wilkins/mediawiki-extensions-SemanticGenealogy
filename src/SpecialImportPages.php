@@ -5,6 +5,7 @@ namespace SemanticGenealogy;
 use Xml;
 use Html;
 use Status;
+use SemanticGenealogy\Page;
 
 /**
  * Special page that show a family tree
@@ -16,11 +17,6 @@ use Status;
  * @author  Thibault Taillandier <thibault@taillandier.name>
  */
 class SpecialImportPages extends \SpecialPage {
-
-	const PAGE_NEW = "NEW";
-	const PAGE_UNKNOWN = "UNKNOWN";
-	const PAGE_OK = "OK";
-	const PAGE_UPTODATE = "UPTODATE";
 
 	/**
 	 * @constructor
@@ -41,8 +37,22 @@ class SpecialImportPages extends \SpecialPage {
 	 */
 	public function getLang() {
 		global $wgLang;
+		// FIXME Voir aussi les namespaces
 		return 'fr';
 		return $wgLang->getCode();
+	}
+
+	/**
+	 * Redirects to special page
+	 *
+	 * @return void
+	 */
+	public function redirect() {
+		#print_r($_SERVER);
+		$url = $_SERVER['REQUEST_URI'];
+		$url = preg_replace( '#&action=import#', '', $url);
+		#echo "Location: $url";
+		header( "Location: $url" );
 	}
 
 	/**
@@ -70,17 +80,21 @@ class SpecialImportPages extends \SpecialPage {
 		try {
 			$importer = new Importer( $lang );
 			$files = $importer->listFiles();
-			foreach ( $files as $displayName => $file ) {
+			foreach ( $files as $displayName => $page ) {
 				$wgOut->addWikiText( "Import de $displayName" );
-				$importer->importFile( $file );
+				$page->checkVersion();
+				if ( $page->needsUpdate() && $page->hasChanged() ) {
+					$importer->importFile( $page->path );
+				}
 			}
 		} catch ( Exception $e ) {
 			$wgOut->addWikiText( '<span class="error">' .  $e->getMessage() . '</span>' );
 			return Status::newFatal( $e->getMessage() );
-		} catch ( Exception $e ) {
+		} catch ( \Exception $e ) {
 			$wgOut->addWikiText( '<span class="error">' .  $e->getMessage() . '</span>' );
 			return Status::newFatal( $e->getMessage() );
 		}
+		$this->redirect();
 		return Status::newGood();
 	}
 
@@ -105,34 +119,21 @@ class SpecialImportPages extends \SpecialPage {
 		$files = $importer->listFiles();
 		$output->addHTML( '<table id="semanticgenealogy-import-form"><tr>' );
 		$output->addHTML( '<th>' . $this->msg( 'semanticgenealogy-specialimportpages-column-pagename' )->text() . '</th>' );
-		$output->addHTML( '<th>' . $this->msg( 'semanticgenealogy-specialimportpages-column-version' )->text() . '</th>' );
+		$output->addHTML( '<th>' . $this->msg( 'semanticgenealogy-specialimportpages-column-pageversion' )->text() . '</th>' );
+		$output->addHTML( '<th>' . $this->msg( 'semanticgenealogy-specialimportpages-column-packageversion' )->text() . '</th>' );
 		$output->addHTML( '<th>' . $this->msg( 'semanticgenealogy-specialimportpages-column-status' )->text() . '</th>' );
 		$output->addHTML( '</tr>' );
 
-		foreach ( $files as $displayName => $file ) {
-			$status = null;
-			$class = null;
-			$version = $this->getVersionFromPagename( $displayName );
+		foreach ( $files as $displayName => $page ) {
 
-			if ( in_array( $version, [ self::PAGE_NEW, self::PAGE_UNKNOWN ] ) ) {
-				$lversion = strtolower( $version );
-				$version = '';
-			} else {
-				echo SGENEA_VERSION;
-				if ( $version == SGENEA_VERSION ) {
-					$lversion = strtolower( self::PAGE_UPTODATE );
-				} else {
-					$lversion = strtolower( self::PAGE_OK );
-				}
-			}
-			$status = $this->msg( 'semanticgenealogy-specialimportpages-status-'.$lversion )->text();
-			$class = "status-" . $lversion;
-			$output->addHTML( '<tr class="' . $class . '"><td>' );
-			$isCat = preg_match( '/^Category:/', $displayName );
-			$output->addWikiText( '[[' . ( $isCat ? ':' : '' ) . $displayName . ']]' );
+			$status = $this->msg( 'semanticgenealogy-specialimportpages-status-'.$page->getVersionTag() )->text();
+			$output->addHTML( '<tr class="status-' . $page->getVersionTag() . '"><td>' );
+			$output->addWikiText( '[[' . ( $page->isCategory() ? ':' : '' ) . $displayName . ']]' );
 			$output->addHTML( '</td>' );
 
-			$output->addHTML( '<td>' .SGENEA_VERSION . ' - '. $version . ' - '. $lversion.'</td><td>' . $status . '</td></tr>' );
+			$output->addHTML( '<td>' . SGENEA_VERSION . '</td>' );
+			$output->addHTML( '<td>' . $page->getVersion() . '</td>' );
+			$output->addHTML( '<td>' . $status . '</td></tr>' );
 		}
 		$output->addHTML( '</table>' );
 
@@ -147,70 +148,6 @@ class SpecialImportPages extends \SpecialPage {
 			Xml::closeElement( 'fieldset' ) .
 			Xml::closeElement( 'form' )
 		);
-	}
-
-	/**
-	 * Get version from the pagename
-	 *
-	 * @param string $fullPageName the fullpagename
-	 *
-	 * @return string the version
-	 */
-	public function getVersionFromPagename( $fullPageName ) {
-		$comment = $this->getCommentFromPagename( $fullPageName );
-
-		if ( $comment === -1 ) {
-			return self::PAGE_NEW;
-		} elseif ( preg_match( "#\(v(\d+\.\d+\.\d+)\)#", $comment ) ) {
-			// if ( preg_match( "#\(v" . SGENEA_VERSION . "\)#", $comment ) ) {
-			// return self::PAGE_UPTODATE;
-			// } else {
-			return preg_replace( "#.*\(v(\d+\.\d+\.\d+)\).*#", "$1", $comment );
-			// }
-		}
-		return self::PAGE_UNKNOWN;
-	}
-
-	/**
-	 * Get comment from the page name
-	 *
-	 * @param string $fullPageName the fullpagename
-	 *
-	 * @return string the comment
-	 */
-	public function getCommentFromPagename( $fullPageName ) {
-		list( $namespace, $pagename ) = explode( ':', $fullPageName );
-
-		$nsId = SemanticGenealogy::getNamespaceFromName( $namespace );
-		return $this->getComment( $nsId, $pagename );
-	}
-
-	/**
-	 * @see https://www.mediawiki.org/wiki/Manual:Database_access
-	 */
-	public function getComment( $namespace, $pagename ) {
-		$dbr = wfGetDb( DB_MASTER );
-		$res = $dbr->select(
-			[ 'revision', 'page' ],
-			[ 'rev_comment' ],
-				"page_title = '$pagename' and page_namespace=$namespace",
-				__METHOD__,
-				[],
-				[
-					'page' => [
-						'INNER JOIN',
-						   [ 'rev_id=page_latest' ]
-					   ]
-				]
-		);
-
-		if ( $res->result->num_rows >= 0 ) {
-			foreach ( $res->result as $row ) {
-				return $row['rev_comment'];
-			}
-		}
-		return -1;
-		// throw new Exception( "" );
 	}
 
 	/**

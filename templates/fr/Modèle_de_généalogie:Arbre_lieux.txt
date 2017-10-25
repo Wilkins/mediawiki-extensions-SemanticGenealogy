@@ -1,0 +1,31 @@
+<noinclude>
+
+Liste les lieux de naissance des ascendants de {{{1}}}
+
+== Exemple ==
+<pre>
+{{Modèle de généalogie:Arbre lieux|Bertrand Dupont}}
+</pre>
+
+
+== Rendu ==
+
+{{Modèle de généalogie:Arbre lieux|Bertrand Dupont}}
+
+
+[[Catégorie:Semantic Genealogy]]
+
+</noinclude><includeonly><!--
+
+
+-->{{#if:{{{1}}}|<!--
+    -->{{#replace:<!--
+      -->{{#replace:<!--
+        -->{{#ask:[[Endroit::+]][[Has fullpagename::{{{1}}}]][[Coords::+]] |?Mapdata_circle= |mainlabel=-  |format=list |sep=; }}<!--
+      -->|RADIUS|{{Modèle de généalogie:Poids_lieu|{{{2|7}}}}}}}<!--
+    -->|TITLE|[[{{{1}}}]]}};<!--
+    -->{{#ifexpr:{{{2|7}}} > 1|<!--
+      -->{{#vardefine:père|{{Modèle de généalogie:Arbre lieux|{{#show:{{{1}}} | ?père | link=none}}|{{#expr:{{{2|7}}}-1}}}}}}{{#if:{{#var:père}}|{{#var:père}};}}<!--
+      -->{{#vardefine:mère|{{Modèle de généalogie:Arbre lieux|{{#show:{{{1}}} | ?mère | link=none}}|{{#expr:{{{2|7}}}-1}}}}}}{{#if:{{#var:mère}}|{{#var:mère}};}}<!--
+    -->|}}<!--
+-->}}</includeonly>

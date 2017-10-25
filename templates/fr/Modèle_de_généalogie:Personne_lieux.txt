@@ -1,0 +1,42 @@
+<includeonly>{{#vardefine:lieux|{{#rreplace:{{Modèle de généalogie:Arbre_lieux|{{{1}}}}}|;+|;}}}}
+<!--
+
+{{#vardefine:lieux|{{Modèle de généalogie:Arbre_lieux|Géraldine Dupont}}}}
+-->
+{{#vardefine:lieux|{{#rreplace:{{#var:lieux}}|\n|}}}}
+{{#vardefine:lieux|{{#rreplace:{{#var:lieux}}|\n|}}}}
+{{#vardefine:lieux|{{#rreplace:{{#var:lieux}}|;+|;}}}}
+{{#vardefine:lieux|{{#rreplace:{{#var:lieux}}|;$|}}}}
+{{#vardefine:lieux|{{#rreplace:{{#var:lieux}}|^;|}}}}
+{{#vardefine:lieux|{{#rreplace:{{#var:lieux}}|^([^;]+)#0022FF~ ~ ~#0022FF~0.05;|$1#FF5B5B~ ~ ~#FF5B5B~0.05;}}}}
+<!--
+{{#var:lieux}}
+-->
+{{#display_map:
+|circles={{#var:lieux}}
+|center=48.853,2.35
+|zoom=6
+|height=600
+|width=1200
+|service=openlayers
+}}
+
+
+</includeonly><noinclude>
+
+
+== Exemple ==
+<pre>
+{{Modèle de généalogie:Personne_lieux|Gilles Dupont}}
+</pre>
+
+== Rendu ==
+{{Modèle de généalogie:Personne_lieux|Gilles Dupont}}
+
+
+
+
+
+[[Catégorie:Semantic Genealogy]]
+
+</noinclude>

@@ -1,0 +1,51 @@
+<noinclude>
+
+</noinclude>
+<includeonly><!--
+-->{{#vardefine:père|{{#show:{{PAGENAME}} | ?père | link=none}}}}<!--
+-->{{#vardefine:mère|{{#show:{{PAGENAME}} | ?mère | link=none}}}}<!--
+-->{{#vardefine:conjoint|{{#show:{{PAGENAME}} | ?conjoint | link=none}}}}<!--
+-->{{#vardefine:rev|{{#show:{{PAGENAME}} | ?Revision_ID | link=none}}}}<!--
+-->{{#if:{{#var:mère}}|{{#if:{{#var:père}}|
+ {{#ifexpr:{{#ask:[[père::{{#var:père}}]] [[mère::{{#var:mère}}]] [[Revision ID::!{{#var:rev}}]] |format=count }}|
+
+; Frères et sœurs
+{{#ask:[[père::{{#var:père}}]] [[mère::{{#var:mère}}]] [[Revision ID::!{{#var:rev}}]]
+ |?date_naissance=né(e) le
+ |format=ul 
+ |sort=année_naissance
+}}
+}}
+
+{{#ifexpr:{{#ask:[[père::{{#var:père}}]] [[mère::!{{#var:mère}}]] [[Revision ID::!{{#var:rev}}]] OR
+                 [[père::!{{#var:père}}]] [[mère::{{#var:mère}}]] [[Revision ID::!{{#var:rev}}]] |format=count }}|
+
+; Demi-frères et demi-sœurs
+
+{{#ask:[[père::{{#var:père}}]] [[mère::!{{#var:mère}}]] [[Revision ID::!{{#var:rev}}]] OR
+       [[père::!{{#var:père}}]] [[mère::{{#var:mère}}]] [[Revision ID::!{{#var:rev}}]]
+ |?date_naissance=né(e) le
+ |format=ul 
+ |sort=année_naissance
+ }}
+}}
+
+}}}}
+
+
+{{#if:{{#show:{{PAGENAME}} | ?conjoint | link=none}}|
+
+; Vie de couple
+{{Modèle de généalogie:Famille_mariage}}
+
+}}
+</includeonly><noinclude>
+
+== Usage ==
+<pre>{{Modèle de généalogie:Famille}}</pre>
+
+== Rendu ==
+{{Modèle de généalogie:Famille}}
+
+[[Catégorie:Semantic Genealogy]]
+</noinclude>

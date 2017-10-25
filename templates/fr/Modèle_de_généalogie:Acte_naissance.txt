@@ -1,0 +1,18 @@
+<includeonly>
+{{#vardefine:nom|{{#show:{{{1}}} | ?nom | link=none}}}}
+Acte de naissance de [[{{{1}}}]].
+[[montre::{{{1}}}|]]
+
+[[Catégorie:Famille {{#var:nom}}]]
+[[Catégorie:Acte de naissance|{{#var:nom}}]]
+</includeonly><noinclude>
+== Exemple ==
+<pre>
+{{Acte_naissance|Charles Dupont}}
+</pre>
+== Rendu ==
+{{Acte_naissance|Charles Dupont}}
+
+
+[[Catégorie:Modèle]]
+</noinclude>

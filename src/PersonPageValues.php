@@ -69,10 +69,6 @@ class PersonPageValues {
 		}
 	}
 
-	public function getPage() {
-		return $this->page;
-	}
-
 	/**
 	 * Get the page of the person
 	 *

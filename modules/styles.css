@@ -337,13 +337,53 @@
     border: 1px solid #ccc;
     padding: 3px;
     line-height: 1; }
-  #semanticgenealogy-import-form tr.status-new td:nth-of-type(3) {
-    background-color: #aaaaff; }
-  #semanticgenealogy-import-form tr.status-unknown td:nth-of-type(3) {
-    background-color: #ffaaaa; }
-  #semanticgenealogy-import-form tr.status-uptodate td:nth-of-type(3) {
-    background-color: #aaffaa; }
-  #semanticgenealogy-import-form tr.status-update td:nth-of-type(3) {
-    background-color: #ffffaa; }
+  #semanticgenealogy-import-form th {
+    background-color: #888888;
+    color: white; }
+  #semanticgenealogy-import-form tr td:nth-of-type(2),
+  #semanticgenealogy-import-form tr td:nth-of-type(3) {
+    text-align: center; }
+  #semanticgenealogy-import-form tr.status-new td:nth-of-type(3),
+  #semanticgenealogy-import-form tr.status-new td:nth-of-type(4) {
+    color: white;
+    font-weight: bold;
+    background-color: #2980b9; }
+  #semanticgenealogy-import-form tr.status-unknown td:nth-of-type(3),
+  #semanticgenealogy-import-form tr.status-unknown td:nth-of-type(4) {
+    color: white;
+    font-weight: bold;
+    background-color: #c0392b; }
+  #semanticgenealogy-import-form tr.status-uptodate td:nth-of-type(3),
+  #semanticgenealogy-import-form tr.status-uptodate td:nth-of-type(4) {
+    color: white;
+    font-weight: bold;
+    background-color: #27ae60; }
+  #semanticgenealogy-import-form tr.status-unchanged td:nth-of-type(3),
+  #semanticgenealogy-import-form tr.status-unchanged td:nth-of-type(4) {
+    color: white;
+    font-weight: bold;
+    background-color: #27ae60; }
+  #semanticgenealogy-import-form tr.status-willupdate td:nth-of-type(3),
+  #semanticgenealogy-import-form tr.status-willupdate td:nth-of-type(4) {
+    color: white;
+    font-weight: bold;
+    background-color: #2980b9; }
   #semanticgenealogy-import-form p {
     margin: 0; }
+
+.sosa {
+  background-color: #156bb4;
+  border-radius: 40px;
+  color: white;
+  display: block;
+  float: right;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 5px; }
+
+.icon-plus {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH4QoEEgkYCRK5cAAABCVJREFUSMfFVV1PnEUUfmber92FZbdQtgsEUEkT28SUkIZoshUB9cJeiHLTIKZo9MIfUBIv8A+Y2qTGi8YrSapRvGhDkFpDsAq1sts0+EENja0fLZRdYHf52t33nTnjxe6+sECVxhgnefPOZM6cZ86c5zkH+I8H24tR33hXMEv6YcFkWEqAiO6zDTZz4aULqX8FcHKyt5trfMDgen2wzO/1WJYJAJlMTiyllh07J+KO7bzz6Qufn38ogJ7JnkbLMIarygJN9bW1Po9pgTMGxjg4Y+CMgzEG23Yw88usXIgn4nrW88zgy4Oz/wjQd+2VJ3WmX3ys8ZFQuddb4nQ3EM44UqtpXP3+erZBNb7+7vHTnzwQoGeyp9FnmFNNDQ0hwzB3OOJ823rLfjaXw/iVCfsof+rF/uP9l4o++VYAj2EM14QPhMAZJAkIkhAkIEmixWzFMbMTEaMdzdpRCCkgpISQAlJKmKaJ1tYW84Yz9VksFgsUferFSe+13u4yj6/JMDQIkoXbKVDhf9A4hGotBABYlAlEc9+BmHLtuCIE/BUI7Pf7RxdGzgE4URKByflAedDrEyR33F6QAJRyI1VQ2G6XX0s8fuggZrI/dY2NjdW5AH3jfUHO9Hql4IYupSwczh9UJVRQJXuSpAtkmiYcnrPSKt3tPpGwxGGP5vVIklCMgZhCR6AdT/iaCyxgqNSqXPf7eBVOVrzpUmTWvolo7iqIcXCmENwXxPz6XAeAszoAKKVqFSNLkCiwg+DnFQgbNbuKR2c6qvUD7vou+xNCynzOOMHw6lhLrzS6ETCQIqUKyc0njpTac71RigpnCVxxSCIwrlmbTyTUPAkSUkqNOIEzjqRYxpx9D6zwDtVGCDrLk04ogSWRcKWUFmlIki7jMqtZBHjFmgsgbfmzwx1HI25xxaCYwujiCL5cGnXV21//NmrMOgBAQsTx/v3Tu4qOGCGZTKG2su6Wy6Kh54bSihB3hLONng9gkUJBZLLETpDEemYDHulBwApGS3TAJAbEihSixPEmz9U2HRT1kaf0pqpv37yDiL8tqZQaKQEY7Dj/scoi7tj2DvEIkoitRPFN6mt8m7qC66uxkr3iPJlKQaQIR8qbB9va2m6VlAoACKCsfXk5Pa0qHY+ma4VSkE/6cOLijgJXpDQxDsfO4s4Pv+GN0FvTRHRm12L3wbMfzjbQo6/JhLSdrLMl9IKyi9+226+kV/Hrjds4UdV7L+wLn+rs7Pz9bxvO2cvvPT8lokO2mavgQQ6uabv2A3IEkndT4Ks6eva/Oh32hU9FIpGv9tQyY7FY4PLipXMz9o9d68hY3OSQOoErQDkK9poNn/LhWNnTySP+lo80TTsTiUT+eOimPzExUZvILHTPyfnOjNxo5GBWOa9Yq7XqZv2aPwrgi2JC/5fxF/sJibWdecRzAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTEwLTA0VDE4OjA5OjI0KzAwOjAwI4Us8QAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0xMC0wNFQxODowOToyNCswMDowMFLYlE0AAAAASUVORK5CYII=);
+  display: inline-block;
+  height: 24px;
+  vertical-align: middle;
+  width: 24px; }

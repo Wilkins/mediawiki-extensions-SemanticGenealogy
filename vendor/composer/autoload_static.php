@@ -11,6 +11,10 @@ class ComposerStaticInit166962f41e5f461e15c0b379e8663809
         array (
             'SemanticGenealogy\\' => 18,
         ),
+        'O' => 
+        array (
+            'Onoi\\Cache\\' => 11,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -18,20 +22,38 @@ class ComposerStaticInit166962f41e5f461e15c0b379e8663809
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'Onoi\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/onoi/cache/src',
+        ),
     );
 
     public static $classMap = array (
+        'Onoi\\Cache\\Cache' => __DIR__ . '/..' . '/onoi/cache/src/Cache.php',
+        'Onoi\\Cache\\CacheFactory' => __DIR__ . '/..' . '/onoi/cache/src/CacheFactory.php',
+        'Onoi\\Cache\\CompositeCache' => __DIR__ . '/..' . '/onoi/cache/src/CompositeCache.php',
+        'Onoi\\Cache\\DoctrineCache' => __DIR__ . '/..' . '/onoi/cache/src/DoctrineCache.php',
+        'Onoi\\Cache\\FixedInMemoryLruCache' => __DIR__ . '/..' . '/onoi/cache/src/FixedInMemoryLruCache.php',
+        'Onoi\\Cache\\MediaWikiCache' => __DIR__ . '/..' . '/onoi/cache/src/MediaWikiCache.php',
+        'Onoi\\Cache\\NullCache' => __DIR__ . '/..' . '/onoi/cache/src/NullCache.php',
+        'Onoi\\Cache\\ZendCache' => __DIR__ . '/..' . '/onoi/cache/src/ZendCache.php',
         'SemanticGenealogy\\Decorator\\BoxDecorator' => __DIR__ . '/../..' . '/src/Decorator/BoxDecorator.php',
         'SemanticGenealogy\\Decorator\\SimpleDecorator' => __DIR__ . '/../..' . '/src/Decorator/SimpleDecorator.php',
         'SemanticGenealogy\\Decorator\\TreeDecorator' => __DIR__ . '/../..' . '/src/Decorator/TreeDecorator.php',
         'SemanticGenealogy\\Decorator\\TreeDecoratorFactory' => __DIR__ . '/../..' . '/src/Decorator/TreeDecoratorFactory.php',
         'SemanticGenealogy\\Exception' => __DIR__ . '/../..' . '/src/Exception.php',
+        'SemanticGenealogy\\ExtraneousLanguage\\ExtraneousLanguage' => __DIR__ . '/../..' . '/src/ExtraneousLanguage/ExtraneousLanguage.php',
+        'SemanticGenealogy\\ExtraneousLanguage\\JsonLanguageContentsFileReader' => __DIR__ . '/../..' . '/src/ExtraneousLanguage/JsonLanguageContentsFileReader.php',
+        'SemanticGenealogy\\ExtraneousLanguage\\LanguageContents' => __DIR__ . '/../..' . '/src/ExtraneousLanguage/LanguageContents.php',
+        'SemanticGenealogy\\ExtraneousLanguage\\LanguageFallbackFinder' => __DIR__ . '/../..' . '/src/ExtraneousLanguage/LanguageFallbackFinder.php',
         'SemanticGenealogy\\Gedcom\\Gedcom5FilePrinter' => __DIR__ . '/../..' . '/src/Gedcom/Gedcom5FilePrinter.php',
         'SemanticGenealogy\\Gedcom\\Gedcom5ResultPrinter' => __DIR__ . '/../..' . '/src/Gedcom/Gedcom5ResultPrinter.php',
         'SemanticGenealogy\\Gedcom\\GenealogicalFilePrinter' => __DIR__ . '/../..' . '/src/Gedcom/GenealogicalFilePrinter.php',
         'SemanticGenealogy\\Importer' => __DIR__ . '/../..' . '/src/Importer.php',
+        'SemanticGenealogy\\NamespaceManager' => __DIR__ . '/../..' . '/src/NamespaceManager.php',
         'SemanticGenealogy\\PersonPageValues' => __DIR__ . '/../..' . '/src/PersonPageValues.php',
         'SemanticGenealogy\\SemanticGenealogy' => __DIR__ . '/../..' . '/src/SemanticGenealogy.php',
+        'SemanticGenealogy\\Sidebar' => __DIR__ . '/../..' . '/src/Sidebar.php',
         'SemanticGenealogy\\SpecialFamilyTree' => __DIR__ . '/../..' . '/src/SpecialFamilyTree.php',
         'SemanticGenealogy\\SpecialImportPages' => __DIR__ . '/../..' . '/src/SpecialImportPages.php',
         'SemanticGenealogy\\Tools' => __DIR__ . '/../..' . '/src/Tools.php',

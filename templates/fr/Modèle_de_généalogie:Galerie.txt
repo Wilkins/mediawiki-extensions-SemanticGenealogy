@@ -1,0 +1,16 @@
+<includeonly>
+{{#ask:[[montre::{{{1|{{PAGENAME}}}}}]] | format=gallery }}
+
+[{{SERVER}}/index.php?title=Special:Upload&wpDestFile=Photo%20de%20{{PAGENAMEE}}.jpg&wpUploadDescription=%5b%5bmontre%3a%3a{{PAGENAMEE}}%5d%5d%0d%0a%0d%0a%3d%3d%20Description%20%3d%3d%0d%0a%0d%0a%3d%3d%20Source%20%3d%3d%0d%0a%0d%0a%0d%0a <i class="icon-plus"></i>&nbsp;Ajouter une image]
+</includeonly><noinclude>
+
+== Exemple ==
+<pre>
+{{Modèle de généalogie:Galerie|Charles Dupont}}
+</pre>
+== Rendu ==
+{{Modèle de généalogie:Galerie|Charles Dupont}}
+
+[[Catégorie:Semantic Genealogy]]
+
+</noinclude>

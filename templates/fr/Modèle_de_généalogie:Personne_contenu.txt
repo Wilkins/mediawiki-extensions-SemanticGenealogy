@@ -1,0 +1,34 @@
+<includeonly>
+
+== Galerie ==
+{{Modèle de généalogie:Galerie|{{{1}}}}}
+
+== Ascendance ==
+{{Modèle de généalogie:Arbre|{{{1}}}}}
+
+== Carte d'origine ==
+{{Modèle de généalogie:Personne_lieux|{{{1}}}}}
+
+
+
+<!--
+== Descendance ==
+-->
+
+
+</includeonly><noinclude>
+
+== Usage ==
+<pre>
+{{Modèle de généalogie:Personne_contenu|Andrée Dupont}}
+</pre>
+
+
+
+== Rendu ==
+{{Modèle de généalogie:Personne_contenu|Andrée Dupont}}
+
+
+[[Catégorie:Semantic Genealogy]]
+
+</noinclude>

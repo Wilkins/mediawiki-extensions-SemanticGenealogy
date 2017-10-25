@@ -1,0 +1,145 @@
+<noinclude>
+
+== Exemple ==
+<pre>
+{{Modèle de généalogie:Arbre|Edouard Dupont}}
+</pre>
+
+
+== Rendu ==
+{{Modèle de généalogie:Arbre|Edouard Dupont}}
+
+[[Catégorie:Semantic Genealogy]]
+
+</noinclude>
+<includeonly>
+
+{{SemanticGenealogy\Special:FamilyTree|type=ancestors|gen=4|page=Alice Dupont|decorator=box|displayname=pagename}}
+
+{{#vardefine:depth|6}}
+{{#if:{{{1}}}|
+<table style="width: 100%">
+ <tr>
+  <td style="text-align:center; vertical-align:bottom; width: 50%">
+{{#vardefine:père|{{#show:{{{1}}} | ?père | link=none}}}}
+{{#if:{{#var:père}} |
+<!--
+-->{{#ifexpr:{{{2|{{#var:depth}}}}} <= 0|...|
+    {{Modèle de généalogie:Arbre|{{#var:père}}|{{#expr:{{{2|{{#var:depth}}}}}-1}} }}
+   }}
+  <table style="width: 100%" cellspacing="0">
+    <tr>
+     <td style="width: 48%; border-right: 1px solid black; height: 10px"></td>
+     <td style="width: 48%; border-bottom: 1px solid black"></td>
+     <td style="width: 30px"></td>
+    </tr>
+    <tr>
+     <td style="width: 50%; height: 10px"></td>
+     <td style="width: 50%"></td>
+     <td style="width: 30px; border-left: 1px solid black"></td>
+    </tr>
+   </table>
+  | }}
+  </td>
+  <td style="text-align:center; vertical-align:bottom; width: 50%">
+{{#vardefine:mère|{{#show:{{{1}}} | ?mère | link=none}}}}
+{{#if:{{#var:mère}} |
+<!--
+-->{{#ifexpr:{{{2|{{#var:depth}}}}} <= 0|...|
+     {{Modèle de généalogie:Arbre|{{#var:mère}}|{{#expr:{{{2|{{#var:depth}}}}}-1}} }}
+    }} 
+  <table style="width: 100%" cellspacing="0">
+    <tr>
+     <td style="width: 30px"></td>
+     <td style="width: 48%; border-bottom: 1px solid black"></td>
+     <td style="width: 48%; border-left: 1px solid black; height: 10px"></td>
+    </tr>
+    <tr>
+     <td style="width: 30px; border-right: 1px solid black"></td>
+     <td style="width: 50%"></td>
+     <td style="width: 50%; height: 10px"></td>
+    </tr>
+   </table>
+  | }}
+  </td>
+ </tr>
+{{#vardefine:père|{{#show:{{{1}}} | ?père | link=none}}}}
+{{#vardefine:mère|{{#show:{{{1}}} | ?mère | link=none}}}}
+{{#if:{{#var:père}} |
+ {{#if:{{#var:mère}} |
+ <tr>
+  <td colspan="2" style="text-align:center">
+<div style="width: 60px; height:25px; vertical-align: middle; border: 1px solid #666666; margin:auto; text-align: center">
+{{#vardefine:mariage_parent|{{#show:{{{1}}} | ?mariage_parent | link=none}}}}
+{{#ifexist:{{#var:mariage_parent}}|
+	{{#ifeq:{{#show:{{#var:mariage_parent}} | ?acte_mariage | link=none}}|vrai|
+		'''[[{{#var:mariage_parent}}|Mariage]]'''
+		|
+		[[{{#var:mariage_parent}}|Mariage]]
+	}}
+	|
+	{{#formlink:form=Mariage|link text=Mariage|target={{#var:mariage_parent}} }}
+}}
+</div>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="2" style="text-align:center">
+  <table style="width: 100%" cellspacing="0">
+    <tr>
+     <td style="width: 49%"></td>
+     <td style="width: 50%; border-left: 1px solid black; height: 10px"></td>
+    </tr>
+  </table>
+  </td>
+ </tr>
+ }}
+}}
+<!-- père+mère est non vide, alors ça veut dire au moins 1 parent. -->
+{{#if:{{#var:père}}{{#var:mère}}|
+<!-- Si père+mère égal mère alors père=vide donc 1 seul parent, donc pas de mariage -->
+{{#ifeq:{{#var:père}}{{#var:mère}}|{{#var:mère}}|
+ <tr>
+  <td colspan="2" style="text-align:center">
+  <table style="width: 100%" cellspacing="0">
+    <tr>
+     <td style="width: 49%"></td>
+     <td style="width: 50%; border-left: 1px solid black; height: 40px"></td>
+    </tr>
+  </table>
+  </td>
+ </tr>
+}}
+
+<!-- Si père+mère égal père alors mère=vide donc 1 seul parent, donc pas de mariage -->
+{{#ifeq:{{#var:père}}{{#var:mère}}|{{#var:père}}|
+ <tr>
+  <td colspan="2" style="text-align:center">
+  <table style="width: 100%" cellspacing="0">
+    <tr>
+     <td style="width: 49%"></td>
+     <td style="width: 50%; border-left: 1px solid black; height: 40px"></td>
+    </tr>
+  </table>
+  </td>
+ </tr>
+}}
+}}
+ <tr>
+  <td colspan="2" style="text-align:center">
+<div style="width: 80px; height:70px; vertical-align: middle; border: 1px solid black; margin:auto; text-align: center">
+{{#ifeq:{{#show:{{{1}}} | ?acte_naissance | link=none}}|vrai|
+	'''[[{{{1}}}]]'''
+	|
+	{{#ifexist:{{{1}}}|
+		[[{{{1}}}]]
+		|
+		{{#formlink:form=Personne|link text={{{1}}}|target={{{1}}} }}
+	}}
+}}{{#if:{{#show:{{{1}}} | ?sosa | link=none}}|<br/><span class="sosa">{{#show:{{{1}}} | ?sosa | link=none}}</span>}}
+
+</div>
+  </td>
+ </tr>
+</table>
+}}</includeonly>

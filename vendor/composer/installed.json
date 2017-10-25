@@ -1,1 +1,49 @@
-[]
+[
+    {
+        "name": "onoi/cache",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/onoi/cache.git",
+            "reference": "c736c78b1a33af339a28686a9fe470b7d99faa36"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/onoi/cache/zipball/c736c78b1a33af339a28686a9fe470b7d99faa36",
+            "reference": "c736c78b1a33af339a28686a9fe470b7d99faa36",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "time": "2015-10-28T14:48:26+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Onoi\\Cache\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "mwjames",
+                "homepage": "https://github.com/mwjames"
+            }
+        ],
+        "description": "A minimalistic cache adapter interface library",
+        "homepage": "https://github.com/onoi/cache",
+        "keywords": [
+            "cache"
+        ]
+    }
+]

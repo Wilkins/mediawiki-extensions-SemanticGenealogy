@@ -53,6 +53,7 @@ class SemanticGenealogy
 	 */
 	public static function getNamespaces() {
 		global $wgExtensionMessagesFiles;
+		throw new Exception('test');
 		require $wgExtensionMessagesFiles['SemanticGenealogyNamespaces'];
 
 		/*
@@ -83,15 +84,12 @@ class SemanticGenealogy
 	 * @return integer the id of the namespace
 	 */
 	public static function getNamespaceFromName( $searchName ) {
-		$sgNamespaces = self::getNamespaces();
+		global $wgNamespaceAliases;
 
-		foreach ( $sgNamespaces as $lang => $langNamespaces ) {
-			foreach ( $langNamespaces as $nsId => $nsName ) {
-				if ( $searchName == $nsName ) {
-					return $nsId;
-				}
-			}
+		if ( isset( $wgNamespaceAliases[$searchName] ) ) {
+			return $wgNamespaceAliases[$searchName];
 		}
+
 		throw new Exception( "Namespace name « ${searchName} » was not found in SemanticGenealogy. This should not happen, please contact developpers extension with tag: Error101" );
 	}
 
@@ -101,5 +99,18 @@ class SemanticGenealogy
 		foreach ( $namespaces as $nsId => $namespace ) {
 			$wgNamespaceAliases[$namespace] = $nsId;
 		}
+	}
+
+	public static function onCanonicalNamespaces( array &$namespaces ) {
+		require_once __DIR__."/../SemanticGenealogy.namespaces.php";
+		#print_r( $namespaces );
+		#global $namespaceNames;
+
+		#print_r($namespaceNames);
+		foreach ( $namespaceNames['en'] as $nsId => $nsName ) {
+			$namespaces[$nsId] = $nsName;
+		}
+		#print_r( $namespaces );
+
 	}
 }

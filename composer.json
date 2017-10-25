@@ -27,10 +27,10 @@
 		}
 	],
 	"require": {
-		"mediawiki/semantic-media-wiki": ">=1.7"
+		"onoi/cache": "^1.0@dev"
 	},
 	"require-dev": {
-		"mediawiki/mediawiki-codesniffer": "0.10.0"
+		"mediawiki/mediawiki-codesniffer": "0.4.0"
 	},
 	"scripts": {
 		"test": [

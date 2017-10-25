@@ -1,0 +1,39 @@
+<includeonly>{{#if:{{{2|}}}|<!--
+S'il y a les coordonnées et pas de 3ème paramètre, on affiche le nom de l'endroit
+-->{{#if:{{{3|}}}||{{{1}}}}}<!--
+-->|<!--
+Si pas de coordonnées, on récupère les coordonnées dans la base
+-->{{#clear_external_data:}}{{#get_db_data:db=data
+|from=villes_france_free
+|where=ville_nom_reel="{{{1}}}" or ville_slug="{{{1}}}"
+|data=nom=ville_nom_reel,coordonnees=coordonnees,departement=ville_departement
+}}<!--
+Si pas de coordonnées et que le nom est bon, on affiche le nom et le lien vers Wikipédia
+-->{{#if:{{#external_value:nom}}|[[:fr:{{#external_value:nom}}|{{#external_value:nom}}]] ({{#external_value:departement}})|{{{1}}} (<span style="color:red">endroit inconnu</span>)[[Catégorie:Endroit inconnu]]}}<!--
+-->}}<!--
+-->{{#set_internal:Endroit
+|Name={{{1|Sans nom}}}
+|Coords={{{2|{{#external_value:coordonnees}}}}}
+|Type={{{4}}}
+|Has fullpagename={{FULLPAGENAME}}
+|Mapdata={{#external_value:coordonnees}}~{{{1|Sans nom}}}~ ~#0022FF
+|Mapdata_circle={{#external_value:coordonnees}}:RADIUS~{{{1|Sans nom}}}~TITLE~#0022FF~ ~1~#0022FF~0.05
+}}</includeonly><noinclude>
+== Usage ==
+<pre>
+{{Modèle de généalogie:Endroit|Rouen|49.440482,1.093772}}
+</pre>
+<pre>
+{{Modèle de généalogie:Endroit|Paris}}
+</pre>
+== Rendu ==
+<pre>
+{{#set_internal:Endroit
+|Name=Rouen
+|Coords=49.440482,1.093772
+|Type=naissance
+}}
+</pre>
+
+[[Catégorie:Semantic Genealogy]]
+</noinclude>

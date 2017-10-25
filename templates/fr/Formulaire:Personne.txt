@@ -1,0 +1,83 @@
+<noinclude>
+Ceci est le formulaire « Personne ».
+Pour créer une page avec ce formulaire, entrez le nom de la page ci-dessous ;
+si une page avec ce nom existe déjà, vous serez dirigé vers un formulaire pour l’éditer.
+
+
+{{#forminput:form=Personne}}
+
+</noinclude><includeonly>
+<div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
+{{{for template|Modèle de généalogie:Fiche Personne}}}
+{| class="formtable"
+! Sexe: (M ou F)
+| {{{field|sexe}}}
+|-
+! Photo:
+| {{{field|photo}}}
+|-
+! Nom:
+| {{{field|nom}}}
+|-
+! Nom Jeune fille:
+| {{{field|jeunefille}}}
+|-
+! Prénoms:
+| {{{field|prénom}}}
+|-
+! Surnom:
+| {{{field|surnom}}}
+|-
+! Date de naissance:
+| {{{field|date_naissance}}}
+|-
+! Lieu naissance:
+| {{{field|lieu_naissance}}}
+|-
+! Date baptême:
+| {{{field|date_baptême}}}
+|-
+! Lieu baptême:
+| {{{field|lieu_baptême}}}
+|-
+! Date communion:
+| {{{field|date_communion}}}
+|-
+! Lieu communion:
+| {{{field|lieu_communion}}}
+|-
+! Date décès:
+| {{{field|date_décès}}}
+|-
+! Lieu décès:
+| {{{field|lieu_décès}}}
+|-
+! Lieu sépulture:
+| {{{field|lieu_sépulture}}}
+|-
+! Père (ex: Gilles Dupont ):
+| {{{field|père}}}
+|-
+! Mère (ex: Mary Dupont ):
+| {{{field|mère}}}
+|-
+! Conjoint (ex: Thibault Dupont):
+| {{{field|conjoint}}}
+|-
+! N° SOSA
+| {{{field|sosa}}}
+|}
+{{{end template}}}
+
+'''Texte libre:'''
+
+{{{standard input|free text|rows=10|preload=Modèle de généalogie:Personne texte }}}
+
+{{{standard input|summary}}}
+
+{{{standard input|minor edit}}} {{{standard input|watch}}}
+
+{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|cancel}}}
+
+[[Catégorie:Semantic Genealogy]]
+</includeonly>

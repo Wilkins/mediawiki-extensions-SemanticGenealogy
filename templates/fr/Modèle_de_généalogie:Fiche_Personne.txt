@@ -1,0 +1,136 @@
+<noinclude>
+Voici un exemple d'utilisation de Modèle de Fiche Personnelle :
+
+== Usage ==
+<pre>
+{{Modèle de généalogie:Fiche Personne
+ | photo=Andrée Dupont.jpg
+ | nom=Dupont
+ | prénom=Andrée
+ | date_naissance=13 septembre 1921
+ | lieu_naissance=Boissy-le-Cutté
+ | date_baptême=13 septembre 1922
+ | lieu_baptême=Boissy-le-Cutté
+ | date_communion=13 septembre 1933
+ | lieu_communion=Boissy-le-Cutté
+ | date_décès=10 avril 2015
+ | lieu_décès=Paris
+ | lieu_sépulture=Lardy
+ | surnom=grand-mère
+ | père=Charles Dupont
+ | mère=Régine Dupont
+ | conjoint=Edouard Dupont
+}}
+</pre>
+
+== Rendu ==
+{{Modèle de généalogie:Fiche Personne
+ | photo=Andrée Dupont.jpg
+ | nom=Dupont
+ | prénom=Andrée
+ | date_naissance=13 septembre 1921
+ | lieu_naissance=Boissy-le-Cutté
+ | date_baptême=13 septembre 1922
+ | lieu_baptême=Boissy-le-Cutté
+ | date_communion=13 septembre 1933
+ | lieu_communion=Boissy-le-Cutté
+ | date_décès=10 avril 2015
+ | lieu_décès=Paris
+ | lieu_sépulture=Lardy
+ | surnom=grand-mère
+ | père=Charles Dupont
+ | mère=Régine Dupont
+ | conjoint=Edouard Dupont
+}}
+Vous pouvez copier-coller le contenu du cadre ci-dessus dans la page d'une personne, puis remplacer les valeurs, afin d'afficher un cadre comme celui-ci contre, sur une page.
+
+Si la date de décès n'est pas renseignée, les entrées "date_décès", "lieu_décès", "lieu_sépulture" ne seront pas affichées.
+
+Pour plus d'aide, consultez [[Aide:Aide|la page d'Aide]].
+[[Catégorie:Semantic Genealogy]]
+</noinclude>
+<includeonly>
+__NOTOC__
+<div>
+{| align="right" border="0" rules="all" width="300" cellpadding="4" cellspacing="0"  style="clear: right; margin: 0 0 1em 1em; border: 1px solid #999; border-right-width: 2px; border-bottom-width: 2px; background-color: #f3fff3"
+! colspan="2" style="background-color: #ddffdd; color:black;" |{{#if:{{{sosa|}}}|<span class="sosa">[[sosa::{{{sosa|}}}]]</span>}}<font size="4"> '''{{PAGENAME}}''' </font>{{#if: {{{surnom|}}} | <br/>«&nbsp;{{{surnom}}}&nbsp;» }}
+{{#if:
+  {{{photo|}}}
+  |{{Modèle de généalogie:Fiche Personne photo |photo={{{photo}}} }}
+  |{{#ifexist:Image:{{PAGENAME}}.jpg | {{Modèle de généalogie:Fiche Personne photo |photo={{PAGENAME}}.jpg }} | [{{SERVER}}/index.php?title=Special:Upload&wpDestFile={{PAGENAMEE}}.jpg&wpUploadDescription=Photo%20de%20%5B%5Bmontre::{{PAGENAMEE}}%5D%5D%0A%0A%0A%5B%5BCat%C3%A9gorie%3AFamille%20{{urlencode:{{{nom}}}}}%5D%5D Ajouter une photo] }}
+}}
+|-
+| Nom complet || {{#if:{{{nom|}}}| [[:Catégorie:Famille {{{nom}}}|{{{nom}}}]] [[nom::{{{nom|}}}|]] }} [[sexe::{{{sexe|}}}|]]
+|- {{#if: {{{jeune_fille|}}} | | style="display: none;" }}
+| Née || [[jeune_fille::{{{jeune_fille|}}}]]
+|-
+| Prénom(s) || [[prénom::{{#if:{{{prénoms|}}}|{{{prénoms}}}|{{{prénom}}}}}]]
+|-
+| Date de naissance || [[date_naissance::{{{date_naissance|}}}]] [[année_naissance::{{#rmatch:{{{date_naissance|}}}|.*(\d\d\d\d).*|$1|inconnue}}|]]
+|-
+| Lieu de naissance || {{#if:{{{lieu_naissance|}}}|{{Modèle de généalogie:Endroit|{{#rreplace:{{{lieu_naissance}}}| \(.*\)|}} }} }} [[lieu_naissance::{{{lieu_naissance|}}}| ]]
+|- {{#if: {{{date_baptême|}}} | | style="display: none;" }}
+| Date de baptême || {{#if:{{{date_baptême|}}} | {{{date_baptême}}} }}
+|- {{#if: {{{lieu_baptême|}}} | | style="display: none;" }}
+| Lieu de baptême || {{#if:{{{lieu_baptême|}}} | {{{lieu_baptême}}} }}
+|- {{#if: {{{date_communion|}}} | | style="display: none;" }}
+| Date de Communion || {{{date_communion|}}}
+|- {{#if: {{{lieu_communion|}}} | | style="display: none;" }}
+| Lieu de Communion || {{{lieu_communion|}}}
+|- {{#if: {{{date_décès|}}} | | style="display: none;" }}
+| Date de décès || [[date_décès::{{{date_décès|}}}]]
+|- {{#if: {{{lieu_décès|}}} | | style="display: none;" }}
+| Lieu de décès || {{#if:{{{lieu_décès|}}}|{{Modèle de généalogie:Endroit|{{#rreplace:{{{lieu_décès}}}| \(.*\)|}} }} }} [[lieu_décès::{{{lieu_décès|}}}| ]]
+|- {{#if: {{{lieu_sépulture|}}} | | style="display: none;" }}
+| Lieu sépulture || [[lieu_sépulture::{{{lieu_sépulture|}}}]]
+|-
+| Père || {{#if:{{{père|}}}| 
+		{{#ifexist:{{{père}}}|
+			[[père::{{{père}}}]]
+		|
+			[[père::{{{père}}}|]]
+			{{#formlink:form=Personne|link text={{{père}}}|target={{{père}}} }}
+		}}
+	}}
+|-
+| Mère || {{#if:{{{mère|}}}|
+		{{#ifexist:{{{mère}}}|
+			[[mère::{{{mère}}}]]
+		|
+			[[mère::{{{mère}}}|]]
+			{{#formlink:form=Personne|link text={{{mère}}}|target={{{mère}}} }}
+		}}
+	}}
+|-
+| Conjoint(e) || {{#if:{{{conjoint|}}} |
+		{{#ifexist:{{{conjoint}}}|
+			[[conjoint::{{{conjoint}}}]]
+		|
+			[[conjoint::{{{conjoint}}}|]]
+			{{#formlink:form=Personne|link text={{{conjoint}}}|target={{{conjoint}}} }}
+		}}
+	}}
+|-
+| Acte de naissance || {{#ifexist:{{PAGENAME}}/Acte|<span style="color:red">Récupérer [[{{PAGENAME}}/Acte]] /!\</span> }}<!--
+-->{{#ifexist:Image:Acte de naissance de {{PAGENAME}}.jpg|<!--
+-->[[acte_naissance::1| ]]<!--
+-->[[Image:Acte de naissance de {{PAGENAME}}.jpg|20px]]<!--
+-->|&nbsp;[{{SERVER}}/index.php?title=Special:Upload&wpDestFile=Acte%20de%20naissance%20de%20{{PAGENAMEE}}.jpg&wpUploadDescription=%7B%7BActe_naissance%7C{{PAGENAMEE}}%7D%7D%0A%3D%3D%20Contenu%20%3D%3D%0A%3Cpre%3E%0A%3C%2Fpre%3E%0A%0A%3D%3D%20Source%20%3D%3D%0A%0A <i class="icon-plus"></i>&nbsp;Ajouter]<!--
+-->[[acte_naissance::0| ]]<!--
+-->}}
+|-
+| Acte de décès || {{#if:{{{date_décès|}}}|<!--
+-->{{#ifexist:Image:Acte de décès de {{PAGENAME}}.jpg|<!--
+-->[[acte_décès::1| ]]<!--
+-->[[Image:Acte de décès de {{PAGENAME}}.jpg|20px]]<!--
+-->|&nbsp;[{{SERVER}}/index.php?title=Special:Upload&wpDestFile=Acte%20de%20décès%20de%20{{PAGENAMEE}}.jpg&wpUploadDescription=%7B%7BActe_d%C3%A9c%C3%A8s%7C{{PAGENAMEE}}%7D%7D%0A%0A%3D%3D%20Contenu%20%3D%3D%0A%3Cpre%3E%0A%3C%2Fpre%3E%0A%0A%3D%3D%20Source%20%3D%3D%0A%0A%0A <i class="icon-plus"></i>&nbsp;Ajouter]<!--
+-->[[acte_décès::0| ]]<!--
+-->}}
+}}
+|}
+</div>
+[[Catégorie:Personne]]
+{{#if:{{{nom|}}}| [[Catégorie:Famille {{{nom}}}]] }}
+{{#if:{{{jeune_fille|}}}| [[Catégorie:Famille {{{jeune_fille}}}]] }}
+{{#if:{{{père|}}}|{{#if:{{{mère|}}}|[[mariage_parent::Mariage de {{{père|}}} et {{{mère|}}}|]]}}}}
+</includeonly>

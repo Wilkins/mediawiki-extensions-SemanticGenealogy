@@ -1,0 +1,48 @@
+
+== État Civil ==
+* https://mdel.mon.service-public.fr/acte-etat-civil.html
+* [http://vosdroits.service-public.fr/particuliers/F1427.xhtml#OuSAd Adresse des mairies]
+
+* Clamart : http://www.clamart.fr/ma-mairie/services-en-ligne/actes-detat-civil/
+* Ivry-sur-Seine : http://www.ivry94.fr/demarches/etat-civil-papiers-elections/formulaires-detat-civil-particuliers/
+* Lardy : http://www.ville-lardy.fr/Services-en-ligne.html
+
+== Archives Départementales ==
+* Ain (01) : http://www.archives-numerisees.ain.fr/archives/recherche/etatcivil/n:88
+* Aisne (02) : http://archives.aisne.fr/archive/recherche/etatcivil/n:11
+* Calvados (14) : http://archives.numerisees.calvados.fr/cg14v3/registre.php ('''Payantes''')
+* Eure (27) : http://archives.cg27.fr/etat-civil-search-form.html
+* Eure et Loir (28) : http://www.archives28.fr/arkotheque/consult_fonds/index.php?ref_fonds=2
+* Finistère (29) : [http://www.archives-finistere.fr/medias/medias.aspx?SYNCMENU=cg29_rechercher_inventaires_par_formulaire&INSTANCE=exploitation&PORTAL_ID=portal_model_instance__cg29_rechercher_inventaires_par_formulaire.xml&PAGE=http%3A%2F%2Fmnesys-portail.archives-finistere.fr%2F%3Fid%3Drecherche_etat_civil http://www.archives-finistere.fr/]
+** Brest : http://archives.mairie-brest.fr/4DCGI/Web_RegistresLance/ILUMP5
+* Loiret (45) : http://www.archives-loiret.fr/rechercher-dans-l-etat-civil-du-loiret-en-ligne-65333.htm?RH=1355220516647
+** Orléans : http://archives.orleans.fr/arkotheque/client/amorleans/etat_civil/index.php
+* Manche (50) : http://recherche.archives.manche.fr/?id=recherche_etat_civil
+* Haute-Marne (52) : http://archives.haute-marne.fr/adhmpl3/search-form.html?name=ecivil
+* Mayenne (53) : http://www.lamayenne.fr/fr/Archives53/Archives-en-ligne/Etat-civil/Registres-paroissiaux-et-d-etat-civil
+* Moselle (57) : http://www.archivesnumerisees57.com/mdr/index.html
+* Oise (60) : http://archives.oise.fr/archives-en-ligne/etat-civil/
+* Pas de Calais (62) : http://www.archivespasdecalais.fr/Archives-en-ligne/Etat-civil
+* Haut-Rhin (68) : http://www.archives.cg68.fr/Services_Actes_Civils.aspx
+* Haute-Saône (70) : http://archives.cg70.fr/4DCGI/Web_RegistresLance/ILUMP10530
+* Seine-Maritime (76) : http://recherche.archivesdepartementales76.net/?id=recherche_guidee_etat_civil
+* Seine-et-Marne (77) : http://www.archinoe.fr/cg77/index.php/rechercheTheme/requeteConstructor/13/1/R/0/0
+* Yvelines (78) : http://www.archives.yvelines.fr/arkotheque/registres_paroissiaux_etat_civil/index.php
+* Deux-Sèvres (79) : http://archives.deux-sevres.com/archives79/Archivesenligne/Registresparoissiauxetd%C3%A9tatcivil.aspx
+* Somme (80) : http://archives.somme.fr/?id=recherche_guidee_etat_civil
+* Vienne (86) : http://www.archives-vienne.cg86.fr/639-les-registres-paroissiaux.htm
+* Belfort (90) : http://www.archives.cg90.fr/?id=etat_civil
+* Essonne (91) : http://www.archinoe.net/cg91/registre.php
+* Hauts-de-Seine (92): http://consultation.archives.hauts-de-seine.net/mdr/index.php/rechercheTheme
+* Val d'Oise (95) : http://archives.valdoise.fr/archive/recherche/etatcivil/n:42
+
+; Autres
+* http://vosges-genealogie.com/vosges-genealogie.com/Archives_departementales_en_ligne_2.html
+
+== Calendrier révolutionnaire ==
+* [http://www.poissons52.fr/histoire/revolution1789/calendrier_v.php Conversion des dates du calendrier révolutionnaire]
+
+== Adresses / GPS ==
+* http://www.gpsfrance.net/liste-adresses-vers-coordonnees-gps
+
+[[Catégorie:Semantic Genealogy]]

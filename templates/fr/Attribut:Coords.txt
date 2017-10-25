@@ -1,0 +1,2 @@
+[[Has type::Geographic coordinate]]
+[[Catégorie:Semantic Genealogy]]

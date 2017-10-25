@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'SemanticGenealogy\\' => array($baseDir . '/src'),
+    'Onoi\\Cache\\' => array($vendorDir . '/onoi/cache/src'),
 );

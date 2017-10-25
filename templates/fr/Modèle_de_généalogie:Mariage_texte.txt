@@ -1,0 +1,9 @@
+<includeonly>
+
+
+{{Modèle de généalogie:Mariage_contenu|{{PAGENAME}}}}
+</includeonly><noinclude>
+
+
+[[Catégorie:Semantic Genealogy]]
+</noinclude>

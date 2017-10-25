@@ -1,0 +1,2 @@
+[[Has type::String]]
+[[Catégorie:Semantic Genealogy]]

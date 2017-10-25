@@ -46,6 +46,9 @@ $pages = [
 'Property:Name',
 'Property:Nom',
  */
+'Modèle:ActeNaissance',
+'Modèle:ActeDécès',
+'Modèle:ActeMariage',
 ];
 
 $baseurl = "http://famille:edouard@wiki.familletaillandier.com/index.php?title=%s&action=raw";
