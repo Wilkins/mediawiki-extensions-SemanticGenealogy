@@ -12,6 +12,7 @@
         "NS_SGENEALOGY_FORM_TALK": "Genealogy_form_talk",
         "NS_CATEGORY": "Category",
         "NS_FORM": "Form",
+        "NS_MEDIAWIKI": "MediaWiki",
         "SMW_NS_PROPERTY": "Property"
     },
     "namespaceAliases": {
@@ -23,6 +24,7 @@
         "Genealogy_form_talk": "NS_SGENEALOGY_FORM_TALK",
         "Category": "NS_CATEGORY",
         "Form": "NS_FORM",
+		"MediaWiki": "NS_MEDIAWIKI",
         "Property": "SMW_NS_PROPERTY"
     }
 }

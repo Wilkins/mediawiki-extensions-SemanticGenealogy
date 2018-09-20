@@ -44,6 +44,7 @@ class PersonPageValues {
 	 * @param SMWDIWikiPage $page the page
 	 */
 	public function __construct( SMWDIWikiPage $page ) {
+		#print_r( $page );
 		$values = [];
 		$storage = smwfGetStore();
 		$this->page = $page;
@@ -53,7 +54,20 @@ class PersonPageValues {
 			$values = $storage->getPropertyValues( $page, $prop );
 			if ( count( $values ) != 0 && property_exists( 'SemanticGenealogy\PersonPageValues', $key ) ) {
 				$this->$key = $values[0];
+				/*
+				if ( $values[0] instanceof SMWDIBlob ) {
+					echo $values[0]->getString()."\n";
+				} else if ( $values[0] instanceof SMWDIWikiPage && $maxLevel ) {
+					#print_r( $values[0]->getTitle() );
+					#echo $values[0]->getString()."\n";
+					echo $this->givenname->getString();
+						$this->$key = new PersonPageValues( $values[0], $maxLevel-1 );
+					if ( $this->givenname->getString() == 'Alice' ) {
+					}
+				}
+				*/
 			}
+
 		}
 
 		if ( !( $this->fullname instanceof SMWDIBlob ) ) {
@@ -121,7 +135,7 @@ class PersonPageValues {
 		$storage = smwfGetStore();
 		$properties = SemanticGenealogy::getProperties();
 		if ( $properties['partner'] instanceof SMWDIProperty ) {
-			$page = $storage->getPropertySubjects( $properties['father'], $this->page );
+			$page = $storage->getPropertySubjects( $properties['partner'], $this->page );
 			if ( $page instanceof SMWDIWikiPage ) {
 				$this->partner = new PersonPageValues( $page );
 			}
@@ -164,6 +178,42 @@ class PersonPageValues {
 	 *
 	 * @return string the name of the person
 	 */
+	public function getFatherName( ) {
+		$storage = smwfGetStore();
+		$properties = SemanticGenealogy::getProperties();
+		$values = $storage->getPropertyValues( $this->page, $properties['father'] );
+		if ( sizeof( $values ) && $values[0] instanceof SMWDIWikiPage ) {
+			$this->father = new PersonPageValues( $values[0] );
+			return $this->father->title->getFullText();
+		}
+		return false;
+	}
+
+	/**
+	 * Get the correct name to display a person (either the fullname, or the pagename)
+	 *
+	 * @param string $displayName the name to display
+	 *
+	 * @return string the name of the person
+	 */
+	public function getMotherName( ) {
+		$storage = smwfGetStore();
+		$properties = SemanticGenealogy::getProperties();
+		$values = $storage->getPropertyValues( $this->page, $properties['mother'] );
+		if ( sizeof( $values ) && $values[0] instanceof SMWDIWikiPage ) {
+			$this->mother = new PersonPageValues( $values[0] );
+			return $this->mother->title->getFullText();
+		}
+		return false;
+	}
+
+	/**
+	 * Get the correct name to display a person (either the fullname, or the pagename)
+	 *
+	 * @param string $displayName the name to display
+	 *
+	 * @return string the name of the person
+	 */
 	public function getPersonName( $displayName ) {
 		if ( $displayName == 'pagename' ) {
 			return $this->title->getFullText();
@@ -181,9 +231,10 @@ class PersonPageValues {
 	 *
 	 * @return string the text to display
 	 */
-	public function getDescriptionWikiText( $withBr = false, $displayName = 'fullname' ) {
+	public function getDescriptionWikiText( $withBr = false, $displayName = 'fullname', $sosa = null ) {
 		$yearRegexp = "/.*\b(\d\d\d\d)\b.*/";
 		$text = '<div class="person-block">';
+		$text .= $sosa ? '<span class="sosa-num">'.$sosa.'</span>' : '';
 		$text .= '<div class="person-name">';
 		$text .= '[[' . $this->title->getFullText() . '|' . $this->getPersonName( $displayName ). ']]';
 		$text .= '</div>';

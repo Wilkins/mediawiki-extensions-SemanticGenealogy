@@ -82,6 +82,24 @@ $box-size: 80px;
 				}
 			}
 		}
+
+		.smg-tree-marriage {
+			border-collapse: collapse;
+			margin: auto;
+
+			tr:nth-of-type(1) td:nth-of-type(1) {
+				border: 1px solid black;
+				padding: 0px 5px;
+			}
+			tr:nth-of-type(2) td:nth-of-type(1) {
+				border-right: 1px solid black;
+				height: 10px;
+				width: 50%;
+			}
+			tr:nth-of-type(2) td:nth-of-type(2) {
+				width: 50%;
+			}
+		}
 	}
 
 	/** Descendant Tree **/
@@ -204,7 +222,7 @@ $box-size: 80px;
 	 */
 	.person-name {
 		width: $box-size;
-		vertical-align: middle;
+		vertical-align: top;
 		display: inline-block;
 		line-height: normal;
 		text-align: center;
@@ -218,14 +236,22 @@ $box-size: 80px;
 	.sosa-num {
 		text-align: center;
 		padding-left: 10px;
-		display: inline-block;
+		display: inline;
 		min-width: 12px;
-			background-color: #156bb4;
-			border-radius: 40px;
-			color: white;
-			font-size: 12px;
-			line-height: 12px;
-			padding: 5px;
+		background-color: #156bb4;
+		border-radius: 40px;
+		color: white;
+		font-size: 12px;
+		line-height: 12px;
+		padding: 5px;
+		margin: auto;
+		//position: relative;
+		//height: 0px;
+		//margin-bottom: -12px;
+		float: right;
+		//right: -30px;
+		//top: 22px;
+		//bottom: -22px;
 	}
 
 }

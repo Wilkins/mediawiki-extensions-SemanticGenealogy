@@ -155,11 +155,11 @@ function wgAddSgeneCSS( &$parser, &$text ) {
 	return true;
   }
 
-  /*
   $parser->mOutput->addHeadItem(
-	'<link rel="stylesheet" href="/load.php?debug=false&amp;lang=en&amp;modules=ext.smg.specialfamilytree&amp;only=styles&amp;skin=vector"/>'
-  );
-  */
+	'<link rel="stylesheet" href="/load.php?debug=false&amp;lang=en&amp;modules=ext.smg.specialfamilytree&amp;only=styles&amp;skin=semanticgenealogy"/>'
+);
+  /*
+   */
 
   $addSgeneCSSScripts = true;
 

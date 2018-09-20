@@ -112,15 +112,15 @@ class SpecialImportPages extends \SpecialPage {
 			return false;
 		}
 		$output = $this->getOutput();
-		$output->addModuleStyles( 'ext.smg.specialfamilytree' );
+		//$output->addModuleStyles( 'ext.smg.specialfamilytree' );
 		$lang = $this->getLang();
 
 		$importer = new Importer( $lang );
 		$files = $importer->listFiles();
 		$output->addHTML( '<table id="semanticgenealogy-import-form"><tr>' );
 		$output->addHTML( '<th>' . $this->msg( 'semanticgenealogy-specialimportpages-column-pagename' )->text() . '</th>' );
-		$output->addHTML( '<th>' . $this->msg( 'semanticgenealogy-specialimportpages-column-pageversion' )->text() . '</th>' );
 		$output->addHTML( '<th>' . $this->msg( 'semanticgenealogy-specialimportpages-column-packageversion' )->text() . '</th>' );
+		$output->addHTML( '<th>' . $this->msg( 'semanticgenealogy-specialimportpages-column-pageversion' )->text() . '</th>' );
 		$output->addHTML( '<th>' . $this->msg( 'semanticgenealogy-specialimportpages-column-status' )->text() . '</th>' );
 		$output->addHTML( '</tr>' );
 

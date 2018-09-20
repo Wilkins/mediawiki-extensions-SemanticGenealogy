@@ -50,10 +50,23 @@ class AncestorsFamilyTree extends FamilyTree {
 			if ( isset( $tree[$i] ) ) {
 				$output->addHTML( '<tr class="smg-tree-line">' );
 				foreach ( $tree[$i] as $sosa => $person ) {
-					$output->addHTML( '<td class="smg-tree-person col-width-'.$col.'" colspan="'.$col.'">' );
+					//$mariage = false;
+					//$mariageText = "";
 					if ( $person !== null ) {
-						$output->addHTML( '<span class="sosa-num">'.$sosa.'</span><br/>' );
-						$output->addWikiText( $person->getDescriptionWikiText( true, $this->displayName ) );
+						$fatherName = $person->getFatherName( );
+						$motherName = $person->getMotherName( );
+						//"Mariage de $fatherName et de $motherName";
+						//".$person->getFatherName( )." et "; //$tree[$i][$sosa-1]->getMotherName( );
+						$output->addHTML( '<td class="smg-tree-person col-width-'.$col.'" colspan="'.$col.'">' );
+						if ( $fatherName && $motherName ) {
+							$mariageLink = wfMessage( 'semanticgenealogy-specialfamilytree-marriage-link', $fatherName, $motherName )->text();
+							$mariageText = wfMessage( 'semanticgenealogy-specialfamilytree-marriage-title' )->text();
+							$output->addHTML( '<table class="smg-tree-marriage"><tr><td colspan="2">' );
+							$output->addWikiText( '[['.$mariageLink.'|'.$mariageText.']]' );
+							$output->addHTML( '</td></tr><tr><td></td><td></td></tr></table>' );
+						}
+						//$output->addHTML( '<span class="sosa-num">'.$sosa.'</span>' );
+						$output->addWikiText( $person->getDescriptionWikiText( true, $this->displayName , $sosa ) );
 						if ( $sosa != 1 ) {
 							if ( $sosa % 2 == 0 ) {
 								$output->addHTML( '<table class="father-link"><tr><td></td><td></td><td></td></tr>'
@@ -61,10 +74,23 @@ class AncestorsFamilyTree extends FamilyTree {
 							} else {
 								$output->addHTML( '<table class="mother-link"><tr><td></td><td></td><td></td></tr>'
 									.'<tr><td></td><td></td><td></td></tr></table>' );
+								/*
+								if ( $tree[$i][$sosa-1] !== null ) {
+									$mariage = true;
+									$mariageText = "Mariage de ".$person->getFatherName( )." et ".$tree[$i][$sosa-1]->getMotherName( );
+								}
+								*/
 							}
 						}
 					}
 					$output->addHTML( '</td>' );
+					/*
+					if ( $mariage ) {
+						$output->addHTML( '<td class="smg-tree-person col-width-'.$col.'" colspan="'.$col.'"> ' );
+						$output->addHTML( 'MARIAGE : '.$mariageText );
+						$output->addHTML( '</td>' );
+					}
+					 */
 				}
 				$output->addHTML( '</tr>' );
 			}

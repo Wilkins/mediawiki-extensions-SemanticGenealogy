@@ -108,7 +108,7 @@ class SpecialFamilyTree extends SpecialPage {
 
 		$output = $this->getOutput();
 
-		$output->addModuleStyles( 'ext.smg.specialfamilytree' );
+		//$output->addModuleStyles( 'ext.smg.specialfamilytree' );
 
 		try {
 
@@ -144,7 +144,7 @@ class SpecialFamilyTree extends SpecialPage {
 
 		if ( !$this->mIncluding ) {
 			$output = $this->getOutput();
-			$output->addModules( 'ext.smg.specialfamilytree' );
+			//$output->addModules( 'ext.smg.specialfamilytree' );
 
 			$trees = FamilyTreeFactory::listTrees();
 			$typeSelect = new XmlSelect( 'type', 'type', $this->type );
