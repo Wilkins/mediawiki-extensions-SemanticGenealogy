@@ -4,6 +4,7 @@ namespace SemanticGenealogy;
 
 use MWException;
 use SMWDIProperty;
+use SemanticGenealogy\NamespaceManager;
 
 /**
  * Static class for hooks handled by the Semantic Genealogy extension.
@@ -113,4 +114,83 @@ class SemanticGenealogy
 		#print_r( $namespaces );
 
 	}
+
+	public static function addExtensionCSS( &$parser, &$text) {
+
+	  global $addSgeneCSSScripts;
+	  if ( $addSgeneCSSScripts === true ) {
+		return true;
+	  }
+
+	  $parser->mOutput->addHeadItem(
+		'<link rel="stylesheet" href="/load.php?debug=false&amp;lang=en&amp;modules=ext.smg.specialfamilytree&amp;only=styles&amp;skin=semanticgenealogy"/>'
+	);
+	  /*
+	   */
+
+	  $addSgeneCSSScripts = true;
+
+	  return true;
+
+	}
+
+	public static function initExtension() {
+		$GLOBALS['smwgResultFormats']['gedcom'] = 'SemanticGenealogy\Gedcom\Gedcom5ResultPrinter';
+		$GLOBALS['smwgResultFormats']['gedcom5'] = 'SemanticGenealogy\Gedcom\Gedcom5ResultPrinter';
+
+		$GLOBALS['wgSGeneaSidebarAdd'] = true;
+		$GLOBALS['wgSGeneaSidebarPosition'] = 2;
+
+		$GLOBALS['sgeneawgExtraneousLanguageFileDir'] = __DIR__.'/../i18n/extra';
+
+		#$GLOBALS['wgHooks']['CanonicalNamespaces'][] 
+		#	= 'SemanticGenealogy\SemanticGenealogy::onCanonicalNamespaces';
+
+		if ( !isset( $GLOBALS['wgGenealogicalProperties'] ) ) {
+			$GLOBALS['wgGenealogicalProperties'] = [
+				'givenname' => 'Prénom',
+				'surname' => 'Nom',
+				'nickname' => '',
+				'sex' => 'Sexe',
+				'birthdate' => 'Date de naissance',
+				'birthplace' => 'Lieu de naissance',
+				'deathdate' => 'Date de décès',
+				'deathplace' => 'Lieu de décès',
+				'father' => 'Père',
+				'mother' => 'Mère',
+				'partner' => 'Conjoint'
+			];
+		}
+
+		if ( !defined( 'SMW_NS_PROPERTY' ) ) {
+			define( 'SMW_NS_PROPERTY', 102 );
+		}
+		if ( !defined( 'NS_FORM' ) ) {
+			define( 'NS_FORM', 106 );
+		}
+
+		$GLOBALS['wgLanguageCode'] = 'fr';
+		NamespaceManager::initCustomNamespace( $GLOBALS, 'fr' );
+
+		$GLOBALS['moduleTemplate'] = [
+			'localBasePath' => __DIR__.'/../',
+			'remoteBasePath' => ( $GLOBALS['wgExtensionAssetsPath'] === false ? $GLOBALS['wgScriptPath']
+				. '/extensions' : $GLOBALS['wgExtensionAssetsPath'] ) . '/SemanticGenealogy',
+			'group' => 'ext.smg'
+		];
+
+		$GLOBALS['wgResourceModules']['ext.smg.specialfamilytree'] = $GLOBALS['moduleTemplate'] + [
+			'scripts' => 'modules/specialFamilyTree.js',
+			'styles' => 'modules/styles.css',
+			'dependencies' => [
+				'jquery.ui.autocomplete'
+			],
+			'messages' => [
+			]
+		];
+
+
+
+	}
+
 }

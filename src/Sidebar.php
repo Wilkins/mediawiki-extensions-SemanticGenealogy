@@ -101,9 +101,9 @@ class Sidebar {
 				]
 			);
 
-		if ( $res->result->num_rows >= 0 ) {
-			foreach ( $res->result as $row ) {
-				return $row['old_text'];
+		if ( $res->numRows() >= 0 ) {
+			foreach ( $res as $row ) {
+				return $row->old_text;
 			}
 		}
 		return "";

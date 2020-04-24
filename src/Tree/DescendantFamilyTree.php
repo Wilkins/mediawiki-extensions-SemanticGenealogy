@@ -53,20 +53,20 @@ class DescendantFamilyTree extends FamilyTree {
 		$nbChildren = count( $person->getChildren() );
 		if ( $person->sex && $person->sex->getString() == 'M' ) {
 			$output->addHTML( '<tr><td class="person" colspan="2">' );
-			$output->addWikiText( $infoEmpty );
+			$output->addWikiTextAsContent( $infoEmpty );
 			$output->addHTML( '</td><td class="person" colspan="2">' );
-			$output->addWikiText( $infoPerson );
+			$output->addWikiTextAsContent( $infoPerson );
 			$output->addHTML( '</td><td class="person" colspan="2">' );
-			$output->addWikiText( $infoPartner );
+			$output->addWikiTextAsContent( $infoPartner );
 			$output->addHTML( '</td></tr><tr>' );
 			$output->addHTML( $tdempty.( $nbChildren ? $couple : $tdempty.$tdempty ) );
 		} else {
 			$output->addHTML( '<tr><td class="person" colspan="2">' );
-			$output->addWikiText( $infoPartner );
+			$output->addWikiTextAsContent( $infoPartner );
 			$output->addHTML( '</td><td class="person" colspan="2">' );
-			$output->addWikiText( $infoPerson );
+			$output->addWikiTextAsContent( $infoPerson );
 			$output->addHTML( '</td><td class="person" colspan="2">' );
-			$output->addWikiText( $infoEmpty );
+			$output->addWikiTextAsContent( $infoEmpty );
 			$output->addHTML( '</td></tr><tr>' );
 			$output->addHTML( ( $nbChildren ? $couple : $tdempty.$tdempty ).$tdempty );
 		}

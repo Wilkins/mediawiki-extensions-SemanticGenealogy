@@ -246,13 +246,15 @@ class PersonPageValues {
 			$text .= '(';
 			if ( $this->birthdate instanceof SMWDITime ) {
 				$text .= static::getWikiTextDateFromSMWDITime( $this->birthdate ) . ' ';
-			} elseif ( is_string( $this->birthdate ) && preg_match( $yearRegexp, $this->birthdate ) ) {
+			} elseif ( is_string( ( string ) $this->birthdate ) 
+				&& preg_match( $yearRegexp, ( string ) $this->birthdate ) ) {
 				$text .= preg_replace( $yearRegexp, "$1", $this->birthdate );
 			}
 			$text .= '-';
 			if ( $this->deathdate instanceof SMWDITime ) {
 				$text .= ' ' . static::getWikiTextDateFromSMWDITime( $this->deathdate );
-			} elseif ( is_string( $this->deathdate ) && preg_match( $yearRegexp, $this->deathdate ) ) {
+			} elseif ( is_string( ( string ) $this->deathdate ) 
+				&& preg_match( $yearRegexp, ( string ) $this->deathdate ) ) {
 				$text .= preg_replace( $yearRegexp, "$1", $this->deathdate );
 			}
 			$text .= ')</span>';

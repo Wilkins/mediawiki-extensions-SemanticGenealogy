@@ -150,7 +150,7 @@ class LinkFamilyTree extends FamilyTree {
 		$output->addHTML( '<tr><td colspan="'.pow( 2, $length-1 ).'">' );
 		$person = $tree1[0];
 		if ( $person->fullname instanceof SMWDIBlob ) {
-			$output->addWikiText( $person->getDescriptionWikiText( false, $this->displayName ) );
+			$output->addWikiTextAsContent( $person->getDescriptionWikiText( false, $this->displayName ) );
 		}
 		$output->addHTML( '</td></tr>' );
 
@@ -197,7 +197,7 @@ class LinkFamilyTree extends FamilyTree {
 				.'<tr><td></td><td></td><td></td></tr>'
 				.'<tr><td></td><td></td><td></td></tr></table>';
 			$output->addHTML( $parentLink );
-			$output->addWikiText(
+			$output->addWikiTextAsContent(
 				$person->getDescriptionWikiText( false, $this->displayName )
 			);
 			$output->addHTML( '</td>' );

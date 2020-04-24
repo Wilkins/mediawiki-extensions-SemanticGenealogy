@@ -37,7 +37,7 @@ class DescendantListFamilyTree extends FamilyTree {
 		foreach ( $children as $child ) {
 			$pel = $pellissier . $count . '.';
 			$output->addHtml( '<span class="number depth-'.$depth.'">'.$pel.'</span> ' );
-			$output->addWikiText( $child->getDescriptionWikiText( false ) );
+			$output->addWikiTextAsContent( $child->getDescriptionWikiText( false ) );
 			if ( $end > 0 ) {
 				$this->outputDescendantLine( $child, $pel, $end - 1 );
 			}
@@ -55,7 +55,7 @@ class DescendantListFamilyTree extends FamilyTree {
 		$output = $this->getOutput();
 		$output->addHTML( '<div class="decorator-'.$this->decorator. ' smg-tree-root-descendant">' );
 		$main = new PersonPageValues( $this->person );
-		$output->addWikiText( $main->getDescriptionWikiText( false ) );
+		$output->addWikiTextAsContent( $main->getDescriptionWikiText( false ) );
 		$this->outputDescendantLine( $main, '', $this->numOfGenerations );
 		$output->addHTML( '</div>' );
 	}
