@@ -214,7 +214,7 @@ class PersonPageValues {
 	 *
 	 * @return string the name of the person
 	 */
-	public function getPersonName( $displayName ) {
+	public function getPersonName( $displayName = 'pagename' ) {
 		if ( $displayName == 'pagename' ) {
 			return $this->title->getFullText();
 		} elseif ( $displayName == 'fullname' ) {

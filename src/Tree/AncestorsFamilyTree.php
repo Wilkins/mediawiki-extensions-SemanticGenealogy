@@ -48,10 +48,22 @@ class AncestorsFamilyTree extends FamilyTree {
 		$col = 1;
 		for ( $i = $this->numOfGenerations - 1; $i >= 0; $i-- ) {
 			if ( isset( $tree[$i] ) ) {
-				$output->addHTML( '<tr class="smg-tree-line">' );
+				#print_r($tree[$i]);
+				$output->addHTML( '<tr class="smg-tree-line smg-tree-gen-row-'.$i.'">' );
+				#print_r(array_keys($tree[$i]));
+
 				foreach ( $tree[$i] as $sosa => $person ) {
+					#echo $sosa."-";
+					#continue;
 					//$mariage = false;
 					//$mariageText = "";
+					/*
+					if ($person === null ) {
+						echo "$sosa : null<br>\n";
+					} else {
+						echo "$sosa : ".($person->getPersonName('pagename'))." ".($person === null ? "null" : "pas null")." <br>\n";
+					}
+					*/
 					if ( $person !== null ) {
 						$fatherName = $person->getFatherName( );
 						$motherName = $person->getMotherName( );
@@ -82,8 +94,14 @@ class AncestorsFamilyTree extends FamilyTree {
 								*/
 							}
 						}
+					} else {
+						$output->addHTML( 
+							'<td class="smg-tree-person col-width-'.$col.' person-empty" colspan="'.$col.'">'
+						);
+						$output->addWikiTextAsContent( 'empty' );
+						$output->addHTML( '</td>' );
 					}
-					$output->addHTML( '</td>' );
+					#$output->addHTML( '</td>' );
 					/*
 					if ( $mariage ) {
 						$output->addHTML( '<td class="smg-tree-person col-width-'.$col.'" colspan="'.$col.'"> ' );

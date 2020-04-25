@@ -8,10 +8,28 @@
    * @see http://www.alsacreations.com/tuto/lire/1032-comment-centrer-verticalement-sur-tous-les-navigateurs.html#cv_lignes
    */ }
   .decorator-box.smg-tree-root-ancestors {
-    text-align: center; }
+    text-align: center;
+    border-spacing: 0;
+    border-collapse: collapse;
+    /*
+    tr.smg-tree-line {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    }
+    */ }
+    .decorator-box.smg-tree-root-ancestors .smg-tree-person {
+      padding: 0 2px;
+      margin: 0 2px; }
+    .decorator-box.smg-tree-root-ancestors .col-width-1,
+    .decorator-box.smg-tree-root-ancestors .col-width-2 {
+      vertical-align: bottom; }
     .decorator-box.smg-tree-root-ancestors .father-link {
       width: 100%;
-      border-spacing: 0px; }
+      border-spacing: 0px;
+      border-collapse: collapse; }
       .decorator-box.smg-tree-root-ancestors .father-link tr:nth-of-type(1) td:nth-of-type(1) {
         width: 48%;
         height: 10px; }
@@ -33,7 +51,8 @@
         border-left: 1px solid black; }
     .decorator-box.smg-tree-root-ancestors .mother-link {
       width: 100%;
-      border-spacing: 0px; }
+      border-spacing: 0px;
+      border-collapse: collapse; }
       .decorator-box.smg-tree-root-ancestors .mother-link tr:nth-of-type(1) td:nth-of-type(1) {
         width: 30px;
         border-bottom: 1px solid black;
@@ -129,10 +148,12 @@
         width: 1600px; }
     .decorator-box.smg-tree-root-descendant .father-link {
       border-left: 1px solid black;
-      border-bottom: 1px solid black; }
+      border-bottom: 1px solid black;
+      border-collapse: collapse; }
     .decorator-box.smg-tree-root-descendant .mother-link {
       border-right: 1px solid black;
-      border-bottom: 1px solid black; }
+      border-bottom: 1px solid black;
+      border-collapse: collapse; }
     .decorator-box.smg-tree-root-descendant .couple-link {
       width: 50%;
       border-right: 1px solid black; }
@@ -149,7 +170,8 @@
     text-align: center; }
     .decorator-box.smg-tree-root-link .father-link {
       width: 100%;
-      border-spacing: 0px; }
+      border-spacing: 0px;
+      border-collapse: collapse; }
       .decorator-box.smg-tree-root-link .father-link tr:nth-of-type(1) td:nth-of-type(1) {
         width: 48%;
         height: 10px; }
@@ -171,7 +193,8 @@
         border-right: 1px solid black; }
     .decorator-box.smg-tree-root-link .mother-link {
       width: 100%;
-      border-spacing: 0px; }
+      border-spacing: 0px;
+      border-collapse: collapse; }
       .decorator-box.smg-tree-root-link .mother-link tr:nth-of-type(1) td:nth-of-type(1) {
         width: 30px;
         border-bottom: 1px solid black;
@@ -191,6 +214,12 @@
         border-left: 1px solid black; }
       .decorator-box.smg-tree-root-link .mother-link tr:nth-of-type(2) td:nth-of-type(2) {
         border-left: 1px solid black; }
+  .decorator-box .person-empty {
+    height: 80px;
+    margin: 2px 4px;
+    text-align: center;
+    line-height: 80px;
+    width: 80px; }
   .decorator-box .person-block {
     border: 1px solid black;
     height: 80px;
