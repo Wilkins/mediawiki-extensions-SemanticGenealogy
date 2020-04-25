@@ -74,10 +74,18 @@ class AncestorsFamilyTree extends FamilyTree {
 							$mariageLink = wfMessage( 'semanticgenealogy-specialfamilytree-marriage-link', $fatherName, $motherName )->text();
 							$mariageText = wfMessage( 'semanticgenealogy-specialfamilytree-marriage-title' )->text();
 							$output->addHTML( '<table class="smg-tree-marriage"><tr><td colspan="2">' );
-							$output->addWikiTextAsContent( '[['.$mariageLink.'|'.$mariageText.']]' );
+							
+							$title = \Title::newFromDbKey( $mariageLink );
+							$page = \WikiPage::factory( $title );
+							if ( $page->exists() ) {
+								$output->addWikiTextAsContent( '[['.$mariageLink.'|'.$mariageText.']]' );
+							} else {
+								$output->addWikiTextAsContent( '{{#formlink:form=Mariage|link text='.$mariageText.'|target='.$mariageLink.' }}' );
+							}
 							$output->addHTML( '</td></tr><tr><td></td><td></td></tr></table>' );
 						}
 						//$output->addHTML( '<span class="sosa-num">'.$sosa.'</span>' );
+						$sosa = $person->getSosa(); 
 						$output->addWikiTextAsContent( $person->getDescriptionWikiText( true, $this->displayName , $sosa ) );
 						if ( $sosa != 1 ) {
 							if ( $sosa % 2 == 0 ) {
@@ -98,7 +106,7 @@ class AncestorsFamilyTree extends FamilyTree {
 						$output->addHTML( 
 							'<td class="smg-tree-person col-width-'.$col.' person-empty" colspan="'.$col.'">'
 						);
-						$output->addWikiTextAsContent( 'empty' );
+						//$output->addWikiTextAsContent( 'empty' );
 						$output->addHTML( '</td>' );
 					}
 					#$output->addHTML( '</td>' );

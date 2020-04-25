@@ -158,7 +158,8 @@ class SemanticGenealogy
 				'deathplace' => 'Lieu de décès',
 				'father' => 'Père',
 				'mother' => 'Mère',
-				'partner' => 'Conjoint'
+				'partner' => 'Conjoint',
+				'sosa' => 'Sosa',
 			];
 		}
 

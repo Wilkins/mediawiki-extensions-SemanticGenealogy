@@ -36,6 +36,7 @@ class PersonPageValues {
 	public $father;
 	public $mother;
 	public $partner;
+	public $sosa;
 	protected $children;
 
 	/**
@@ -233,10 +234,19 @@ class PersonPageValues {
 	 */
 	public function getDescriptionWikiText( $withBr = false, $displayName = 'fullname', $sosa = null ) {
 		$yearRegexp = "/.*\b(\d\d\d\d)\b.*/";
-		$text = '<div class="person-block">';
+		$text = '<div class="person-block with-photo">';
 		$text .= $sosa ? '<span class="sosa-num">'.$sosa.'</span>' : '';
 		$text .= '<div class="person-name">';
-		$text .= '[[' . $this->title->getFullText() . '|' . $this->getPersonName( $displayName ). ']]';
+		$text .= '[[Fichier:' . $this->getPersonName(). '.jpg|frameless|70px|Photo]]<br/>';
+		$title = \Title::newFromDbKey( $this->title->getFullText() );
+		$page = \WikiPage::factory( $title );
+		if ( $page->exists() ) {
+			$text .= '[[' . $this->title->getFullText() . '|' . $this->getPersonName( $displayName ). ']]';
+		} else {
+			$text .= '{{#formlink:form=Personne'
+				.'|link text='.$this->getPersonName( $displayName )
+				.'|target='.$this->title->getFullText().' }}';
+		}
 		$text .= '</div>';
 		if ( $this->birthdate || $this->deathdate ) {
 			$text .= '<span class="person-dates">';
@@ -287,4 +297,20 @@ class PersonPageValues {
 		$pageTitle = Title::newFromText( $pageName );
 		return SMWDIWikiPage::newFromTitle( $pageTitle );
 	}
+
+	/**
+	 * Get the sosa number
+	 *
+	 * @return number sosa
+	 */
+	public function getSosa() {
+		$storage = smwfGetStore();
+		$properties = SemanticGenealogy::getProperties();
+		$values = $storage->getPropertyValues( $this->page, $properties['sosa'] );
+		if ( sizeof( $values ) && get_class($values[0]) == 'SMWDINumber' ) {
+			return $values[0]->getNumber();
+		}
+		return false;
+	}
+
 }
