@@ -100,52 +100,52 @@
     .decorator-box.smg-tree-root-descendant .person-dates {
       display: none; }
     .decorator-box.smg-tree-root-descendant .descendant-line {
-      line-height: 80px;
+      line-height: 90px;
       margin-top: 5px;
       display: block; }
     .decorator-box.smg-tree-root-descendant .number {
       display: inline-block;
       visibility: hidden; }
       .decorator-box.smg-tree-root-descendant .number.depth-1 {
-        width: 80px; }
+        width: 90px; }
       .decorator-box.smg-tree-root-descendant .number.depth-2 {
-        width: 160px; }
+        width: 180px; }
       .decorator-box.smg-tree-root-descendant .number.depth-3 {
-        width: 240px; }
+        width: 270px; }
       .decorator-box.smg-tree-root-descendant .number.depth-4 {
-        width: 320px; }
+        width: 360px; }
       .decorator-box.smg-tree-root-descendant .number.depth-5 {
-        width: 400px; }
+        width: 450px; }
       .decorator-box.smg-tree-root-descendant .number.depth-6 {
-        width: 480px; }
+        width: 540px; }
       .decorator-box.smg-tree-root-descendant .number.depth-7 {
-        width: 560px; }
+        width: 630px; }
       .decorator-box.smg-tree-root-descendant .number.depth-8 {
-        width: 640px; }
-      .decorator-box.smg-tree-root-descendant .number.depth-9 {
         width: 720px; }
+      .decorator-box.smg-tree-root-descendant .number.depth-9 {
+        width: 810px; }
       .decorator-box.smg-tree-root-descendant .number.depth-10 {
-        width: 800px; }
+        width: 900px; }
       .decorator-box.smg-tree-root-descendant .number.depth-11 {
-        width: 880px; }
+        width: 990px; }
       .decorator-box.smg-tree-root-descendant .number.depth-12 {
-        width: 960px; }
+        width: 1080px; }
       .decorator-box.smg-tree-root-descendant .number.depth-13 {
-        width: 1040px; }
+        width: 1170px; }
       .decorator-box.smg-tree-root-descendant .number.depth-14 {
-        width: 1120px; }
+        width: 1260px; }
       .decorator-box.smg-tree-root-descendant .number.depth-15 {
-        width: 1200px; }
+        width: 1350px; }
       .decorator-box.smg-tree-root-descendant .number.depth-16 {
-        width: 1280px; }
-      .decorator-box.smg-tree-root-descendant .number.depth-17 {
-        width: 1360px; }
-      .decorator-box.smg-tree-root-descendant .number.depth-18 {
         width: 1440px; }
+      .decorator-box.smg-tree-root-descendant .number.depth-17 {
+        width: 1530px; }
+      .decorator-box.smg-tree-root-descendant .number.depth-18 {
+        width: 1620px; }
       .decorator-box.smg-tree-root-descendant .number.depth-19 {
-        width: 1520px; }
+        width: 1710px; }
       .decorator-box.smg-tree-root-descendant .number.depth-20 {
-        width: 1600px; }
+        width: 1800px; }
     .decorator-box.smg-tree-root-descendant .father-link {
       border-left: 1px solid black;
       border-bottom: 1px solid black;
@@ -215,32 +215,32 @@
       .decorator-box.smg-tree-root-link .mother-link tr:nth-of-type(2) td:nth-of-type(2) {
         border-left: 1px solid black; }
   .decorator-box .person-empty {
-    height: 80px;
+    height: 90px;
     margin: 2px 4px;
     text-align: center;
-    line-height: 80px;
-    width: 80px; }
+    line-height: 90px;
+    width: 90px; }
     .decorator-box .person-empty.with-photo {
-      height: 136px;
-      line-height: 136px; }
+      height: 153px;
+      line-height: 153px; }
   .decorator-box .person-block {
     border: 1px solid black;
-    height: 80px;
+    height: 90px;
     margin: auto;
     text-align: center;
-    line-height: 80px;
-    width: 80px; }
+    line-height: 90px;
+    width: 90px; }
     .decorator-box .person-block.with-photo {
-      height: 136px;
-      line-height: 136px; }
+      height: 153px;
+      line-height: 153px; }
   .decorator-box .person-name {
-    width: 80px;
+    width: 90px;
     vertical-align: top;
     display: inline-block;
     line-height: normal;
     text-align: center; }
   .decorator-box .person-dates {
-    display: none; }
+    font-size: 0.8em; }
   .decorator-box .sosa-num {
     text-align: center;
     padding-left: 10px;
@@ -255,7 +255,19 @@
     margin: auto;
     float: right;
     position: absolute;
-    margin-left: 56px; }
+    margin-left: 72px; }
+  .decorator-box .mariage-link {
+    display: inline-block; }
+    .decorator-box .mariage-link p {
+      margin: 0;
+      padding: 0;
+      line-height: 16px; }
+  .decorator-box .mariage-dates {
+    display: block;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 0;
+    line-height: 13px; }
 
 .decorator-simple {
   /** Ancestors Tree **/

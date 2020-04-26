@@ -240,18 +240,19 @@ class PersonPageValues {
 		$text .= '[[Fichier:' . $this->getPersonName(). '.jpg|frameless|70px|Photo]]<br/>';
 		$title = \Title::newFromDbKey( $this->title->getFullText() );
 		$page = \WikiPage::factory( $title );
+		$person_name_display = $this->getPersonName( $displayName );
+		$person_name_display = preg_replace( '/ \(.*\)/', '', $person_name_display );
 		if ( $page->exists() ) {
-			$text .= '[[' . $this->title->getFullText() . '|' . $this->getPersonName( $displayName ). ']]';
+			$text .= '[[' . $this->title->getFullText() . '|' . $person_name_display . ']]';
 		} else {
 			$text .= '{{#formlink:form=Personne'
-				.'|link text='.$this->getPersonName( $displayName )
+			.'|link text='.$person_name_display
 				.'|target='.$this->title->getFullText().' }}';
 		}
-		$text .= '</div>';
 		if ( $this->birthdate || $this->deathdate ) {
-			$text .= '<span class="person-dates">';
+			$text .= '<div class="person-dates">';
 			if ( $withBr ) {
-				$text .= '<br />';
+				//$text .= '<br />';
 			}
 			$text .= '(';
 			if ( $this->birthdate instanceof SMWDITime ) {
@@ -267,8 +268,9 @@ class PersonPageValues {
 				&& preg_match( $yearRegexp, ( string ) $this->deathdate ) ) {
 				$text .= preg_replace( $yearRegexp, "$1", $this->deathdate );
 			}
-			$text .= ')</span>';
+			$text .= ')</div>';
 		}
+		$text .= '</div>';
 		$text .= '</div>';
 		return $text;
 	}
@@ -307,7 +309,7 @@ class PersonPageValues {
 		$storage = smwfGetStore();
 		$properties = SemanticGenealogy::getProperties();
 		$values = $storage->getPropertyValues( $this->page, $properties['sosa'] );
-		if ( sizeof( $values ) && get_class($values[0]) == 'SMWDINumber' ) {
+		if ( sizeof( $values ) && get_class( $values[0] ) == 'SMWDINumber' ) {
 			return $values[0]->getNumber();
 		}
 		return false;

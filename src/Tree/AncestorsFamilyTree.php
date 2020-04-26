@@ -46,22 +46,20 @@ class AncestorsFamilyTree extends FamilyTree {
 		$output->addHTML( '<table class="decorator-'.$this->decorator. ' smg-tree-root-ancestors">' );
 
 		$col = 1;
+		$storage = smwfGetStore();
 		for ( $i = $this->numOfGenerations - 1; $i >= 0; $i-- ) {
 			if ( isset( $tree[$i] ) ) {
-				#print_r($tree[$i]);
 				$output->addHTML( '<tr class="smg-tree-line smg-tree-gen-row-'.$i.'">' );
-				#print_r(array_keys($tree[$i]));
 
 				foreach ( $tree[$i] as $sosa => $person ) {
-					#echo $sosa."-";
-					#continue;
 					//$mariage = false;
 					//$mariageText = "";
 					/*
 					if ($person === null ) {
 						echo "$sosa : null<br>\n";
 					} else {
-						echo "$sosa : ".($person->getPersonName('pagename'))." ".($person === null ? "null" : "pas null")." <br>\n";
+						echo "$sosa : ".($person->getPersonName('pagename')).
+							" ".($person === null ? "null" : "pas null")." <br>\n";
 					}
 					*/
 					if ( $person !== null ) {
@@ -71,22 +69,47 @@ class AncestorsFamilyTree extends FamilyTree {
 						//".$person->getFatherName( )." et "; //$tree[$i][$sosa-1]->getMotherName( );
 						$output->addHTML( '<td class="smg-tree-person col-width-'.$col.'" colspan="'.$col.'">' );
 						if ( $fatherName && $motherName ) {
-							$mariageLink = wfMessage( 'semanticgenealogy-specialfamilytree-marriage-link', $fatherName, $motherName )->text();
+							$mariageLink = wfMessage(
+								'semanticgenealogy-specialfamilytree-marriage-link',
+								$fatherName,
+								$motherName
+							)->text();
 							$mariageText = wfMessage( 'semanticgenealogy-specialfamilytree-marriage-title' )->text();
 							$output->addHTML( '<table class="smg-tree-marriage"><tr><td colspan="2">' );
-							
+
 							$title = \Title::newFromDbKey( $mariageLink );
 							$page = \WikiPage::factory( $title );
 							if ( $page->exists() ) {
-								$output->addWikiTextAsContent( '[['.$mariageLink.'|'.$mariageText.']]' );
+								$prop = \SMWDIProperty::newFromUserLabel( 'Anneemariage' );
+								$smwpage = PersonPageValues::getPageFromName( $mariageLink );
+								$annee_mariage = $storage->getPropertyValues( $smwpage, $prop );
+								$annee_mariage_text = '';
+								if ( isset( $annee_mariage[0] ) && get_class( $annee_mariage[0] ) == 'SMWDIBlob' ) {
+									$annee_mariage_text = $annee_mariage[0]->getString();
+								}
+								$output->addHTML( '<span class="mariage-link">' );
+								$output->addWikiTextAsContent(
+									'[['.$mariageLink.'|'.$mariageText.']]'
+								);
+								$output->addHTML( '</span>' );
+								if ( $annee_mariage_text ) {
+									$output->addHTML( '<span class="mariage-dates">('.$annee_mariage_text.')</span>' );
+								}
+								
+
+
 							} else {
-								$output->addWikiTextAsContent( '{{#formlink:form=Mariage|link text='.$mariageText.'|target='.$mariageLink.' }}' );
+								$output->addWikiTextAsContent(
+									'{{#formlink:form=Mariage|link text='.$mariageText.'|target='.$mariageLink.' }}'
+								);
 							}
 							$output->addHTML( '</td></tr><tr><td></td><td></td></tr></table>' );
 						}
 						//$output->addHTML( '<span class="sosa-num">'.$sosa.'</span>' );
 						$sosa = $person->getSosa(); 
-						$output->addWikiTextAsContent( $person->getDescriptionWikiText( true, $this->displayName , $sosa ) );
+						$output->addWikiTextAsContent(
+							$person->getDescriptionWikiText( true, $this->displayName , $sosa )
+						);
 						if ( $sosa != 1 ) {
 							if ( $sosa % 2 == 0 ) {
 								$output->addHTML( '<table class="father-link"><tr><td></td><td></td><td></td></tr>'
@@ -97,7 +120,8 @@ class AncestorsFamilyTree extends FamilyTree {
 								/*
 								if ( $tree[$i][$sosa-1] !== null ) {
 									$mariage = true;
-									$mariageText = "Mariage de ".$person->getFatherName( )." et ".$tree[$i][$sosa-1]->getMotherName( );
+									$mariageText = "Mariage de ".$person->getFatherName( ).
+										" et ".$tree[$i][$sosa-1]->getMotherName( );
 								}
 								*/
 							}
@@ -107,6 +131,7 @@ class AncestorsFamilyTree extends FamilyTree {
 							'<td class="smg-tree-person col-width-'.$col.' person-empty" colspan="'.$col.'">'
 						);
 						//$output->addWikiTextAsContent( 'empty' );
+						$output->addHtml( '&nbsp;' );
 						$output->addHTML( '</td>' );
 					}
 					#$output->addHTML( '</td>' );

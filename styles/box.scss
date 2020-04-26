@@ -50,7 +50,7 @@
 	}
 }
 
-$box-size: 80px;
+$box-size: 90px;
 $box-height: $box-size * 1.7;
 $box-width: $box-size;
 
@@ -274,7 +274,8 @@ $box-width: $box-size;
 	}
 
 	.person-dates {
-		display: none;
+		font-size: 0.8em;
+		//display: none;
 	}
 
 	.sosa-num {
@@ -294,11 +295,28 @@ $box-width: $box-size;
 		//margin-bottom: -12px;
 		float: right;
 		position: absolute;
-		margin-left: $box-width * 0.7;
+		margin-left: $box-width * 0.8;
 		//left: 70px;
 		//right: -30px;
 		//top: 22px;
 		//bottom: -22px;
+	}
+
+	.mariage-link {
+		display: inline-block;
+
+		p {
+			margin: 0;
+			padding: 0;
+			line-height: 16px;
+		}
+	}
+	.mariage-dates {
+		display: block;
+		font-size: 0.8em;
+		margin: 0;
+		padding: 0;
+		line-height: 13px;
 	}
 
 }
