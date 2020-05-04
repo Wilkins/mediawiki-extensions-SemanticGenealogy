@@ -3,6 +3,7 @@
 namespace SemanticGenealogy\Tree;
 
 use SemanticGenealogy\PersonPageValues;
+use SemanticGenealogy\SemanticGenealogy;
 
 /**
  * AncestorsFamilyTree object
@@ -77,9 +78,7 @@ class AncestorsFamilyTree extends FamilyTree {
 							$mariageText = wfMessage( 'semanticgenealogy-specialfamilytree-marriage-title' )->text();
 							$output->addHTML( '<table class="smg-tree-marriage"><tr><td colspan="2">' );
 
-							$title = \Title::newFromDbKey( $mariageLink );
-							$page = \WikiPage::factory( $title );
-							if ( $page->exists() ) {
+							if ( SemanticGenealogy::pageExists( $mariageLink ) ) {
 								$prop = \SMWDIProperty::newFromUserLabel( 'Anneemariage' );
 								$smwpage = PersonPageValues::getPageFromName( $mariageLink );
 								$annee_mariage = $storage->getPropertyValues( $smwpage, $prop );

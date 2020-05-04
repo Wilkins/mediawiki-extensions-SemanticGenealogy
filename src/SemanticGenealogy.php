@@ -5,6 +5,7 @@ namespace SemanticGenealogy;
 use MWException;
 use SMWDIProperty;
 use SemanticGenealogy\NamespaceManager;
+use Title;
 
 /**
  * Static class for hooks handled by the Semantic Genealogy extension.
@@ -192,6 +193,13 @@ class SemanticGenealogy
 
 
 
+	}
+
+	public static function pageExists( $pagename ) {
+		$pagename = preg_replace( '/ /', '_', $pagename );
+		$title = \Title::newFromDbKey( $pagename );
+		$page = \WikiPage::factory( $title );
+		return $page->exists();
 	}
 
 }

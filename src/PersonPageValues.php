@@ -9,6 +9,7 @@ use SMWDITime;
 use SMWDIWikiPage;
 use SMWTimeValue;
 use Title;
+use SemanticGenealogy\SemanticGenealogy;
 
 /**
  * Model object that store genealogical data of a person
@@ -237,12 +238,15 @@ class PersonPageValues {
 		$text = '<div class="person-block with-photo">';
 		$text .= $sosa ? '<span class="sosa-num">'.$sosa.'</span>' : '';
 		$text .= '<div class="person-name">';
-		$text .= '[[Fichier:' . $this->getPersonName(). '.jpg|frameless|70px|Photo]]<br/>';
-		$title = \Title::newFromDbKey( $this->title->getFullText() );
-		$page = \WikiPage::factory( $title );
+		$pagename = 'Fichier:'.$this->getPersonName().'.jpg';
+		if ( SemanticGenealogy::pageExists( $pagename ) ) {
+			$text .= '[[Fichier:' . $this->getPersonName(). '.jpg|frameless|70px|Photo]]<br/>';
+		} else {
+			$text .= '[[Fichier:Portrait_silouhette.png|frameless|70px|Photo]]<br/>';
+		}
 		$person_name_display = $this->getPersonName( $displayName );
 		$person_name_display = preg_replace( '/ \(.*\)/', '', $person_name_display );
-		if ( $page->exists() ) {
+		if ( SemanticGenealogy::pageExists( $this->title->getFullText() ) ) {
 			$text .= '[[' . $this->title->getFullText() . '|' . $person_name_display . ']]';
 		} else {
 			$text .= '{{#formlink:form=Personne'
