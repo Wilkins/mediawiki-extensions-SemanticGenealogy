@@ -45,12 +45,13 @@ class PersonPageValues {
 	 *
 	 * @param SMWDIWikiPage $page the page
 	 */
-	public function __construct( SMWDIWikiPage $page ) {
+	public function __construct( SMWDIWikiPage $page, $gender = null ) {
 		#print_r( $page );
 		$values = [];
 		$storage = smwfGetStore();
 		$this->page = $page;
 		$this->title = $page->getTitle();
+		$this->gender = $gender;
 		$properties = SemanticGenealogy::getProperties();
 		foreach ( $properties as $key => $prop ) {
 			$values = $storage->getPropertyValues( $page, $prop );
@@ -337,6 +338,9 @@ class PersonPageValues {
 	 * @return gender
 	 */
 	public function getGender() {
+		if ( $this->gender ) {
+			return $this->gender;
+		}
 		$storage = smwfGetStore();
 		$properties = SemanticGenealogy::getProperties();
 		$values = $storage->getPropertyValues( $this->page, $properties['gender'] );

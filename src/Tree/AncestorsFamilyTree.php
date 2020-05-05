@@ -113,6 +113,11 @@ class AncestorsFamilyTree extends FamilyTree {
 								);
 							}
 							$output->addHTML( '</td></tr><tr><td></td><td></td></tr></table>' );
+						} else {
+							$output->addHTML(
+								"\n".'<table class="smg-tree-marriage-empty"><tr><td></td></tr>'
+								.'<tr><td></td></tr></table>'
+						   	);
 						}
 						//$output->addHTML( '<span class="sosa-num">'.$sosa.'</span>' );
 						$sosa = $person->getSosa(); 

@@ -123,7 +123,7 @@ abstract class FamilyTree {
 			if ( isset( $tree[$gen - 1][$son] ) ) {
 				$father = $tree[$gen - 1][$son]->father;
 				if ( $father instanceof SMWDIWikiPage ) {
-					$tree[$gen][$parent] = new PersonPageValues( $father );
+					$tree[$gen][$parent] = new PersonPageValues( $father, 'M' );
 					$isEmpty = false;
 				} else {
 					$tree[$gen][$parent] = null;
@@ -132,7 +132,7 @@ abstract class FamilyTree {
 
 				$mother = $tree[$gen - 1][$son]->mother;
 				if ( $mother instanceof SMWDIWikiPage ) {
-					$tree[$gen][$parent] = new PersonPageValues( $mother );
+					$tree[$gen][$parent] = new PersonPageValues( $mother, 'F' );
 					$isEmpty = false;
 				} else {
 					$tree[$gen][$parent] = null;
