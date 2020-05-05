@@ -114,6 +114,13 @@ $box-width: $box-size;
 			border-collapse: collapse;
 			margin: auto;
 
+			tr:nth-of-type(1) td {
+				height: 30px;
+			}
+			tr:nth-of-type(2) td {
+				height: 15px;
+			}
+
 			tr:nth-of-type(1) td:nth-of-type(1) {
 				border: 1px solid black;
 				padding: 0px 5px;
@@ -125,6 +132,14 @@ $box-width: $box-size;
 			}
 			tr:nth-of-type(2) td:nth-of-type(2) {
 				width: 50%;
+			}
+		}
+		.smg-tree-marriage-empty {
+			tr:nth-of-type(1) td {
+				height: 30px;
+			}
+			tr:nth-of-type(2) td {
+				height: 15px;
 			}
 		}
 	}
@@ -241,6 +256,9 @@ $box-width: $box-size;
 		text-align: center;
 		line-height: $box-size;
 		width: $box-size;
+		min-width: $box-size;
+		table-layout: fixed;
+		border: 1px solid red;
 		&.with-photo {
 			height: $box-height;
 			line-height: $box-height;

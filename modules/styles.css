@@ -75,6 +75,10 @@
     .decorator-box.smg-tree-root-ancestors .smg-tree-marriage {
       border-collapse: collapse;
       margin: auto; }
+      .decorator-box.smg-tree-root-ancestors .smg-tree-marriage tr:nth-of-type(1) td {
+        height: 30px; }
+      .decorator-box.smg-tree-root-ancestors .smg-tree-marriage tr:nth-of-type(2) td {
+        height: 15px; }
       .decorator-box.smg-tree-root-ancestors .smg-tree-marriage tr:nth-of-type(1) td:nth-of-type(1) {
         border: 1px solid black;
         padding: 0px 5px; }
@@ -84,6 +88,10 @@
         width: 50%; }
       .decorator-box.smg-tree-root-ancestors .smg-tree-marriage tr:nth-of-type(2) td:nth-of-type(2) {
         width: 50%; }
+    .decorator-box.smg-tree-root-ancestors .smg-tree-marriage-empty tr:nth-of-type(1) td {
+      height: 30px; }
+    .decorator-box.smg-tree-root-ancestors .smg-tree-marriage-empty tr:nth-of-type(2) td {
+      height: 15px; }
   .decorator-box.smg-tree-root-descendant {
     border-collapse: collapse; }
     .decorator-box.smg-tree-root-descendant td {
@@ -219,7 +227,10 @@
     margin: 2px 4px;
     text-align: center;
     line-height: 90px;
-    width: 90px; }
+    width: 90px;
+    min-width: 90px;
+    table-layout: fixed;
+    border: 1px solid red; }
     .decorator-box .person-empty.with-photo {
       height: 153px;
       line-height: 153px; }
