@@ -29,7 +29,7 @@ class PersonPageValues {
 	public $nickname;
 	public $prefix;
 	public $suffix;
-	public $sex;
+	public $gender;
 	public $birthdate;
 	public $birthplace;
 	public $deathdate;
@@ -225,6 +225,11 @@ class PersonPageValues {
 		return $this->title->getFullText();
 	}
 
+	public function photoExists() {
+		$pagename = 'Fichier:'.$this->getPersonName().'.jpg';
+		return SemanticGenealogy::pageExists( $pagename );
+	}
+
 	/**
 	 * Generate the Person description wiki text based on the special pages options
 	 *
@@ -233,16 +238,22 @@ class PersonPageValues {
 	 *
 	 * @return string the text to display
 	 */
-	public function getDescriptionWikiText( $withBr = false, $displayName = 'fullname', $sosa = null ) {
+	public function getDescriptionWikiText(
+		$withBr = false,
+	   	$displayName = 'fullname',
+		$sosa = null,
+		$withPhoto = false
+		) {
 		$yearRegexp = "/.*\b(\d\d\d\d)\b.*/";
-		$text = '<div class="person-block with-photo">';
+		$text = "\n".'<div class="person-block '.( $withPhoto ? ' with-photo' : '' ).'">';
 		$text .= $sosa ? '<span class="sosa-num">'.$sosa.'</span>' : '';
-		$text .= '<div class="person-name">';
-		$pagename = 'Fichier:'.$this->getPersonName().'.jpg';
-		if ( SemanticGenealogy::pageExists( $pagename ) ) {
-			$text .= '[[Fichier:' . $this->getPersonName(). '.jpg|frameless|70px|Photo]]<br/>';
-		} else {
-			$text .= '[[Fichier:Portrait_silouhette.png|frameless|70px|Photo]]<br/>';
+		$text .= "\n".'<div class="person-name">';
+		if ( $withPhoto ) {
+			if ( $this->photoExists() ) {
+				$text .= '[[Fichier:' . $this->getPersonName(). '.jpg|frameless|70px|Photo]]<br/>';
+			} else {
+				$text .= '[[Fichier:Portrait_silouhette.png|frameless|70px|Photo]]<br/>';
+			}
 		}
 		$person_name_display = $this->getPersonName( $displayName );
 		$person_name_display = preg_replace( '/ \(.*\)/', '', $person_name_display );
@@ -254,7 +265,7 @@ class PersonPageValues {
 				.'|target='.$this->title->getFullText().' }}';
 		}
 		if ( $this->birthdate || $this->deathdate ) {
-			$text .= '<div class="person-dates">';
+			$text .= "\n".'<div class="person-dates">';
 			if ( $withBr ) {
 				//$text .= '<br />';
 			}
@@ -318,5 +329,23 @@ class PersonPageValues {
 		}
 		return false;
 	}
+
+
+	/**
+	 * Get the gender
+	 *
+	 * @return gender
+	 */
+	public function getGender() {
+		$storage = smwfGetStore();
+		$properties = SemanticGenealogy::getProperties();
+		$values = $storage->getPropertyValues( $this->page, $properties['gender'] );
+		if ( sizeof( $values ) && get_class( $values[0] ) == 'SMWDIBlob' ) {
+			return $values[0]->getString();
+		}
+		return false;
+	}
+
+
 
 }

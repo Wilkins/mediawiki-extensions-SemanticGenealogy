@@ -116,7 +116,7 @@ abstract class FamilyTree {
 	 * @return array the resulting tree
 	 */
 	protected function addGenInTree( $gen, array $tree ) {
-		$empty = true;
+		$isEmpty = true;
 		$son = $this->getNumOfPeopleInGen( $gen - 1 );
 		$end = $son * 4;
 		for ( $parent = $son * 2; $parent < $end; true ) {
@@ -124,7 +124,7 @@ abstract class FamilyTree {
 				$father = $tree[$gen - 1][$son]->father;
 				if ( $father instanceof SMWDIWikiPage ) {
 					$tree[$gen][$parent] = new PersonPageValues( $father );
-					$empty = false;
+					$isEmpty = false;
 				} else {
 					$tree[$gen][$parent] = null;
 				}
@@ -133,18 +133,20 @@ abstract class FamilyTree {
 				$mother = $tree[$gen - 1][$son]->mother;
 				if ( $mother instanceof SMWDIWikiPage ) {
 					$tree[$gen][$parent] = new PersonPageValues( $mother );
-					$empty = false;
+					$isEmpty = false;
 				} else {
 					$tree[$gen][$parent] = null;
 				}
 				$parent++;
 			} else {
+				$tree[$gen][$parent] = null;
+				$tree[$gen][$parent+1] = null;
 				$parent += 2;
 			}
 			$son++;
 		}
 		// Verif s'il n'y a personne dans la génération
-		if ( $empty ) {
+		if ( $isEmpty ) {
 			$tree[$gen] = null;
 		}
 		return $tree;

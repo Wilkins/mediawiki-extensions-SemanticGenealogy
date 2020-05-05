@@ -52,6 +52,14 @@ class AncestorsFamilyTree extends FamilyTree {
 			if ( isset( $tree[$i] ) ) {
 				$output->addHTML( '<tr class="smg-tree-line smg-tree-gen-row-'.$i.'">' );
 
+				// Browse all the persons of the generation
+				// If a picture exists, show all pictures (silouhette for others)
+				$withPhoto = false;
+				foreach ( $tree[$i] as $sosa => $person ) {
+					if ( $person ) {
+						$withPhoto = $withPhoto || $person->photoExists();
+					}
+				}
 				foreach ( $tree[$i] as $sosa => $person ) {
 					//$mariage = false;
 					//$mariageText = "";
@@ -68,7 +76,9 @@ class AncestorsFamilyTree extends FamilyTree {
 						$motherName = $person->getMotherName( );
 						//"Mariage de $fatherName et de $motherName";
 						//".$person->getFatherName( )." et "; //$tree[$i][$sosa-1]->getMotherName( );
-						$output->addHTML( '<td class="smg-tree-person col-width-'.$col.'" colspan="'.$col.'">' );
+						$output->addHTML(
+							"\n".'<td class="smg-tree-person col-width-'.$col.' gen-'.( $i + 1 ).'" colspan="'.$col.'">'
+						);
 						if ( $fatherName && $motherName ) {
 							$mariageLink = wfMessage(
 								'semanticgenealogy-specialfamilytree-marriage-link',
@@ -76,7 +86,7 @@ class AncestorsFamilyTree extends FamilyTree {
 								$motherName
 							)->text();
 							$mariageText = wfMessage( 'semanticgenealogy-specialfamilytree-marriage-title' )->text();
-							$output->addHTML( '<table class="smg-tree-marriage"><tr><td colspan="2">' );
+							$output->addHTML( "\n".'<table class="smg-tree-marriage"><tr><td colspan="2">' );
 
 							if ( SemanticGenealogy::pageExists( $mariageLink ) ) {
 								$prop = \SMWDIProperty::newFromUserLabel( 'Anneemariage' );
@@ -86,13 +96,13 @@ class AncestorsFamilyTree extends FamilyTree {
 								if ( isset( $annee_mariage[0] ) && get_class( $annee_mariage[0] ) == 'SMWDIBlob' ) {
 									$annee_mariage_text = $annee_mariage[0]->getString();
 								}
-								$output->addHTML( '<span class="mariage-link">' );
+								$output->addHTML( "\n".'<span class="mariage-link">' );
 								$output->addWikiTextAsContent(
 									'[['.$mariageLink.'|'.$mariageText.']]'
 								);
 								$output->addHTML( '</span>' );
 								if ( $annee_mariage_text ) {
-									$output->addHTML( '<span class="mariage-dates">('.$annee_mariage_text.')</span>' );
+									$output->addHTML( "\n".'<span class="mariage-dates">('.$annee_mariage_text.')</span>' );
 								}
 								
 
@@ -107,10 +117,10 @@ class AncestorsFamilyTree extends FamilyTree {
 						//$output->addHTML( '<span class="sosa-num">'.$sosa.'</span>' );
 						$sosa = $person->getSosa(); 
 						$output->addWikiTextAsContent(
-							$person->getDescriptionWikiText( true, $this->displayName , $sosa )
+							$person->getDescriptionWikiText( true, $this->displayName , $sosa, $withPhoto )
 						);
 						if ( $sosa != 1 ) {
-							if ( $sosa % 2 == 0 ) {
+							if ( $person->getGender() == 'M' ) {
 								$output->addHTML( '<table class="father-link"><tr><td></td><td></td><td></td></tr>'
 									.'<tr><td></td><td></td><td></td></tr></table>' );
 							} else {
@@ -131,7 +141,7 @@ class AncestorsFamilyTree extends FamilyTree {
 						);
 						//$output->addWikiTextAsContent( 'empty' );
 						$output->addHtml( '&nbsp;' );
-						$output->addHTML( '</td>' );
+						$output->addHTML( "</td>\n" );
 					}
 					#$output->addHTML( '</td>' );
 					/*
@@ -142,7 +152,7 @@ class AncestorsFamilyTree extends FamilyTree {
 					}
 					 */
 				}
-				$output->addHTML( '</tr>' );
+				$output->addHTML( "</tr>\n" );
 			}
 			$col *= 2;
 		}

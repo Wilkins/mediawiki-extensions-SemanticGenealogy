@@ -152,7 +152,7 @@ class SemanticGenealogy
 				'givenname' => 'Prénom',
 				'surname' => 'Nom',
 				'nickname' => '',
-				'sex' => 'Sexe',
+				'gender' => 'Gender',
 				'birthdate' => 'Date de naissance',
 				'birthplace' => 'Lieu de naissance',
 				'deathdate' => 'Date de décès',
