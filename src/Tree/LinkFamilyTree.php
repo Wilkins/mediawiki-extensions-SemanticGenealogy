@@ -182,15 +182,15 @@ class LinkFamilyTree extends FamilyTree {
 		}
 		$class = "";
 
-		$index = $i == 1 ? 0 : $index*2 + ( $person->sex == 'M' ? 0 : 1 );
+		$index = $i == 1 ? 0 : $index*2 + ( $person->gender == 'M' ? 0 : 1 );
 		$output->addHTML( str_repeat( $emptytd, $index ) );
 		if ( $person->fullname instanceof SMWDIBlob ) {
 			$output->addHTML( '<td colspan="'.$colspan.'">' );
-			// ( $person->sex == 'M' ? '/' : '\\' ).'<br/>' .
+			// ( $person->gender == 'M' ? '/' : '\\' ).'<br/>' .
 			if ( $i == 1 ) {
 				$class = $side == 'left' ? 'father' : 'mother';
 			} else {
-				$class = $person->sex == 'M' ? 'father' : 'mother';
+				$class = $person->gender == 'M' ? 'father' : 'mother';
 			}
 
 			$parentLink = '<table class="'.$class.'-link">'

@@ -135,10 +135,12 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 	protected function addHead() {
 		global $wgSitename, $wgRightsText;
 
+		$version = \ExtensionRegistry::getInstance()->getAllThings()['SemanticGenealogy']['version'];
+
 		$this->addRow( 0, 'HEAD' );
 		$this->addRow( 1, 'SOUR', 'unregistered' );
-		$this->addRow( 2, 'NAME', 'Semantic Genealogy' );
-		$this->addRow( 2, 'VERS', SGENEA_VERSION );
+		$this->addRow( 2, 'NAME', 'SemanticGenealogy' );
+		$this->addRow( 2, 'VERS', $version );
 		$this->addRow( 2, 'DATA', $wgSitename );
 		if ( isset( $wgRightsText ) && $wgRightsText ) {
 			$this->addRow( 3, 'COPR', $wgRightsText );
@@ -170,7 +172,7 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 		$this->addStringValueAsRow( 2, 'NICK', $person->nickname );
 		$this->addStringValueAsRow( 2, 'NPFX', $person->prefix );
 		$this->addStringValueAsRow( 2, 'NSFX', $person->suffix );
-		$this->addStringValueAsRow( 1, 'SEX', $person->sex );
+		$this->addStringValueAsRow( 1, 'SEX', $person->gender );
 		$familyId = $this->getFamilyIdForChild( $person );
 		if ( $familyId != '0S0' ) {
 			$this->addRow( 1, 'FAMC', '@F'. $familyId . '@' );

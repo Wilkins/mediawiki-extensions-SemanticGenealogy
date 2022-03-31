@@ -125,10 +125,10 @@ class SpecialFamilyTree extends SpecialPage {
 
 			$familytree->render();
 		} catch ( SemanticGenealogy\Exception $e ) {
-			$wgOut->addWikiText( '<span class="error">' .  $e->getMessage() . '</span>' );
+			$wgOut->addHTML( '<span class="error">' .  $e->getMessage() . '</span>' );
 			return Status::newFatal( $e->getMessage() );
 		} catch ( Exception $e ) {
-			$wgOut->addWikiText( '<span class="error">' .  $e->getMessage() . '</span>' );
+			$wgOut->addHTML( '<span class="error">' .  $e->getMessage() . '</span>' );
 			return Status::newFatal( $e->getMessage() );
 		}
 		return Status::newGood();

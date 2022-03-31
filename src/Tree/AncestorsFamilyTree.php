@@ -49,6 +49,7 @@ class AncestorsFamilyTree extends FamilyTree {
 		$col = 1;
 		$storage = smwfGetStore();
 		for ( $i = $this->numOfGenerations - 1; $i >= 0; $i-- ) {
+			$genNum = max(array_keys($tree))-$i;
 			if ( isset( $tree[$i] ) ) {
 				$output->addHTML( '<tr class="smg-tree-line smg-tree-gen-row-'.$i.'">' );
 
@@ -77,7 +78,7 @@ class AncestorsFamilyTree extends FamilyTree {
 						//"Mariage de $fatherName et de $motherName";
 						//".$person->getFatherName( )." et "; //$tree[$i][$sosa-1]->getMotherName( );
 						$output->addHTML(
-							"\n".'<td class="smg-tree-person col-width-'.$col.' gen-'.( $i + 1 ).'" colspan="'.$col.'">'
+							"\n".'<td class="smg-tree-person col-width-'.$col.' gen-'.( $genNum ).'" colspan="'.$col.'">'
 						);
 						if ( $fatherName && $motherName ) {
 							$mariageLink = wfMessage(
@@ -124,21 +125,21 @@ class AncestorsFamilyTree extends FamilyTree {
 						$output->addWikiTextAsContent(
 							$person->getDescriptionWikiText( true, $this->displayName , $sosa, $withPhoto )
 						);
-						if ( $sosa != 1 ) {
+
+						$rootperson = preg_replace( '/_/', ' ', $this->person->getDBKey() );
+						if ( $person->getPersonName() != $rootperson ) {
+							//$sosa != $this->person ) {
+						 //->getSosa() ) {
 							if ( $person->getGender() == 'M' ) {
-								$output->addHTML( '<table class="father-link"><tr><td></td><td></td><td></td></tr>'
-									.'<tr><td></td><td></td><td></td></tr></table>' );
+								$linkname = 'father-link';
 							} else {
-								$output->addHTML( '<table class="mother-link"><tr><td></td><td></td><td></td></tr>'
-									.'<tr><td></td><td></td><td></td></tr></table>' );
-								/*
-								if ( $tree[$i][$sosa-1] !== null ) {
-									$mariage = true;
-									$mariageText = "Mariage de ".$person->getFatherName( ).
-										" et ".$tree[$i][$sosa-1]->getMotherName( );
-								}
-								*/
+								$linkname = 'mother-link';
 							}
+							$output->addHTML( 
+								'<table class="'.$linkname.' gen-'.$genNum.'">'
+									.'<tr><td></td><td></td><td></td><td></td></tr>'
+									.'<tr><td></td><td></td><td></td><td></td></tr>'
+								.'</table>' );
 						}
 					} else {
 						$output->addHTML( 

@@ -1,5 +1,5 @@
 {
-    "name": "Semantic Genealogy",
+    "name": "SemanticGenealogy",
     "version": "0.3.10",
     "author": [
 		"Tpt",
@@ -31,7 +31,7 @@
     },
     "callback": "SemanticGenealogy\\SemanticGenealogy::initExtension",
     "Hooks": {
-      "SkinBuildSidebar" : [
+      "@SkinBuildSidebar" : [
         "SemanticGenealogy\\Sidebar::addGenealogySideBar"
       ],
       "ParserBeforeTidy": [

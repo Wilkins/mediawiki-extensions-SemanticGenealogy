@@ -259,6 +259,9 @@ class PersonPageValues {
 		$person_name_display = $this->getPersonName( $displayName );
 		$person_name_display = preg_replace( '/ \(.*\)/', '', $person_name_display );
 		if ( SemanticGenealogy::pageExists( $this->title->getFullText() ) ) {
+			if ( substr_count( $person_name_display, ' ' ) == 1 ) {
+				$person_name_display = str_replace( ' ', '<br/>', $person_name_display );
+			}
 			$text .= '[[' . $this->title->getFullText() . '|' . $person_name_display . ']]';
 		} else {
 			$text .= '{{#formlink:form=Personne'

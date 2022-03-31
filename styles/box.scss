@@ -1,58 +1,95 @@
 
-@mixin parent-link($left) {
+table td {
+	//border: 1px solid gray !important;
+}
+
+@mixin parent-link($left, $gen) {
 	width: 100%;
 	border-spacing: 0px;
 	border-collapse: collapse;
 
-	tr:nth-of-type(1) {
-		td:nth-of-type(1) {
+	  &.gen-#{$gen} {
+			tr:nth-of-type(1) {
+				td:nth-of-type(1) {
+					@if $left {
+					  width: 30px;
+					  border-bottom: 2px solid black;
+					} @else {
+					  width: 48%;
+					}
+					height: 10px;
+				}
+				td:nth-of-type(2) {
+					width: 48%;
+					width: $box-width * $gen;
+					@if not $left {
+						border-bottom: 2px solid black;
+					}
+				}
+				td:nth-of-type(3) {
+					@if $left {
+					  width: 48%;
+					} @else {
+					  width: 30px;
+					}
+				}
+			}
+			tr:nth-of-type(2) {
+				td:nth-of-type(1) {
+					height: 10px;
+					@if $left {
+					  width: 48%;
+					} @else {
+					  width: 30px;
+					}
+				}
+				td:nth-of-type(2) {
+					width: 50%;
+				}
+				td:nth-of-type(3) {
+					@if $left {
+					  width: 30px;
+					} @else {
+					  width: 48%;
+					}
+				}
+			}
+
 			@if $left {
-			  width: 30px;
-			  border-bottom: 1px solid black;
+				tr:nth-of-type(1) {
+					td:nth-of-type(1) {
+						border-right: 2px solid black;
+					}
+				}
+				tr:nth-of-type(2) {
+					td:nth-of-type(1) {
+						border-left: 2px solid black;
+					}
+				}
 			} @else {
-			  width: 48%;
+				tr:nth-of-type(1) {
+					td:nth-of-type(1) {
+						border-right: 2px solid black;
+					}
+				}
+				tr:nth-of-type(2) {
+					td:nth-of-type(3) {
+						border-left: 2px solid black;
+					}
+				}
 			}
-			height: 10px;
+
 		}
-		td:nth-of-type(2) {
-			width: 48%;
-			@if not $left {
-				border-bottom: 1px solid black;
-			}
-		}
-		td:nth-of-type(3) {
-			@if $left {
-			  width: 48%;
-			} @else {
-			  width: 30px;
-			}
-		}
-	}
-	tr:nth-of-type(2) {
-		td:nth-of-type(1) {
-			height: 10px;
-			@if $left {
-			  width: 48%;
-			} @else {
-			  width: 30px;
-			}
-		}
-		td:nth-of-type(2) {
-			width: 50%;
-		}
-		td:nth-of-type(3) {
-			@if $left {
-			  width: 30px;
-			} @else {
-			  width: 48%;
-			}
-		}
-	}
 }
+
 
 $box-size: 90px;
 $box-height: $box-size * 1.7;
 $box-width: $box-size;
+
+$parent-link-margin: 10px;
+$box-interval: 8px / 2;
+
 
 .decorator-box {
 	/** Ancestors Tree **/
@@ -60,6 +97,7 @@ $box-width: $box-size;
 		text-align: center;
 		border-spacing: 0;
 		border-collapse: collapse;
+		background-color: white;
 
 		/*
 		tr.smg-tree-line {
@@ -73,7 +111,7 @@ $box-width: $box-size;
 
 		.smg-tree-person {
 			padding: 0 2px;
-			margin: 0 2px;
+			margin: 0 $box-interval;
 		}
 
 		.col-width-1,
@@ -83,30 +121,14 @@ $box-width: $box-size;
 
 
 		.father-link {
-			@include parent-link(false);
-			tr:nth-of-type(1) {
-				td:nth-of-type(1) {
-					border-right: 1px solid black;
-				}
-			}
-			tr:nth-of-type(2) {
-				td:nth-of-type(3) {
-					border-left: 1px solid black;
-				}
+			@for $gen from 1 through 10 {
+				@include parent-link(false, $gen);
 			}
 		}
 
 		.mother-link {
-			@include parent-link(true);
-			tr:nth-of-type(1) {
-				td:nth-of-type(1) {
-					border-right: 1px solid black;
-				}
-			}
-			tr:nth-of-type(2) {
-				td:nth-of-type(1) {
-					border-left: 1px solid black;
-				}
+			@for $gen from 1 through 10 {
+				@include parent-link(true, $gen);
 			}
 		}
 
@@ -147,19 +169,24 @@ $box-width: $box-size;
 	/** Descendant Tree **/
 	&.smg-tree-root-descendant {
 		border-collapse: collapse;
+		background-color: white;
 		//border:1px solid black;
 		td {
 		  padding: 0;
 		  //border:1px solid black;
 		}
 		table {
+			margin: auto;
 			border-collapse: collapse;
 		}
 		.person {
 			min-width: 30px;
 		}
+		.person-name {
+			margin-top: 4px;
+		}
 		.person-block,
-		.person-name,
+		//.person-name,
 		.person-dates {
 			display: inline-block;
 			margin: 2px;
@@ -219,7 +246,7 @@ $box-width: $box-size;
 
 
 		.father-link {
-			@include parent-link(false);
+			@include parent-link(false, 1);
 			tr:nth-of-type(1) {
 				td:nth-of-type(3) {
 					border-left: 1px solid black;
@@ -233,7 +260,7 @@ $box-width: $box-size;
 		}
 
 		.mother-link {
-			@include parent-link(true);
+			@include parent-link(true, 1);
 			tr:nth-of-type(1) {
 				td:nth-of-type(1) {
 					border-left: 1px solid black;
@@ -258,7 +285,7 @@ $box-width: $box-size;
 		width: $box-size;
 		min-width: $box-size;
 		table-layout: fixed;
-		border: 1px solid red;
+		//border: 1px solid red;
 		&.with-photo {
 			height: $box-height;
 			line-height: $box-height;
@@ -313,7 +340,7 @@ $box-width: $box-size;
 		//margin-bottom: -12px;
 		float: right;
 		position: absolute;
-		margin-left: $box-width * 0.8;
+		margin-left: $box-width * 0.9;
 		//left: 70px;
 		//right: -30px;
 		//top: 22px;

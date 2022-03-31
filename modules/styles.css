@@ -11,6 +11,7 @@
     text-align: center;
     border-spacing: 0;
     border-collapse: collapse;
+    background-color: white;
     /*
     tr.smg-tree-line {
     padding-top: 0px;
@@ -22,56 +23,472 @@
     */ }
     .decorator-box.smg-tree-root-ancestors .smg-tree-person {
       padding: 0 2px;
-      margin: 0 2px; }
+      margin: 0 4px; }
     .decorator-box.smg-tree-root-ancestors .col-width-1,
     .decorator-box.smg-tree-root-ancestors .col-width-2 {
       vertical-align: bottom; }
     .decorator-box.smg-tree-root-ancestors .father-link {
       width: 100%;
       border-spacing: 0px;
-      border-collapse: collapse; }
-      .decorator-box.smg-tree-root-ancestors .father-link tr:nth-of-type(1) td:nth-of-type(1) {
-        width: 48%;
-        height: 10px; }
-      .decorator-box.smg-tree-root-ancestors .father-link tr:nth-of-type(1) td:nth-of-type(2) {
-        width: 48%;
-        border-bottom: 1px solid black; }
-      .decorator-box.smg-tree-root-ancestors .father-link tr:nth-of-type(1) td:nth-of-type(3) {
-        width: 30px; }
-      .decorator-box.smg-tree-root-ancestors .father-link tr:nth-of-type(2) td:nth-of-type(1) {
-        height: 10px;
-        width: 30px; }
-      .decorator-box.smg-tree-root-ancestors .father-link tr:nth-of-type(2) td:nth-of-type(2) {
-        width: 50%; }
-      .decorator-box.smg-tree-root-ancestors .father-link tr:nth-of-type(2) td:nth-of-type(3) {
-        width: 48%; }
-      .decorator-box.smg-tree-root-ancestors .father-link tr:nth-of-type(1) td:nth-of-type(1) {
-        border-right: 1px solid black; }
-      .decorator-box.smg-tree-root-ancestors .father-link tr:nth-of-type(2) td:nth-of-type(3) {
-        border-left: 1px solid black; }
-    .decorator-box.smg-tree-root-ancestors .mother-link {
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
       width: 100%;
       border-spacing: 0px;
       border-collapse: collapse; }
-      .decorator-box.smg-tree-root-ancestors .mother-link tr:nth-of-type(1) td:nth-of-type(1) {
-        width: 30px;
-        border-bottom: 1px solid black;
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-1 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 48%;
         height: 10px; }
-      .decorator-box.smg-tree-root-ancestors .mother-link tr:nth-of-type(1) td:nth-of-type(2) {
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-1 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 90px;
+        border-bottom: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-1 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-1 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-1 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-1 tr:nth-of-type(2) td:nth-of-type(3) {
         width: 48%; }
-      .decorator-box.smg-tree-root-ancestors .mother-link tr:nth-of-type(1) td:nth-of-type(3) {
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-1 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-1 tr:nth-of-type(2) td:nth-of-type(3) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-2 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 48%;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-2 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 180px;
+        border-bottom: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-2 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-2 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-2 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-2 tr:nth-of-type(2) td:nth-of-type(3) {
         width: 48%; }
-      .decorator-box.smg-tree-root-ancestors .mother-link tr:nth-of-type(2) td:nth-of-type(1) {
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-2 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-2 tr:nth-of-type(2) td:nth-of-type(3) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-3 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 48%;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-3 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 270px;
+        border-bottom: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-3 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-3 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-3 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-3 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-3 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-3 tr:nth-of-type(2) td:nth-of-type(3) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-4 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 48%;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-4 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 360px;
+        border-bottom: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-4 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-4 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-4 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-4 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-4 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-4 tr:nth-of-type(2) td:nth-of-type(3) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-5 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 48%;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-5 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 450px;
+        border-bottom: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-5 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-5 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-5 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-5 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-5 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-5 tr:nth-of-type(2) td:nth-of-type(3) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-6 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 48%;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-6 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 540px;
+        border-bottom: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-6 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-6 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-6 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-6 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-6 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-6 tr:nth-of-type(2) td:nth-of-type(3) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-7 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 48%;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-7 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 630px;
+        border-bottom: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-7 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-7 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-7 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-7 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-7 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-7 tr:nth-of-type(2) td:nth-of-type(3) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-8 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 48%;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-8 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 720px;
+        border-bottom: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-8 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-8 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-8 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-8 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-8 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-8 tr:nth-of-type(2) td:nth-of-type(3) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-9 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 48%;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-9 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 810px;
+        border-bottom: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-9 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-9 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-9 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-9 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-9 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-9 tr:nth-of-type(2) td:nth-of-type(3) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-10 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 48%;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-10 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 900px;
+        border-bottom: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-10 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-10 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-10 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-10 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-10 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .father-link.gen-10 tr:nth-of-type(2) td:nth-of-type(3) {
+        border-left: 2px solid black; }
+    .decorator-box.smg-tree-root-ancestors .mother-link {
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse;
+      width: 100%;
+      border-spacing: 0px;
+      border-collapse: collapse; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-1 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 30px;
+        border-bottom: 2px solid black;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-1 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 90px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-1 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-1 tr:nth-of-type(2) td:nth-of-type(1) {
         height: 10px;
         width: 48%; }
-      .decorator-box.smg-tree-root-ancestors .mother-link tr:nth-of-type(2) td:nth-of-type(2) {
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-1 tr:nth-of-type(2) td:nth-of-type(2) {
         width: 50%; }
-      .decorator-box.smg-tree-root-ancestors .mother-link tr:nth-of-type(2) td:nth-of-type(3) {
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-1 tr:nth-of-type(2) td:nth-of-type(3) {
         width: 30px; }
-      .decorator-box.smg-tree-root-ancestors .mother-link tr:nth-of-type(1) td:nth-of-type(1) {
-        border-right: 1px solid black; }
-      .decorator-box.smg-tree-root-ancestors .mother-link tr:nth-of-type(2) td:nth-of-type(1) {
-        border-left: 1px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-1 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-1 tr:nth-of-type(2) td:nth-of-type(1) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-2 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 30px;
+        border-bottom: 2px solid black;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-2 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 180px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-2 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-2 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-2 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-2 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-2 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-2 tr:nth-of-type(2) td:nth-of-type(1) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-3 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 30px;
+        border-bottom: 2px solid black;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-3 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 270px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-3 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-3 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-3 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-3 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-3 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-3 tr:nth-of-type(2) td:nth-of-type(1) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-4 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 30px;
+        border-bottom: 2px solid black;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-4 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 360px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-4 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-4 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-4 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-4 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-4 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-4 tr:nth-of-type(2) td:nth-of-type(1) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-5 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 30px;
+        border-bottom: 2px solid black;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-5 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 450px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-5 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-5 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-5 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-5 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-5 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-5 tr:nth-of-type(2) td:nth-of-type(1) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-6 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 30px;
+        border-bottom: 2px solid black;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-6 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 540px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-6 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-6 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-6 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-6 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-6 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-6 tr:nth-of-type(2) td:nth-of-type(1) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-7 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 30px;
+        border-bottom: 2px solid black;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-7 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 630px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-7 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-7 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-7 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-7 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-7 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-7 tr:nth-of-type(2) td:nth-of-type(1) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-8 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 30px;
+        border-bottom: 2px solid black;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-8 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 720px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-8 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-8 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-8 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-8 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-8 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-8 tr:nth-of-type(2) td:nth-of-type(1) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-9 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 30px;
+        border-bottom: 2px solid black;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-9 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 810px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-9 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-9 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-9 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-9 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-9 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-9 tr:nth-of-type(2) td:nth-of-type(1) {
+        border-left: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-10 tr:nth-of-type(1) td:nth-of-type(1) {
+        width: 30px;
+        border-bottom: 2px solid black;
+        height: 10px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-10 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 900px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-10 tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-10 tr:nth-of-type(2) td:nth-of-type(1) {
+        height: 10px;
+        width: 48%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-10 tr:nth-of-type(2) td:nth-of-type(2) {
+        width: 50%; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-10 tr:nth-of-type(2) td:nth-of-type(3) {
+        width: 30px; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-10 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-ancestors .mother-link.gen-10 tr:nth-of-type(2) td:nth-of-type(1) {
+        border-left: 2px solid black; }
     .decorator-box.smg-tree-root-ancestors .smg-tree-marriage {
       border-collapse: collapse;
       margin: auto; }
@@ -93,15 +510,18 @@
     .decorator-box.smg-tree-root-ancestors .smg-tree-marriage-empty tr:nth-of-type(2) td {
       height: 15px; }
   .decorator-box.smg-tree-root-descendant {
-    border-collapse: collapse; }
+    border-collapse: collapse;
+    background-color: white; }
     .decorator-box.smg-tree-root-descendant td {
       padding: 0; }
     .decorator-box.smg-tree-root-descendant table {
+      margin: auto;
       border-collapse: collapse; }
     .decorator-box.smg-tree-root-descendant .person {
       min-width: 30px; }
+    .decorator-box.smg-tree-root-descendant .person-name {
+      margin-top: 4px; }
     .decorator-box.smg-tree-root-descendant .person-block,
-    .decorator-box.smg-tree-root-descendant .person-name,
     .decorator-box.smg-tree-root-descendant .person-dates {
       display: inline-block;
       margin: 2px; }
@@ -180,21 +600,26 @@
       width: 100%;
       border-spacing: 0px;
       border-collapse: collapse; }
-      .decorator-box.smg-tree-root-link .father-link tr:nth-of-type(1) td:nth-of-type(1) {
+      .decorator-box.smg-tree-root-link .father-link.gen-1 tr:nth-of-type(1) td:nth-of-type(1) {
         width: 48%;
         height: 10px; }
-      .decorator-box.smg-tree-root-link .father-link tr:nth-of-type(1) td:nth-of-type(2) {
+      .decorator-box.smg-tree-root-link .father-link.gen-1 tr:nth-of-type(1) td:nth-of-type(2) {
         width: 48%;
-        border-bottom: 1px solid black; }
-      .decorator-box.smg-tree-root-link .father-link tr:nth-of-type(1) td:nth-of-type(3) {
+        width: 90px;
+        border-bottom: 2px solid black; }
+      .decorator-box.smg-tree-root-link .father-link.gen-1 tr:nth-of-type(1) td:nth-of-type(3) {
         width: 30px; }
-      .decorator-box.smg-tree-root-link .father-link tr:nth-of-type(2) td:nth-of-type(1) {
+      .decorator-box.smg-tree-root-link .father-link.gen-1 tr:nth-of-type(2) td:nth-of-type(1) {
         height: 10px;
         width: 30px; }
-      .decorator-box.smg-tree-root-link .father-link tr:nth-of-type(2) td:nth-of-type(2) {
+      .decorator-box.smg-tree-root-link .father-link.gen-1 tr:nth-of-type(2) td:nth-of-type(2) {
         width: 50%; }
-      .decorator-box.smg-tree-root-link .father-link tr:nth-of-type(2) td:nth-of-type(3) {
+      .decorator-box.smg-tree-root-link .father-link.gen-1 tr:nth-of-type(2) td:nth-of-type(3) {
         width: 48%; }
+      .decorator-box.smg-tree-root-link .father-link.gen-1 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-link .father-link.gen-1 tr:nth-of-type(2) td:nth-of-type(3) {
+        border-left: 2px solid black; }
       .decorator-box.smg-tree-root-link .father-link tr:nth-of-type(1) td:nth-of-type(3) {
         border-left: 1px solid black; }
       .decorator-box.smg-tree-root-link .father-link tr:nth-of-type(2) td:nth-of-type(1) {
@@ -203,21 +628,26 @@
       width: 100%;
       border-spacing: 0px;
       border-collapse: collapse; }
-      .decorator-box.smg-tree-root-link .mother-link tr:nth-of-type(1) td:nth-of-type(1) {
+      .decorator-box.smg-tree-root-link .mother-link.gen-1 tr:nth-of-type(1) td:nth-of-type(1) {
         width: 30px;
-        border-bottom: 1px solid black;
+        border-bottom: 2px solid black;
         height: 10px; }
-      .decorator-box.smg-tree-root-link .mother-link tr:nth-of-type(1) td:nth-of-type(2) {
+      .decorator-box.smg-tree-root-link .mother-link.gen-1 tr:nth-of-type(1) td:nth-of-type(2) {
+        width: 48%;
+        width: 90px; }
+      .decorator-box.smg-tree-root-link .mother-link.gen-1 tr:nth-of-type(1) td:nth-of-type(3) {
         width: 48%; }
-      .decorator-box.smg-tree-root-link .mother-link tr:nth-of-type(1) td:nth-of-type(3) {
-        width: 48%; }
-      .decorator-box.smg-tree-root-link .mother-link tr:nth-of-type(2) td:nth-of-type(1) {
+      .decorator-box.smg-tree-root-link .mother-link.gen-1 tr:nth-of-type(2) td:nth-of-type(1) {
         height: 10px;
         width: 48%; }
-      .decorator-box.smg-tree-root-link .mother-link tr:nth-of-type(2) td:nth-of-type(2) {
+      .decorator-box.smg-tree-root-link .mother-link.gen-1 tr:nth-of-type(2) td:nth-of-type(2) {
         width: 50%; }
-      .decorator-box.smg-tree-root-link .mother-link tr:nth-of-type(2) td:nth-of-type(3) {
+      .decorator-box.smg-tree-root-link .mother-link.gen-1 tr:nth-of-type(2) td:nth-of-type(3) {
         width: 30px; }
+      .decorator-box.smg-tree-root-link .mother-link.gen-1 tr:nth-of-type(1) td:nth-of-type(1) {
+        border-right: 2px solid black; }
+      .decorator-box.smg-tree-root-link .mother-link.gen-1 tr:nth-of-type(2) td:nth-of-type(1) {
+        border-left: 2px solid black; }
       .decorator-box.smg-tree-root-link .mother-link tr:nth-of-type(1) td:nth-of-type(1) {
         border-left: 1px solid black; }
       .decorator-box.smg-tree-root-link .mother-link tr:nth-of-type(2) td:nth-of-type(2) {
@@ -229,8 +659,7 @@
     line-height: 90px;
     width: 90px;
     min-width: 90px;
-    table-layout: fixed;
-    border: 1px solid red; }
+    table-layout: fixed; }
     .decorator-box .person-empty.with-photo {
       height: 153px;
       line-height: 153px; }
@@ -266,7 +695,7 @@
     margin: auto;
     float: right;
     position: absolute;
-    margin-left: 72px; }
+    margin-left: 81px; }
   .decorator-box .mariage-link {
     display: inline-block; }
     .decorator-box .mariage-link p {
@@ -359,6 +788,7 @@
     .decorator-simple.smg-tree-root-descendant td {
       padding: 0; }
     .decorator-simple.smg-tree-root-descendant table {
+      margin: auto;
       border-collapse: collapse; }
     .decorator-simple.smg-tree-root-descendant .center {
       text-align: center; }

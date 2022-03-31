@@ -51,7 +51,7 @@ class DescendantFamilyTree extends FamilyTree {
 			.'<table><tr>'
 		);
 		$nbChildren = count( $person->getChildren() );
-		if ( $person->sex && $person->sex->getString() == 'M' ) {
+		if ( $person->gender && $person->gender->getString() == 'M' ) {
 			$output->addHTML( '<tr><td class="person" colspan="2">' );
 			$output->addWikiTextAsContent( $infoEmpty );
 			$output->addHTML( '</td><td class="person" colspan="2">' );

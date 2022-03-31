@@ -3,10 +3,10 @@
 namespace SemanticGenealogy\Gedcom;
 
 use SemanticGenealogy\PersonPageValues;
-use SMWQuery;
-use SMWQueryProcessor;
-use SMWQueryResult;
-use SMWResultPrinter;
+use \SMWQuery;
+use \SMWQueryProcessor;
+use \SMWQueryResult;
+use \SMW\ResultPrinter;
 
 /**
  * Printer class for creating GEDCOM exports
@@ -17,7 +17,7 @@ use SMWResultPrinter;
  * @licence GNU GPL v2+
  * @author  Thomas Pellissier Tanon <thomaspt@hotmail.fr>
  */
-class Gedcom5ResultPrinter extends SMWResultPrinter
+class Gedcom5ResultPrinter extends ResultPrinter
 {
 	public $ids = [];
 
@@ -76,7 +76,7 @@ class Gedcom5ResultPrinter extends SMWResultPrinter
 	 *
 	 * @return string the result text
 	 */
-	protected function getResultText( SMWQueryResult $res, $outputmode ) {
+	protected function _getResultText( SMWQueryResult $res, $outputmode ) {
 		$result = '';
 
 		if ( $outputmode == SMW_OUTPUT_FILE ) {
@@ -101,12 +101,14 @@ class Gedcom5ResultPrinter extends SMWResultPrinter
 			if ( $this->getSearchLabel( SMW_OUTPUT_WIKI ) != '' ) {
 				$link->setParameter( $this->getSearchLabel( SMW_OUTPUT_WIKI ), 'searchlabel' );
 			}
+			/*
 			if ( array_key_exists( 'limit', $this->m_params ) ) {
 				$link->setParameter( $this->m_params['limit'], 'limit' );
 			} else {
 				   // use a reasonable default limit
-				$link->setParameter( 20, 'limit' );
 			}
+				$link->setParameter( 20, 'limit' );
+			 */
 			$result .= $link->getText( $outputmode, $this->mLinker );
 			// yes, our code can be viewed as HTML if requested, no more parsing needed
 			$this->isHTML = ( $outputmode == SMW_OUTPUT_HTML );
@@ -114,12 +116,109 @@ class Gedcom5ResultPrinter extends SMWResultPrinter
 		return $result;
 	}
 
+
+    /**
+     * @see ResultPrinter::getResultText
+     *
+     * {@inheritDoc}
+     */
+    protected function getResultText( \SMWQueryResult $res, $outputMode ) {
+
+        if ( $outputMode !== SMW_OUTPUT_FILE ) {
+            #return $this->getDsvLink( $queryResult, $outputMode );
+			$people = [];
+			$row = $res->getNext();
+			while ( $row !== false ) {
+				$people[] = new PersonPageValues( $row[0]->getResultSubject() );
+				$row = $res->getNext();
+			}
+			$printer = new Gedcom5FilePrinter();
+			$printer->addPeople( $people );
+			$result = $printer->getFile();
+			return $result;
+        }
+
+        return $this->buildContents( $queryResult );
+    }
+
+    private function buildContents( QueryResult $queryResult ) {
+        $lines = [];
+
+        // Do not allow backspaces as delimiter, as they'll break stuff.
+        if ( trim( $this->params['separator'] ) != '\\' ) {
+            $this->params['separator'] = trim( $this->params['separator'] );
+        }
+
+        /**
+         * @var ResultPrinter::mShowHeaders
+         */
+        $showHeaders = $this->mShowHeaders;
+
+        if ( $showHeaders ) {
+            $headerItems = [];
+
+            foreach ( $queryResult->getPrintRequests() as $printRequest ) {
+                $headerItems[] = $printRequest->getLabel();
+            }
+
+            $lines[] = $this->getDSVLine( $headerItems );
+        }
+
+        // Loop over the result objects (pages).
+        while ( $row = $queryResult->getNext() ) {
+            $rowItems = [];
+
+            /**
+             * Loop over their fields (properties).
+             * @var SMWResultArray $field
+             */
+            foreach ( $row as $field ) {
+                $itemSegments = [];
+
+                // Loop over all values for the property.
+                while ( ( $object = $field->getNextDataValue() ) !== false ) {
+                    $itemSegments[] = Sanitizer::decodeCharReferences( $object->getWikiValue() );
+                }
+
+                // Join all values into a single string, separating them with comma's.
+                $rowItems[] = implode( ',', $itemSegments );
+            }
+
+            $lines[] = $this->getDSVLine( $rowItems );
+        }
+
+        return implode( "\n", $lines );
+    }
+
+    /**
+     * @see ResultPrinter::getParamDefinitions
+     *
+     * {@inheritDoc}
+     */
+    public function getParamDefinitions( array $definitions ) {
+
+        // You should always get the params added by the parent class,
+        // using the parent.
+        $definitions = parent::getParamDefinitions( $definitions );
+
+        $definitions[] = [
+            'name' => 'separator',
+            'message' => 'smw-paramdesc-separator',
+            'default' => '',
+        ];
+
+        return $definitions;
+    }
+
+
 	/**
 	 * Get all the parameters
 	 *
 	 * @return array the base parameters and the export format parameters
 	 */
 	public function getParameters() {
-		return array_merge( parent::getParameters(), $this->exportFormatParameters() );
+		return array_merge( parent::getParameters() );//, $this->exportFormatParameters() );
 	}
+	/*
+	 */
 }
