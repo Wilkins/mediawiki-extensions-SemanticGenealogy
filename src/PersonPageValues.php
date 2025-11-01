@@ -31,8 +31,10 @@ class PersonPageValues {
 	public $suffix;
 	public $gender;
 	public $birthdate;
+	public $birthyear;
 	public $birthplace;
 	public $deathdate;
+	public $deathyear;
 	public $deathplace;
 	public $father;
 	public $mother;
@@ -156,13 +158,21 @@ class PersonPageValues {
 		if ( $personA->birthdate instanceof SMWDITime ) {
 			$aKey = $personA->birthdate->getSortKey();
 		} else {
-			$aKey = 3000;
+			if (preg_match("/(\d\d\d\d)/", $personA->birthdate ?? "", $match)) {
+				$aKey = $match[1];
+			} else {
+				return -1;
+			}
 		}
 
 		if ( $personB->birthdate instanceof SMWDITime ) {
 			$bKey = $personB->birthdate->getSortKey();
 		} else {
-			$bKey = 3000;
+			if (preg_match("/(\d\d\d\d)/", $personB->birthdate ?? "", $match)) {
+				$bKey = $match[1];
+			} else {
+				return 1;
+			}
 		}
 
 		if ( $bKey < $aKey ) {
@@ -245,13 +255,12 @@ class PersonPageValues {
 		$sosa = null,
 		$withPhoto = false
 		) {
-		$yearRegexp = "/.*\b(\d\d\d\d)\b.*/";
 		$text = "\n".'<div class="person-block '.( $withPhoto ? ' with-photo' : '' ).'">';
 		$text .= $sosa ? '<span class="sosa-num">'.$sosa.'</span>' : '';
 		$text .= "\n".'<div class="person-name">';
 		if ( $withPhoto ) {
 			if ( $this->photoExists() ) {
-				$text .= '[[Fichier:' . $this->getPersonName(). '.jpg|frameless|70px|Photo]]<br/>';
+				$text .= '[[Fichier:' . $this->getPersonName(). '.jpg|frameless|100px|Photo]]<br/>';
 			} else {
 				$text .= '[[Fichier:Portrait_silouhette.png|frameless|70px|Photo]]<br/>';
 			}
@@ -268,30 +277,46 @@ class PersonPageValues {
 			.'|link text='.$person_name_display
 				.'|target='.$this->title->getFullText().' }}';
 		}
-		if ( $this->birthdate || $this->deathdate ) {
+		if ( $this->birthdate || $this->deathdate 
+			|| strlen( $this->birthyear ) === 4 || strlen( $this->deathyear ) === 4
+	   	) {
 			$text .= "\n".'<div class="person-dates">';
-			if ( $withBr ) {
-				//$text .= '<br />';
-			}
-			$text .= '(';
-			if ( $this->birthdate instanceof SMWDITime ) {
-				$text .= static::getWikiTextDateFromSMWDITime( $this->birthdate ) . ' ';
-			} elseif ( is_string( ( string ) $this->birthdate ) 
-				&& preg_match( $yearRegexp, ( string ) $this->birthdate ) ) {
-				$text .= preg_replace( $yearRegexp, "$1", $this->birthdate );
-			}
-			$text .= '-';
-			if ( $this->deathdate instanceof SMWDITime ) {
-				$text .= ' ' . static::getWikiTextDateFromSMWDITime( $this->deathdate );
-			} elseif ( is_string( ( string ) $this->deathdate ) 
-				&& preg_match( $yearRegexp, ( string ) $this->deathdate ) ) {
-				$text .= preg_replace( $yearRegexp, "$1", $this->deathdate );
-			}
-			$text .= ')</div>';
+			$text .= sprintf( '(%s-%s)',
+				$this->getYearDate( $this->birthdate, $this->birthyear ),
+				$this->getYearDate( $this->deathdate, $this->deathyear ),
+			);
+			$text .= '</div>';
 		}
 		$text .= '</div>';
 		$text .= '</div>';
 		return $text;
+	}
+
+	private function getYearDate( $dateObj, $fallback ) {
+		$yearRegexp = "/.*\b(\d\d\d\d)\b.*/";
+		$year = "";
+		#$year .= "[$dateObj]";
+		if ( $dateObj instanceof SMWDITime ) {
+			#$year.="smwditime";
+			#print_r($dateObj);
+			#echo "year2 : ".$dateObj->getYear()."<br>\n";
+			return  $dateObj->getYear();
+			#$year .= static::getWikiTextDateFromSMWDITime( $dateObj ) . ' ';
+			#echo "year : $year<br>\n";
+		#} else if ( $dateObj instanceof SMWDIBlob ) {
+		#	#$year.="smwdiblob";
+			#	$year .= $dateObj->getString();
+		/*
+		} elseif ( is_string( ( string ) $dateObj ) 
+			&& preg_match( $yearRegexp, ( string ) $dateObj ) ) {
+			#$year .= ( string ) $dateObj;
+			#$year .= $yearRegexp;
+			$year .= preg_replace( $yearRegexp, "$1", $dateObj );
+		 */
+		} else {
+			$year .= $fallback;
+		}
+		return $year;
 	}
 
 	/**
@@ -304,6 +329,7 @@ class PersonPageValues {
 	protected static function getWikiTextDateFromSMWDITime( SMWDITime $dataItem ) {
 		$val = new SMWTimeValue( SMWDataItem::TYPE_TIME );
 		$val->setDataItem( $dataItem );
+		#return $val->getYear().'-'.$val->getMonth().'-'.$val->getDay();
 		return $val->getShortWikiText();
 	}
 

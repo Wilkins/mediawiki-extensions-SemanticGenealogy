@@ -70,9 +70,9 @@ class SpecialFamilyTree extends SpecialPage {
 
 		$this->page = isset( $parts[1] ) ? $parts[1] : $wgRequest->getText( 'page' );
 
-		$this->displayname = isset( $parts[1] ) ? $parts[1] : $wgRequest->getText( 'displayname' );
-		if ( !$this->displayname ) {
-			$this->displayname = 'fullname';
+		$this->mName = isset( $parts[1] ) ? $parts[1] : $wgRequest->getText( 'displayname' );
+		if ( !$this->mName ) {
+			$this->mName = 'fullname';
 		}
 
 		if ( $this->type == LinkFamilyTree::NAME ) {
@@ -114,7 +114,7 @@ class SpecialFamilyTree extends SpecialPage {
 
 			$familytree = FamilyTreeFactory::create( $this->type, $this->decorator );
 			$familytree->setPerson( $this->page );
-			$familytree->setDisplayName( $this->displayname );
+			$familytree->setDisplayName( $this->mName );
 
 			if ( $this->page2 ) {
 				$familytree->setPerson2( $this->page2 );
@@ -162,7 +162,7 @@ class SpecialFamilyTree extends SpecialPage {
 					   );
 			}
 
-			$displaynameSelect = new XmlSelect( 'displayname', 'displayname', $this->displayname );
+			$displaynameSelect = new XmlSelect( 'displayname', 'displayname', $this->mName );
 			$displaynameSelect->addOption(
 				$this->msg( 'semanticgenealogy-specialfamilytree-displayname-fullname' )->text(), 'fullname' );
 			$displaynameSelect->addOption(
@@ -272,7 +272,7 @@ class SpecialFamilyTree extends SpecialPage {
 	 * @return string
 	 */
 	public function getDescription() {
-		return $this->msg( 'semanticgenealogy-specialfamilytree-title' )->text();
+		return $this->msg( 'semanticgenealogy-specialfamilytree-title' );
 	}
 
 	/**

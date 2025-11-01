@@ -36,11 +36,25 @@
       ],
       "ParserBeforeTidy": [
         "SemanticGenealogy\\SemanticGenealogy::addExtensionCSS"
+      ],
+      "BeforePageDisplay": [
+        "SemanticGenealogy\\SemanticGenealogy::onBeforePageDisplay"
       ]
     },
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
-		"@remoteExtPath": "SemanticGenealogy"
+		"@remoteExtPath": "SemanticGenealogy",
+        "styles": [
+            "modules/styles.css"
+        ]
+	},
+	"ResourceModules": {
+	  "ext.smg.specialfamilytree": {
+        "@remoteExtPath": "SemanticGenealogy",
+        "styles": [
+            "modules/styles.css"
+        ]
+	  }
 	},
     "load_composer_autoloader": true,
     "manifest_version": 1

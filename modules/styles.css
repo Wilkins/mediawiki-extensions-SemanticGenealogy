@@ -523,10 +523,8 @@
       margin-top: 4px; }
     .decorator-box.smg-tree-root-descendant .person-block,
     .decorator-box.smg-tree-root-descendant .person-dates {
-      display: inline-block;
+      display: block;
       margin: 2px; }
-    .decorator-box.smg-tree-root-descendant .person-dates {
-      display: none; }
     .decorator-box.smg-tree-root-descendant .descendant-line {
       line-height: 90px;
       margin-top: 5px;

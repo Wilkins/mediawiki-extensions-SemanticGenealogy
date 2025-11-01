@@ -188,11 +188,8 @@ $box-interval: 8px / 2;
 		.person-block,
 		//.person-name,
 		.person-dates {
-			display: inline-block;
+			display: block;
 			margin: 2px;
-		}
-		.person-dates {
-			display: none;
 		}
 		.descendant-line {
 			line-height: $box-size;

@@ -49,7 +49,7 @@ class AncestorsFamilyTree extends FamilyTree {
 		$col = 1;
 		$storage = smwfGetStore();
 		for ( $i = $this->numOfGenerations - 1; $i >= 0; $i-- ) {
-			$genNum = max(array_keys($tree))-$i;
+			$genNum = max( array_keys( $tree ) )-$i;
 			if ( isset( $tree[$i] ) ) {
 				$output->addHTML( '<tr class="smg-tree-line smg-tree-gen-row-'.$i.'">' );
 
@@ -78,9 +78,9 @@ class AncestorsFamilyTree extends FamilyTree {
 						//"Mariage de $fatherName et de $motherName";
 						//".$person->getFatherName( )." et "; //$tree[$i][$sosa-1]->getMotherName( );
 						$output->addHTML(
-							"\n".'<td class="smg-tree-person col-width-'.$col.' gen-'.( $genNum ).'" colspan="'.$col.'">'
+							"\n".'<td class="smg-tree-person col-width-'.$col.' gen-'.$genNum.'" colspan="'.$col.'">'
 						);
-						if ( $fatherName && $motherName ) {
+						if ( $fatherName && $motherName && $genNum > 1 ) {
 							$mariageLink = wfMessage(
 								'semanticgenealogy-specialfamilytree-marriage-link',
 								$fatherName,
@@ -90,7 +90,7 @@ class AncestorsFamilyTree extends FamilyTree {
 							$output->addHTML( "\n".'<table class="smg-tree-marriage"><tr><td colspan="2">' );
 
 							if ( SemanticGenealogy::pageExists( $mariageLink ) ) {
-								$prop = \SMWDIProperty::newFromUserLabel( 'Anneemariage' );
+								$prop = \SMWDIProperty::newFromUserLabel( 'Annee_mariage' );
 								$smwpage = PersonPageValues::getPageFromName( $mariageLink );
 								$annee_mariage = $storage->getPropertyValues( $smwpage, $prop );
 								$annee_mariage_text = '';

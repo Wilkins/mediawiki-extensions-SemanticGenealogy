@@ -19,6 +19,10 @@ use Title;
 class SemanticGenealogy
 {
 
+	public function __construct(
+		private WikiPageFactory $wikiPageFactory
+	) {}
+
 	/**
 	 * Get an array key => value of genealogical properties as SMWDIProperty
 	 *
@@ -88,11 +92,12 @@ class SemanticGenealogy
 	public static function getNamespaceFromName( $searchName ) {
 		global $wgNamespaceAliases;
 
+		print_R($wgNamespaceAliaseses);
 		if ( isset( $wgNamespaceAliases[$searchName] ) ) {
 			return $wgNamespaceAliases[$searchName];
 		}
 
-		throw new Exception( "Namespace name « ${searchName} » was not found in SemanticGenealogy. This should not happen, please contact developpers extension with tag: Error101" );
+		throw new Exception( "Namespace name \"{$searchName}\" was not found in SemanticGenealogy. This should not happen, please contact developpers extension with tag: Error101" );
 	}
 
 	public static function setNamespaceAliases( $namespaces ) {
@@ -114,6 +119,11 @@ class SemanticGenealogy
 		}
 		#print_r( $namespaces );
 
+	}
+	
+	public static function onBeforePageDisplay( $out, $skin ): void {
+      $moduleStyles[] = 'ext.smg.specialfamilytree';
+      $out->addModuleStyles( $moduleStyles );
 	}
 
 	public static function addExtensionCSS( &$parser, &$text) {
@@ -171,8 +181,8 @@ class SemanticGenealogy
 			define( 'NS_FORM', 106 );
 		}
 
-		$GLOBALS['wgLanguageCode'] = 'fr';
-		NamespaceManager::initCustomNamespace( $GLOBALS, 'fr' );
+#		$GLOBALS['wgLanguageCode'] = 'en';
+#		NamespaceManager::initCustomNamespace( $GLOBALS, 'en' );
 
 		$GLOBALS['moduleTemplate'] = [
 			'localBasePath' => __DIR__.'/../',
@@ -198,7 +208,9 @@ class SemanticGenealogy
 	public static function pageExists( $pagename ) {
 		$pagename = preg_replace( '/ /', '_', $pagename );
 		$title = \Title::newFromDbKey( $pagename );
-		$page = \WikiPage::factory( $title );
+		//$page = \WikiPage::factory( $title );
+		$page = \Title::newFromPageIdentity( $title );
+		//$this->wikiPageFactory->newFromTitle( $title );
 		return $page->exists();
 	}
 

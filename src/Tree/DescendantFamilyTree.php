@@ -31,7 +31,8 @@ class DescendantFamilyTree extends FamilyTree {
 			return true;
 		}
 
-		$infoPerson = $person->getDescriptionWikiText( true, $this->displayName );
+		$sosa = $person->getSosa(); 
+		$infoPerson = $person->getDescriptionWikiText( true, $this->displayName, $sosa, true );
 		$infoEmpty = "&nbsp;";
 		$infoPartner = "&nbsp;";
 		$couple = '<td>&nbsp;</td><td class="father-link">&nbsp;</td>'
@@ -40,7 +41,7 @@ class DescendantFamilyTree extends FamilyTree {
 		if ( $person->getPartner() ) {
 			$partner = new PersonPageValues( $person->getPartner() );
 			if ( isset( $partner ) ) {
-				$infoPartner = $partner->getDescriptionWikiText( true, $this->displayName );
+				$infoPartner = $partner->getDescriptionWikiText( true, $this->displayName, $partner->getSosa(), true );
 			}
 		}
 
@@ -58,8 +59,7 @@ class DescendantFamilyTree extends FamilyTree {
 			$output->addWikiTextAsContent( $infoPerson );
 			$output->addHTML( '</td><td class="person" colspan="2">' );
 			$output->addWikiTextAsContent( $infoPartner );
-			$output->addHTML( '</td></tr><tr>' );
-			$output->addHTML( $tdempty.( $nbChildren ? $couple : $tdempty.$tdempty ) );
+			$output->addHTML( '</td></tr>' );
 		} else {
 			$output->addHTML( '<tr><td class="person" colspan="2">' );
 			$output->addWikiTextAsContent( $infoPartner );
@@ -67,30 +67,44 @@ class DescendantFamilyTree extends FamilyTree {
 			$output->addWikiTextAsContent( $infoPerson );
 			$output->addHTML( '</td><td class="person" colspan="2">' );
 			$output->addWikiTextAsContent( $infoEmpty );
-			$output->addHTML( '</td></tr><tr>' );
+			$output->addHTML( '</td></tr>' );
+		}
+		if ( $numOfGenerations-1 ) {
+		if ( $person->gender && $person->gender->getString() == 'M' ) {
+			$output->addHTML( '<tr class="parent-links">' );
+			$output->addHTML( $tdempty.( $nbChildren ? $couple : $tdempty.$tdempty ) );
+		} else {
+			$output->addHTML( '<tr class="parent-links">' );
 			$output->addHTML( ( $nbChildren ? $couple : $tdempty.$tdempty ).$tdempty );
 		}
-		$output->addHTML(
-			'</tr></table></td></tr>'
-			.'<tr><td '.( $nbChildren ? ' class="couple-link"' : '' ).'>&nbsp;</td><td>&nbsp;</td></tr>'
-		 );
-
-		$output->addHTML( '<tr><td colspan="2"><table><tr>' );
-		$itemNumber = 1;
-		foreach ( $person->getChildren() as $child ) {
-			$class = $this->getClass( $itemNumber++, $nbChildren );
-			$output->addHTML(
-				'<td style="vertical-align: top"><table><tr>'
-				.'<td class="child-left '.$class.'">&nbsp;</td>'
-				.'<td class="child-right '.$class.'">&nbsp;</td>'
-				.'</tr>'
-				.'<tr><td colspan="2" class="center">'
-			);
-			$childPage = new PersonPageValues( $child->getPage() );
-			$this->showDescendants( $childPage, $numOfGenerations-1 );
-			$output->addHTML( '</td></tr></table></td>' );
 		}
-		$output->addHTML( '</tr></td></table></td></tr></table>' );
+		$output->addHTML( '</tr></table></td></tr> ');
+
+		if ( $numOfGenerations-1 ) {
+			$output->addHTML(
+				'<tr class="tr-couple-link">'
+				.'<td '.( $nbChildren ? ' class="couple-link"' : '' ).'>&nbsp;'
+				.'</td><td>&nbsp;</td></tr>'
+			 );
+
+			$output->addHTML( '<tr><td colspan="2"><table><tr>' );
+			$itemNumber = 1;
+			foreach ( $person->getChildren() as $child ) {
+				$class = $this->getClass( $itemNumber++, $nbChildren );
+				$output->addHTML(
+					'<td style="vertical-align: top"><table><tr>'
+					.'<td class="child-left '.$class.'">&nbsp;</td>'
+					.'<td class="child-right '.$class.'">&nbsp;</td>'
+					.'</tr>'
+					.'<tr><td colspan="2" class="center">'
+				);
+				$childPage = new PersonPageValues( $child->getPage() );
+				$this->showDescendants( $childPage, $numOfGenerations-1 );
+				$output->addHTML( '</td></tr></table></td>' );
+			}
+			$output->addHTML( '</tr></td></table></td></tr>' );
+		}
+		$output->addHTML( '</table>' );
 		return $person;
 	}
 

@@ -2,13 +2,12 @@
 
 Bugs
 ----
-Gedcom broken ?
 Arbre généalogique descendant > 5 generations ?!
 Ancestors, last mother=last father ?
 
 Ideas
 -----
-- Add photo to the tree
+Hello
 - Map tree
 - composer.json to include the extension with autoloading
 - adding statistics + progress
@@ -18,15 +17,12 @@ Templates
 - delete get.php
 - lien de la fiche personne doit être vers le fomulaire que si le lien n'existe pas
 - lien "mariée avec" doit être vers le formulaire
-- lien des personnes de l'arbre doit être vers le formulaire si la page n'existe pas
 
 Decorators
 ----------
 - real brown branches + green for a person
 - blue for boys, pink for girls
 
-
 Autres
 ------
 - gérer les dates au format date.
-

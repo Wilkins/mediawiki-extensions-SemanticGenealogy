@@ -134,8 +134,36 @@ class Gedcom5ResultPrinter extends ResultPrinter
 			}
 			$printer = new Gedcom5FilePrinter();
 			$printer->addPeople( $people );
+
 			$result = $printer->getFile();
-			return $result;
+            //echo "site : ".strlen($result)."<br>\n";
+            //echo mb_detect_encoding($result);
+            //echo mb_detect_encoding($result);
+            $result2 = mb_convert_encoding($result, 'ISO-8859-1', 'UTF-8');
+            //echo "encoding : ".mb_detect_encoding($result2)."<br>\n";
+
+            //echo "site : ".strlen($result2)."<br>\n";
+            //echo mb_detect_encoding($result);
+
+            header('Content-Type: application/octet-stream');
+			#header('Content-Type: text/plain');
+
+            header('Content-Description: File Transfer');
+            header("Content-Disposition: attachment; filename=\"gedcom_".date('Y-m-d-H-i-s').".ged\"");
+            header("Content-Length: " . strlen($result2));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            echo $result2;
+            exit;
+            /*
+            strlen($result);
+            echo $result;
+            exit;
+            echo iconv('UTF-8', 'ISO-8859-1//IGNORE', $result);
+            exit;
+			return iconv('UTF-8', 'ISO-8859-1//IGNORE', $result);
+            */
         }
 
         return $this->buildContents( $queryResult );
@@ -187,7 +215,7 @@ class Gedcom5ResultPrinter extends ResultPrinter
             $lines[] = $this->getDSVLine( $rowItems );
         }
 
-        return implode( "\n", $lines );
+        return utf8_decode(implode( "\n", $lines ));
     }
 
     /**

@@ -6,6 +6,7 @@ use SemanticGenealogy\PersonPageValues;
 use SMWDIWikiPage;
 use SMWDIBlob;
 use SMWDITime;
+use SemanticGenealogy\SemanticGenealogy;
 
 /**
  * Gedcom5FilePrinter object
@@ -35,8 +36,8 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 		foreach ( $this->people as $key => $person ) {
 			$this->addPerson( $key, $person );
 		}
-		foreach ( $this->families as $key => $children ) {
-			$this->addFamily( $key, $children );
+		foreach ( $this->families as $key => $familyData ) {
+			$this->addFamily( $key, $familyData );
 		}
 		$this->addRow( 0, 'TRLR' );
 	}
@@ -99,11 +100,33 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 	protected function addChildToFamily( $familyKey, PersonPageValues $child ) {
 		$childId = $child->title->getArticleID();
 		if ( isset( $this->families[$familyKey] ) ) {
-			if ( !in_array( $childId, $this->families[$familyKey] ) ) {
-				$this->families[$familyKey][] = $childId;
+			if ( !in_array( $childId, $this->families[$familyKey]['children'] ) ) {
+				$this->families[$familyKey]['children'][] = $childId;
 			}
 		} else {
-			$this->families[$familyKey] = [ $childId ];
+			if ($child->father?->getTitle() && $child->mother?->getTitle()) {
+				$properties = SemanticGenealogy::getProperties();
+				$pageTitleMarriage = str_replace(
+					['{1}', '{2}'],
+					[$child->father->getTitle()->getText(), $child->mother->getTitle()->getText()],
+					$properties['marriagepage']
+				);
+				$pageTitleMarriage = str_replace(' ', '_', $pageTitleMarriage);
+				$pageMariage = PersonPageValues::getPageFromName($pageTitleMarriage);
+				$storage = smwfGetStore();
+				$date = $storage->getPropertyValues($pageMariage, $properties['marriagedate']);
+				$place = $storage->getPropertyValues($pageMariage, $properties['marriageplace']);
+				if ($date && is_array($date)) { $date = $date[0]; }
+				if ($place && is_array($place)) { $place = $place[0]; }
+			} else {
+				$place ='';
+				$date = '';
+			}
+			$this->families[$familyKey] = [
+				'place' => $place,
+				'date' => $date,
+				'children' => [ $childId ]
+			];
 		}
 	}
 
@@ -184,6 +207,20 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 		}
 		$this->addEvent( 'BIRT', $person->birthdate, $person->birthplace );
 		$this->addEvent( 'DEAT', $person->deathdate, $person->deathplace );
+
+		$properties = SemanticGenealogy::getProperties();
+		$url = str_replace( '{1}', $person->title->getText(), $properties['photourl'] );
+		$path = str_replace( '{1}', $person->title->getText(), $properties['photopath'] );
+		$name = str_replace( '{1}', $person->title->getText(), $properties['photoname'] );
+		$url = str_replace( ' ', '_', $url );
+		$path = str_replace( ' ', '_', $path );
+		$name = str_replace( '_', ' ', $name );
+		if ( file_exists( $path ) ) {
+			$this->addRow( 1, 'OBJE' );
+			$this->addRow( 2, 'FORM', 'jpg' );
+			$this->addRow( 2, 'TITL', $name );
+			$this->addRow( 2, 'FILE', $url );
+		}
 	}
 
 	/**
@@ -194,7 +231,7 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 	 *
 	 * @return void
 	 */
-	protected function addFamily( $familyId, $children ) {
+	protected function addFamily( $familyId, $familyData ) {
 		list( $fatherId, $motherId ) = explode( 'S', $familyId );
 		$this->addRow( 0, '@F'. $familyId . '@', 'FAM' );
 		if ( $fatherId != 0 ) {
@@ -203,7 +240,8 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 		if ( $motherId != 0 ) {
 			$this->addRow( 1, 'WIFE', '@I' . $motherId . '@' );
 		}
-		foreach ( $children as $childId ) {
+		$this->addEvent( 'MARR', $familyData['date'], $familyData['place'] );
+		foreach ( $familyData['children'] as $childId ) {
 			$this->addRow( 1, 'CHIL', '@I' . $childId . '@' );
 		}
 	}
@@ -296,9 +334,11 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 	 */
 	protected function addTimeValueAsRow( $level, $key, $value ) {
 		if ( $value instanceof SMWDITime ) {
-			$lang = new Language();
+			#$lang = new Language();
 			$this->addRow( $level, $key,
-				strtoupper( $lang->sprintfDate( 'd M Y', $value->getMwTimestamp( TS_MW ) ) ) );
+				#strtoupper( $lang->sprintfDate( 'd M Y', $value->getMwTimestamp( TS_MW ) ) )
+				$value->asDateTime()->format('Y-m-d')
+		   	);
 		}
 	}
 
