@@ -118,13 +118,16 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 				$place = $storage->getPropertyValues($pageMariage, $properties['marriageplace']);
 				if ($date && is_array($date)) { $date = $date[0]; }
 				if ($place && is_array($place)) { $place = $place[0]; }
+				$witnesses = $storage->getPropertyValues($pageMariage, $properties['marriagewitness']);
 			} else {
 				$place ='';
 				$date = '';
+				$witnesses = [];
 			}
 			$this->families[$familyKey] = [
 				'place' => $place,
 				'date' => $date,
+				'witnesses' => $witnesses,
 				'children' => [ $childId ]
 			];
 		}
@@ -240,7 +243,7 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 		if ( $motherId != 0 ) {
 			$this->addRow( 1, 'WIFE', '@I' . $motherId . '@' );
 		}
-		$this->addEvent( 'MARR', $familyData['date'], $familyData['place'] );
+		$this->addEvent( 'MARR', $familyData['date'], $familyData['place'], $familyData['witnesses'] );
 		foreach ( $familyData['children'] as $childId ) {
 			$this->addRow( 1, 'CHIL', '@I' . $childId . '@' );
 		}
@@ -295,7 +298,7 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 	 *
 	 * @return void
 	 */
-	protected function addEvent( $type, $date, $place ) {
+	protected function addEvent( $type, $date, $place, $witnesses = [] ) {
 		if ( $date === null && $place === null ) {
 			return;
 		}
@@ -305,6 +308,11 @@ class Gedcom5FilePrinter extends GenealogicalFilePrinter {
 			$this->addWikiPageValueAsRow( 2, 'PLAC', $place );
 		} else {
 			$this->addStringValueAsRow( 2, 'PLAC', $place );
+		}
+		if ( $type === 'MARR' && count( $witnesses ) > 0 ) {
+			foreach ( $familyData['witnesses'] as $witnessId ) {
+				$this->addRow( 2, 'WITN', '@I' . $witnessId . '@' );
+			}
 		}
 	}
 
